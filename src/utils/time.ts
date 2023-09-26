@@ -18,3 +18,15 @@ export const toSeconds = (time: string): number => {
 
   return (+h) * 3600 + (+m) * 60;
 };
+
+export const toHoursMinutesSeconds = (seconds: number): string => {
+  return (
+  //hours
+    Math.floor(seconds / 3600) + 
+  ":" + 
+  //minutes
+  ((Math.floor((seconds % 3600) / 60) < 10) ? ("0" + Math.floor((seconds % 3600)) / 60) : Math.floor((seconds % 3600) / 60)) + 
+  ":" +
+  //seconds 
+  ((Math.floor((seconds % 3600) % 60) < 10) ? ("0" + Math.floor((seconds % 3600) % 60)) : Math.floor((seconds % 3600) % 60)));
+}

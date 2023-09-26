@@ -8,6 +8,8 @@ import {PokemonFrequencyProps} from '@/components/shared/pokemon/frequency/type'
 import {durationOfDay} from '@/const/common';
 import {formatFloat, formatInt} from '@/utils/number';
 
+import {toHoursMinutesSeconds} from '@/utils/time';
+
 
 type Props = PokemonFrequencyProps & {
   frequency: number,
@@ -24,7 +26,7 @@ export const PokemonFrequency = ({frequency, noIcon, normalText}: Props) => {
           <ClockIcon/>
         </div>
       }
-      <div>{formatInt(frequency)}</div>
+      <div>{toHoursMinutesSeconds(frequency)}</div>
       <div>({formatFloat(dailyCount)}x)</div>
     </Flex>
   );
