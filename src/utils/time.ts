@@ -20,13 +20,16 @@ export const toSeconds = (time: string): number => {
 };
 
 export const toHoursMinutesSeconds = (seconds: number): string => {
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.floor((seconds % 3600) % 60);
+
   return (
-  //hours
-    Math.floor(seconds / 3600) + 
-  ":" + 
-  //minutes
-  ((Math.floor((seconds % 3600) / 60) < 10) ? ("0" + Math.floor((seconds % 3600)) / 60) : Math.floor((seconds % 3600) / 60)) + 
-  ":" +
-  //seconds 
-  ((Math.floor((seconds % 3600) % 60) < 10) ? ("0" + Math.floor((seconds % 3600) % 60)) : Math.floor((seconds % 3600) % 60)));
-}
+    // hours
+    h + ':' +
+    // minutes
+    (m < 10 ? '0' + m : m) + ':' +
+    // seconds
+    (s < 10 ? '0' + s : s)
+  );
+};
