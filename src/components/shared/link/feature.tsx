@@ -32,6 +32,7 @@ export const FeatureLink = ({href, disabled, text, children}: React.PropsWithChi
       href={href}
       className={clsx('button-clickable group border border-slate-700 dark:border-slate-300', styles['home-link'])}
       scroll={false}
+      prefetch={false}
     >
       <Flex
         direction="row" center

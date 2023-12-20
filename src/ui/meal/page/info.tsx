@@ -23,14 +23,22 @@ export const MealInfo = (props: MealCommonProps) => {
         <MealExp {...props}/>
         <Flex direction="row" center className="gap-1.5">
           {meal.ingredients.map(({id, quantity}) => (
-            <Link scroll={false} key={id} href={`/ingredient/${id}`} className="button-clickable-bg p-1.5">
+            <Link
+              scroll={false}
+              prefetch={false}
+              key={id}
+              href={`/ingredient/${id}`}
+              className="button-clickable-bg p-1.5"
+            >
               <Flex center>
                 <div className="relative h-12 w-12">
-                  <NextImage src={`/images/ingredient/${id}.png`} alt={t(id.toString())} sizes={imageIconSizes}/>
+                  <NextImage
+                    src={`/images/ingredient/${id}.png`}
+                    alt={t(id.toString())}
+                    sizes={imageIconSizes}
+                  />
                 </div>
-                <div>
-                  {quantity}
-                </div>
+                <div>{quantity}</div>
               </Flex>
             </Link>
           ))}

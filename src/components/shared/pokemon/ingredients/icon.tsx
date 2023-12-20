@@ -24,7 +24,7 @@ export const PokemonIngredientIcon = (props: Props) => {
 
   return (
     // `tabIndex` -1 to avoid tab selecting
-    <Link scroll={false} href={`/ingredient/${id}`} tabIndex={-1} target="_blank">
+    <Link scroll={false} prefetch={false} href={`/ingredient/${id}`} tabIndex={-1} target="_blank">
       <PokemonIngredientIconContent {...props} id={id} clickableStyle/>
     </Link>
   );

@@ -38,14 +38,14 @@ export const PokemonLinkPopupContent = ({pokemon}: Props) => {
       </div>
       <Flex direction="row" className="gap-2">
         <Flex>
-          <Link scroll={false} href={`/pokedex/${id}`}>
+          <Link scroll={false} prefetch={false} href={`/pokedex/${id}`}>
             <Flex center className="button-clickable-bg group p-2">
               <GenericPokeballIcon dimension="h-10 w-10" alt={t('Pokedex.Page.Title', {name})}/>
             </Flex>
           </Link>
         </Flex>
         <Flex>
-          <Link scroll={false} href={`/analysis/${id}`}>
+          <Link scroll={false} prefetch={false} href={`/analysis/${id}`}>
             <Flex center className="button-clickable-bg group p-2">
               <div className="relative h-10 w-10">
                 <NextImage

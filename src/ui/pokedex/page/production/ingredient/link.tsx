@@ -21,7 +21,7 @@ export const PokemonProductionIngredientLink = ({production}: Props) => {
   const ingredientName = t(id.toString());
 
   return (
-    <Link scroll={false} href={`/ingredient/${id}`} className="button-clickable-bg p-1.5">
+    <Link scroll={false} prefetch={false} href={`/ingredient/${id}`} className="button-clickable-bg p-1.5">
       <Flex center className="gap-0.5">
         <IconWithInfo
           imageSrc={`/images/ingredient/${id}.png`}

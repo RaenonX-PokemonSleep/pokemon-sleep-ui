@@ -12,11 +12,14 @@ import {AnalysisStatsLinkedData} from '@/ui/analysis/page/calc/type';
 
 
 type Props<TData> = {
-  linked: AnalysisStatsLinkedData<TData>,
-  renderData?: (data: AnalysisStatsLinkedData<TData>) => React.ReactNode,
+  linked: AnalysisStatsLinkedData<TData>;
+  renderData?: (data: AnalysisStatsLinkedData<TData>) => React.ReactNode;
 };
 
-export const AnalysisPokemonIcon = <TData, >({linked, renderData}: Props<TData>) => {
+export const AnalysisPokemonIcon = <TData, >({
+  linked,
+  renderData,
+}: Props<TData>) => {
   const {pokemonId} = linked;
 
   const t = useTranslations('Game.PokemonName');
@@ -25,29 +28,45 @@ export const AnalysisPokemonIcon = <TData, >({linked, renderData}: Props<TData>)
   const name = t(pokemonId.toString());
 
   return (
-    <Flex center noFullWidth className={clsx(
-      'button-bg relative w-24 gap-1.5 rounded-lg p-1',
-    )}>
+    <Flex
+      center
+      noFullWidth
+      className={clsx('button-bg relative w-24 gap-1.5 rounded-lg p-1')}
+    >
       <div className="relative h-14 w-14">
-        <NextImage src={`/images/pokemon/icons/${pokemonId}.png`} alt={name} sizes={imageIconSizes}/>
+        <NextImage
+          src={`/images/pokemon/icons/${pokemonId}.png`}
+          alt={name}
+          sizes={imageIconSizes}
+        />
       </div>
-      {
-        renderData &&
-        <Flex>
-          {renderData(linked)}
-        </Flex>
-      }
+      {renderData && <Flex>{renderData(linked)}</Flex>}
       <Flex direction="row" className="gap-2">
         <Flex center>
-          <Link scroll={false} href={`/pokedex/${pokemonId}`} className="button-clickable group relative h-6 w-6">
-            <GenericPokeballIcon alt={t2('Pokedex.Page.Title', {name})} noWrap/>
+          <Link
+            scroll={false}
+            prefetch={false}
+            href={`/pokedex/${pokemonId}`}
+            className="button-clickable group relative h-6 w-6"
+          >
+            <GenericPokeballIcon
+              alt={t2('Pokedex.Page.Title', {name})}
+              noWrap
+            />
           </Link>
         </Flex>
         <Flex center>
-          <Link scroll={false} href={`/analysis/${pokemonId}`} className="button-clickable group relative h-6 w-6">
+          <Link
+            scroll={false}
+            prefetch={false}
+            href={`/analysis/${pokemonId}`}
+            className="button-clickable group relative h-6 w-6"
+          >
             <NextImage
-              src="/images/generic/analysis.png" alt={t2('Analysis.Title', {name})}
-              sizes={imageIconSizes} className="invert-hoverable"
+              src="/images/generic/analysis.png"
+              alt={t2('Analysis.Title', {name})}
+              sizes={imageIconSizes}
+              className="invert-hoverable"
             />
           </Link>
         </Flex>

@@ -38,7 +38,7 @@ export const IngredientCookableMeals = ({mealMap, ingredientMap, ingredientId}: 
           getMealBaseStrength({level: recipeMaxLevel, meal: b, ingredientMap}).strengthFinal
         ))
         .map((meal) => (
-          <Link scroll={false} key={meal.id} href={`/meal/${meal.id}`}>
+          <Link scroll={false} prefetch={false} key={meal.id} href={`/meal/${meal.id}`}>
             <Flex center className="button-clickable-bg gap-1 p-1.5">
               <div className="text-sm">
                 {t(meal.id.toString())}

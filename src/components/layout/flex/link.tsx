@@ -26,6 +26,7 @@ const FlexLinkInternal = ({
     className={getFlexStyles(direction, {noFullWidth, ...props})}
     target={target}
     scroll={false}
+    prefetch={false}
   >
     {children}
   </Link>

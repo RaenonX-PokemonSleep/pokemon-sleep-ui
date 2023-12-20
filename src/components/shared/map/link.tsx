@@ -16,13 +16,13 @@ type Props = {
   noAbsolute?: boolean,
 };
 
-export const MapLink = ({mapId, className, toUnique, noAbsolute, children}: React.PropsWithChildren<Props>) => {
+export const MapLink = ({mapId, className, toUnique, noAbsolute, children}: React.PropsWithChildren<Props>)=> {
   const t = useTranslations('Game.Field');
 
   const mapName = t(mapId.toString());
 
   return (
-    <Link scroll={false} href={`/map/${toUnique ? 'unique/' : ''}${mapId}`} className={clsx(
+    <Link scroll={false} prefetch={false} href={`/map/${toUnique ? 'unique/' : ''}${mapId}`} className={clsx(
       'button-clickable-bg group relative',
       className,
     )}>

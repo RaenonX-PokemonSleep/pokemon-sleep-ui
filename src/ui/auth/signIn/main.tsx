@@ -32,7 +32,7 @@ export const AuthSignIn = async ({params, searchParams}: DefaultPageProps) => {
     <AuthLayout locale={locale}>
       <AuthSignInExternal/>
       <Flex className="items-end">
-        <Link scroll={false} href={'/auth/sign-in/email'} className="border-link w-fit">
+        <Link scroll={false} prefetch={false} href={'/auth/sign-in/email'} className="border-link w-fit">
           <Flex direction="row" noFullWidth center className="gap-1.5">
             <EnvelopeIcon className="h-6 w-6"/>
             <div>Email</div>

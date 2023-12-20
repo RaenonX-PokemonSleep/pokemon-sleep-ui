@@ -18,7 +18,7 @@ export const AnalysisMeta = ({pokemon}: Props) => {
       <div className="relative h-60 w-60">
         <PokemonImage pokemonId={pokemon.id} image="portrait" isShiny={false}/>
         <Link
-          scroll={false}
+          scroll={false} prefetch={false}
           href={`/pokedex/${pokemon.id}`}
           className="button-clickable absolute bottom-0 right-0 h-7 w-7 rounded-full"
         >

@@ -78,7 +78,7 @@ export const AnalysisStatsOfPokemonMeta = ({pokemon, stats, level}: AnalysisStat
       </AnalysisStatsGroupedUI>
       <AnalysisStatsGroupedUI stats={stats.pokemon.mainSkill} title={<PokemonFilterTitle type="mainSkill"/>}>
         <Flex center className="h-12 text-2xl">
-          <Link scroll={false} href={`/info/mainskill/${skill}`} className="button-clickable p-1 px-1.5">
+          <Link scroll={false} prefetch={false} href={`/info/mainskill/${skill}`} className="button-clickable p-1 px-1.5">
             {t(`MainSkill.Name.${skill}`)}
           </Link>
         </Flex>

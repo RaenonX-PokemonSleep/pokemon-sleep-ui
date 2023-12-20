@@ -20,7 +20,7 @@ export const MealLink = (props: MealLinkProps) => {
   const mealName = t(id.toString());
 
   return (
-    <Link scroll={false} href={`/meal/${id}`} className={clsx(
+    <Link scroll={false} prefetch={false} href={`/meal/${id}`} className={clsx(
       'relative flex h-20 w-full flex-col items-end rounded-lg',
       mealTypeBackgroundStyle[type],
     )}>

@@ -14,7 +14,7 @@ export const NavListHome = () => {
   const rankBallId = Date.now() % 4 + 1;
 
   return (
-    <Link scroll={false} href="/" className="button-clickable-bg group">
+    <Link scroll={false} prefetch={false} href="/" className="button-clickable-bg group">
       <div className="relative h-48 w-full">
         <NextImage
           src="/images/theme/3iggs.png"
