@@ -22,7 +22,7 @@ export const IngredientLink = ({ingredient}: Props) => {
   const ingredientName = t2(id.toString());
 
   return (
-    <Link href={`/ingredient/${id}`} className="w-full">
+    <Link scroll={false} href={`/ingredient/${id}`} className="w-full">
       <Flex key={id} center noFullWidth className="button-clickable-bg gap-0.5 p-1">
         <div className="relative h-12 w-12">
           <NextImage src={`/images/ingredient/${id}.png`} alt={ingredientName} sizes={imageSmallIconSizes}/>

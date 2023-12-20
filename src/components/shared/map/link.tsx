@@ -22,7 +22,7 @@ export const MapLink = ({mapId, className, toUnique, noAbsolute, children}: Reac
   const mapName = t(mapId.toString());
 
   return (
-    <Link href={`/map/${toUnique ? 'unique/' : ''}${mapId}`} className={clsx(
+    <Link scroll={false} href={`/map/${toUnique ? 'unique/' : ''}${mapId}`} className={clsx(
       'button-clickable-bg group relative',
       className,
     )}>

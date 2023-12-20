@@ -9,7 +9,7 @@ export const PokemonBerryIcon = (props: BerryIconCommonProps) => {
   const {id} = props;
 
   return (
-    <Link href={`/berry/${id}`} className="button-clickable">
+    <Link scroll={false} href={`/berry/${id}`} className="button-clickable">
       <PokemonBerryIconNoLink {...props}/>
     </Link>
   );
