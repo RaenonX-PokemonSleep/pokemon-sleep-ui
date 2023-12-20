@@ -17,8 +17,11 @@ export const NavListHome = () => {
     <Link href="/" className="button-clickable-bg group">
       <div className="relative h-48 w-full">
         <NextImage
-          src="/images/theme/3iggs.png" alt="Nav Theme"
-          sizes={imageGallerySizes} className="rounded-lg opacity-50 dark:opacity-25"
+          src="/images/theme/3iggs.png"
+          alt="Nav Theme"
+          sizes={imageGallerySizes}
+          className="rounded-lg opacity-50 dark:opacity-25"
+          priority={true}
         />
       </div>
       <Flex center className="absolute left-0 top-0 z-10 h-full gap-1.5">
