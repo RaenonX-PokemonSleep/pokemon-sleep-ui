@@ -51,7 +51,7 @@ export const useOcr = ({
       return;
     }
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', {willReadFrequently: true});
     if (!ctx) {
       const msg = 'No canvas 2D context available';
       onError(msg);

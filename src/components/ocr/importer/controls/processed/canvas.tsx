@@ -14,7 +14,7 @@ export const OcrImporterProcessedImageCanvas = ({processed}: OcrImporterProcesse
       return;
     }
 
-    const context = refCanvas.current?.getContext('2d');
+    const context = refCanvas.current?.getContext('2d', {willReadFrequently: true});
     if (!context) {
       return;
     }

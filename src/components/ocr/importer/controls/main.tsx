@@ -23,8 +23,8 @@ export const OcrImporterControls = ({text, image, onConfirm, disableConfirm}: Pr
       return null;
     }
 
-    return canvas.getContext('2d')?.getImageData(0, 0, canvas.width, canvas.height);
-  }, [image.processedCanvasRef]);
+    return canvas.getContext('2d', {willReadFrequently: true})?.getImageData(0, 0, canvas.width, canvas.height);
+  }, [image]);
 
   return (
     <Flex direction="row" className="justify-end gap-1.5">
