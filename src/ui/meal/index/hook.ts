@@ -24,7 +24,7 @@ export const useMealFilter = ({data, preloaded}: UseMealFilterOpts) => {
         ingredient: {},
         potCapacity: null,
         showEnergy: true,
-        version: 1,
+        version: mealFilterMigrators.length,
       },
       override: {
         mealType: preloaded?.mealType ? {[preloaded.mealType]: true} : {},

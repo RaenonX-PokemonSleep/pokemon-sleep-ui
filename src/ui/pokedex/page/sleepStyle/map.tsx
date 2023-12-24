@@ -7,15 +7,24 @@ import {NextImage} from '@/components/shared/common/image/main';
 import {MapLink} from '@/components/shared/map/link';
 import {imageSmallIconSizes} from '@/styles/image';
 import {SleepStyleNormal} from '@/types/game/sleepStyle';
+import {SnorlaxDataOfMap} from '@/types/game/snorlax';
+import {CalculatedUserSettings} from '@/types/userData/settings';
 import {PokemonSingleSleepStyle} from '@/ui/pokedex/page/sleepStyle/single';
 import {PokemonSleepStyleProps} from '@/ui/pokedex/page/sleepStyle/type';
 
 
 type Props = PokemonSleepStyleProps & {
+  calculatedSettings: CalculatedUserSettings,
+  snorlaxData: SnorlaxDataOfMap,
   sleepStyleOfMap: SleepStyleNormal,
 };
 
-export const PokemonSleepStylesOfMap = ({sleepStyleOfMap, ...props}: Props) => {
+export const PokemonSleepStylesOfMap = ({
+  calculatedSettings,
+  snorlaxData,
+  sleepStyleOfMap,
+  ...props
+}: Props) => {
   const {mapId, styles} = sleepStyleOfMap;
 
   const t = useTranslations('Game.Field');
@@ -41,7 +50,8 @@ export const PokemonSleepStylesOfMap = ({sleepStyleOfMap, ...props}: Props) => {
             <PokemonSingleSleepStyle
               key={sleepStyle.style}
               sleepStyle={sleepStyle}
-              getRank={({rank}) => rank}
+              snorlaxData={snorlaxData}
+              sleepStyleUnlockRank={sleepStyle.rank}
               {...props}
             />
           ))}

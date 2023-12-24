@@ -8,9 +8,12 @@ export const migrate = <TMigratable extends Migratable, TParams>({
   migrators,
   migrateParams,
 }: MigrateOpts<TMigratable, TParams>) => {
-  if (override === null) {
-    // No need for migration if `override` is `null` because it will be just `original`,
-    // which is always the latest version
+  const latestVersion = migrators.length;
+  if (!latestVersion) {
+    throw new Error('`migrators` should have at least 1 migrator');
+  }
+
+  if (override === null && original.version >= latestVersion) {
     return original;
   }
 

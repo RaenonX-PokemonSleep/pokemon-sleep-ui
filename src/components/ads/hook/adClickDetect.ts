@@ -24,6 +24,7 @@ export const useAdClickDetector = () => {
           type: 'admin.activation.adClick',
         },
       });
+      window.gtag('event', 'ad_click');
     };
 
     document.addEventListener('visibilitychange', onVisibilityChange);

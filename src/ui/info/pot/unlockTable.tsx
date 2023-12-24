@@ -21,7 +21,7 @@ export const PotRecipeUnlockTable = ({mealMap, filter, validMeals, ...props}: Pr
   const {capacity, showEmpty} = filter;
 
   const {data: session} = useSession();
-  const {calculatedSettings} = useTranslatedUserSettings({
+  const {translatedSettings} = useTranslatedUserSettings({
     bundle: {
       server: preloaded,
       client: session?.user.preloaded,
@@ -73,7 +73,7 @@ export const PotRecipeUnlockTable = ({mealMap, filter, validMeals, ...props}: Pr
               potInfo={potInfo}
               unlockedMeals={unlockedMeals}
               unlockedRecipes={mealCursorIdx}
-              calculatedSettings={calculatedSettings}
+              calculatedSettings={translatedSettings.calculatedSettings}
               {...props}
             />
           );

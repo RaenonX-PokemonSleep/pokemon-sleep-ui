@@ -1,5 +1,5 @@
 import {defaultSeedUsage} from '@/const/game/seed';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {SkillTriggerAnalysisUnit} from '@/ui/team/mainskill/type';
 
 

@@ -37,7 +37,7 @@ export const TeamAnalysisLoadedClient = (props: Props) => {
     const config: TeamAnalysisConfig = migrate({
       original: {
         current: initialCompUuid,
-        version: 1,
+        version: teamAnalysisConfigMigrators.length,
       },
       override: data?.config ?? null,
       migrators: teamAnalysisConfigMigrators,

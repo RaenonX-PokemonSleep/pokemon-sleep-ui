@@ -11,7 +11,7 @@ import {getIngredientChainMap} from '@/controller/ingredientChain';
 import {getMainSkillMap} from '@/controller/mainSkill';
 import {getFieldMetaMap} from '@/controller/mapMeta';
 import {getMealMap} from '@/controller/meal';
-import {getUserPokeboxSorted} from '@/controller/pokebox';
+import {getUserPokeboxSorted} from '@/controller/pokebox/main';
 import {getPokedexMap} from '@/controller/pokemon/info';
 import {getPokemonProducingParamsMap} from '@/controller/pokemon/producing';
 import {getSnorlaxData} from '@/controller/snorlax';
@@ -79,6 +79,7 @@ const TeamMaker = async ({locale}: TeamMakerProps) => {
       'UI.InPage.Cooking',
       'UI.InPage.Pokedex',
       'UI.InPage.Team',
+      'UI.Metadata',
       'UI.Producing',
       'UI.Stamina',
     ]}>

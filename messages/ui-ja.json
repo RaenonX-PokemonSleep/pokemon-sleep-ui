@@ -17,7 +17,7 @@
     "Map": "マップ",
     "MainSkill": "メインスキル",
     "MaxCarry": "最大所持数",
-    "MealCoverage": "料理範囲",
+    "MealCoverage": "レシピカバー率",
     "Pokebox": "ポケモンボックス",
     "Rank": "ランク",
     "Rewards": "報酬",
@@ -404,6 +404,13 @@
     "Total": "計",
     "Probability": {
       "NoSkillAfterWakeup": "起床時スキル不発率"
+    }
+  },
+  "SleepStyle": {
+    "DrowsyPowerRequired": "必要ねむけパワー",
+    "DrowsyPowerMultiplier": "エナジー xスコア",
+    "Message": {
+      "UnlockRankDiffers": "※ここに掲げる寝顔開放ランクは、必要ねむけパワーも考慮した実質ランクです。データ上の開放ランク（Serebiiなど他サイトが掲載するもの）とは異なる場合があります。詳しくはヘルプへ（ページ右上部ヘルプアイコンからどうぞ）。"
     }
   },
   "Stamina": {

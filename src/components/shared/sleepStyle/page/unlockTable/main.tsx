@@ -8,7 +8,7 @@ import {MapUnlockAccumulator} from '@/components/shared/sleepStyle/page/unlockTa
 import {getUpdatedAccumulator} from '@/components/shared/sleepStyle/page/unlockTable/utils';
 import {getPossibleRanks} from '@/components/shared/sleepStyle/page/utils';
 import {SleepdexMap} from '@/types/game/sleepdex';
-import {isSameRank} from '@/utils/game/snorlax';
+import {getSnorlaxDataAtRank, isSameRank} from '@/utils/game/snorlax';
 
 
 type Props = Pick<
@@ -53,7 +53,7 @@ export const MapUnlockTable = (props: Props) => {
         const toHide = !showEmptyRank && !matchingStyles.length;
         const key = `${rank.title}-${rank.number}`;
 
-        const currentSnorlaxDataAtRank = snorlaxData.data.find((data) => isSameRank(data.rank, rank));
+        const currentSnorlaxDataAtRank = getSnorlaxDataAtRank({snorlaxData, rank});
         const current = {
           rank,
           value: currentSnorlaxDataAtRank?.energy ?? null,

@@ -40,7 +40,7 @@ export const getLevelUpRequirementsOfEachLevel = ({
     ...xpData.slice(currentLv),
   ];
 
-  const actualCandyExpEquivalent = Math.ceil(candyExpEquivalent * multiplier * rate.candyExpBoost);
+  const actualCandyExpEquivalent = Math.ceil(candyExpEquivalent * multiplier) * rate.candyExpBoost;
   const itemsRequired: PokemonLevelUpRequirements[] = [];
 
   let overfeedExp = 0;

@@ -5,7 +5,7 @@ import {clsx} from 'clsx';
 
 import {PokeboxImporter} from '@/components/shared/pokebox/importer/main';
 import {PokeboxImporterCommonProps} from '@/components/shared/pokebox/importer/type';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {Dimension} from '@/types/style';
 
 

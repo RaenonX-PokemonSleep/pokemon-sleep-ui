@@ -1,10 +1,11 @@
 import {defaultProductionPeriod, maxTeamMemberCount} from '@/const/game/production';
 import {PokemonProducingRateFinal, PokemonProducingRateWithPayload} from '@/types/game/producing/rate';
 import {ProducingStateOfRate} from '@/types/game/producing/state';
+import {CookingUserSettings} from '@/types/userData/settings';
 import {toSum} from '@/utils/array';
 import {applyIngredientMultiplier} from '@/utils/game/producing/apply/ingredient';
 import {groupPokemonProducingRate} from '@/utils/game/producing/group';
-import {getIngredientMultiplier, GetIngredientMultiplierOpts} from '@/utils/game/producing/ingredient/multiplier';
+import {getIngredientMultiplier} from '@/utils/game/producing/ingredient/multiplier';
 import {getPokemonProducingRateBase} from '@/utils/game/producing/main/base';
 import {GetPokemonProducingRateOptsWithPayload} from '@/utils/game/producing/main/type';
 import {getHelpingBonusStack} from '@/utils/game/producing/params';
@@ -12,19 +13,20 @@ import {GetProducingRateBehavior, GetProducingRateSharedOpts} from '@/utils/game
 import {isNotNullish} from '@/utils/type';
 
 
-type GetPokemonProducingRateMultiOpts<TPayload> = Omit<GetIngredientMultiplierOpts, 'production'> & {
+type GetPokemonProducingRateMultiOpts<TPayload> = {
   rateOpts: GetPokemonProducingRateOptsWithPayload<TPayload>[],
   sharedOpts: GetProducingRateSharedOpts,
-  calcBehavior?: GetProducingRateBehavior,
   groupingState: ProducingStateOfRate,
+  cookingSettings: CookingUserSettings,
+  calcBehavior?: GetProducingRateBehavior,
 };
 
 export const getPokemonProducingRateMulti = <TPayload>({
   rateOpts,
   sharedOpts,
-  calcBehavior,
   groupingState,
-  ...opts
+  cookingSettings,
+  calcBehavior,
 }: GetPokemonProducingRateMultiOpts<TPayload>): PokemonProducingRateFinal<TPayload> => {
   const period = sharedOpts.period ?? defaultProductionPeriod;
   // Have to calculate helper stack count first to know if helper bonus is active
@@ -44,6 +46,7 @@ export const getPokemonProducingRateMulti = <TPayload>({
       helperCount,
     }),
     payload,
+    calculatedSettings: opts.calculatedSettings,
   }));
   const groupedOriginalRates = groupPokemonProducingRate({
     period,
@@ -60,15 +63,17 @@ export const getPokemonProducingRateMulti = <TPayload>({
         return [id, rate.quantity];
       })
       .filter(isNotNullish)),
-    ...opts,
+    period,
+    cookingSettings,
   });
 
   const ratesAfterIngredient: PokemonProducingRateWithPayload<TPayload>[] = ratesWithPayload.map((rateWithPayload) => {
-    const {rawRate} = rateWithPayload;
+    const {rawRate, calculatedSettings, payload} = rateWithPayload;
 
     return {
-      ...rateWithPayload,
-      rate: {
+      payload,
+      calculatedSettings,
+      atStage: {
         original: rawRate,
         final: applyIngredientMultiplier({rate: rawRate, ingredientMultiplier}),
       },
@@ -79,7 +84,7 @@ export const getPokemonProducingRateMulti = <TPayload>({
     rates: ratesAfterIngredient,
     grouped: groupPokemonProducingRate({
       period,
-      rates: ratesAfterIngredient.map(({rate}) => rate.final),
+      rates: ratesAfterIngredient.map(({atStage}) => atStage.final),
       state: groupingState,
     }),
   };

@@ -7,7 +7,7 @@ import {PokemonLinkPopup} from '@/components/shared/pokemon/linkPopup/main';
 import {useRatingPopup} from '@/components/shared/pokemon/rating/hook';
 import {RatingResultPopup} from '@/components/shared/pokemon/rating/popup';
 import {PokemonInfoWithSortingPayload, SortedPokemonInfo} from '@/components/shared/pokemon/sorter/type';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {ReactStateUpdaterFromOriginal} from '@/types/react';
 import {PokeInBoxView} from '@/ui/team/pokebox/content/pokeInBox/main';
 import {PokeInBoxViewCommonProps} from '@/ui/team/pokebox/content/pokeInBox/type';

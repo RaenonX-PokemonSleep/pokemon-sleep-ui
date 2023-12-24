@@ -21,12 +21,14 @@ export type GetIngredientProducingRateOpts = ProducingRateCommonParams & {
 export const getIngredientProducingRate = ({
   pokemon,
   frequency,
-  bonus,
+  calculatedSettings,
   energyMultiplier,
   ingredient,
   count,
   picks,
 }: GetIngredientProducingRateOpts): ProducingRateOfItemOfSessions | null => {
+  const {bonus} = calculatedSettings;
+
   if (!ingredient) {
     return null;
   }

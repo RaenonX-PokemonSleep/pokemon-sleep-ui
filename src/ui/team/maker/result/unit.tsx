@@ -14,7 +14,7 @@ import {PokemonNatureIndicator} from '@/components/shared/pokemon/nature/indicat
 import {PokemonProductionSplitFromPokemonRate} from '@/components/shared/pokemon/production/split/fromPokemon';
 import {PokemonDetailedProducingStats} from '@/components/shared/pokemon/production/stats/main';
 import {PokemonSubSkillIndicator} from '@/components/shared/pokemon/subSkill/indicator';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {PokemonProducingRateWithPayload} from '@/types/game/producing/rate';
 import {teamMakerUnitStrengthAtState} from '@/ui/team/maker/result/const';
 import {TeamMakerResultCommonProps} from '@/ui/team/maker/result/type';
@@ -32,13 +32,11 @@ export const TeamMakerResultUnit = ({
   pokedexMap,
   subSkillMap,
   input,
-  result,
   rate,
   compStrength,
 }: Props) => {
-  const pokemonRate = rate.rate.final;
+  const pokemonRate = rate.atStage.final;
   const {previewLevel} = input;
-  const {settings, calculatedSettings} = result;
   const {
     pokemon,
     level,
@@ -65,9 +63,8 @@ export const TeamMakerResultUnit = ({
     <Flex className="bg-plate gap-1.5">
       <PopupCommon show={show} setShow={setShow}>
         <PokemonDetailedProducingStats
-          rate={rate.rate.final}
-          settings={settings}
-          calculatedSettings={calculatedSettings}
+          rate={rate.atStage.final}
+          calculatedSettings={rate.calculatedSettings}
           specialty={pokemonInfo.specialty}
         />
       </PopupCommon>

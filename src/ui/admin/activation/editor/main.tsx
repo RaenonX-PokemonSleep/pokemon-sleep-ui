@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {clsx} from 'clsx';
-import {formatISO} from 'date-fns';
 
 import {InputBox} from '@/components/input/box';
 import {FilterTextInput} from '@/components/input/filter/preset/text';
@@ -14,7 +13,6 @@ import {FlexForm} from '@/components/layout/flex/form';
 import {UserActionStatusIcon} from '@/components/shared/userData/statusIcon';
 import {activationContactToText, activationTypeToText} from '@/const/activation/common';
 import {textFilterButtonStyle} from '@/styles/input';
-import {IsoTimestampString} from '@/types/date';
 import {
   activationContact,
   ActivationPropertiesAtClient,
@@ -23,7 +21,7 @@ import {
 } from '@/types/mongo/activation';
 import {ReactStateUpdaterFromOriginal} from '@/types/react';
 import {UserDataActionStatus} from '@/types/userData/main';
-import {toIsoTimestampString} from '@/utils/date';
+import {toLocalIsoTimestampString, toUtcIsoTimestampString} from '@/utils/date';
 import {isActivationDataValid} from '@/utils/user/activation/utils';
 
 
@@ -43,13 +41,13 @@ export const ActivationEditor = ({
   const {
     expiry,
     contact,
-    isSpecial,
     note,
   } = data;
   const commonInputStyle = 'h-8 w-full sm:w-96';
 
   const isCmsMod = data.isCmsMod ?? false;
   const isActivationLocked = data.isActivationLocked ?? false;
+  const isFrozen = data.isFrozen ?? false;
 
   return (
     <FlexForm className="gap-1.5" onSubmit={async () => {
@@ -63,11 +61,11 @@ export const ActivationEditor = ({
       <InputRowWithTitle title="Expiry">
         <InputBox
           type="datetime-local"
-          value={formatISO(new Date(`${expiry}Z`)).slice(0, 19)}
+          value={toLocalIsoTimestampString(expiry) ?? ''}
           className={commonInputStyle}
           onChange={({target}) => setData((original) => ({
             ...original,
-            expiry: toIsoTimestampString(new Date(target.value)) as IsoTimestampString,
+            expiry: toUtcIsoTimestampString(target.value),
           } satisfies ActivationPropertiesAtClient))}
         />
       </InputRowWithTitle>
@@ -110,16 +108,6 @@ export const ActivationEditor = ({
       <InputRowWithTitle title="Properties">
         <Flex direction="row" wrap noFullWidth className="gap-1">
           <ToggleButton
-            active={isSpecial}
-            onClick={() => setData((original) => ({
-              ...original,
-              isSpecial: !original.isSpecial,
-            } satisfies ActivationPropertiesAtClient))}
-            className={textFilterButtonStyle}
-          >
-            Special Grant
-          </ToggleButton>
-          <ToggleButton
             active={isCmsMod}
             onClick={() => setData((original) => ({
               ...original,
@@ -138,6 +126,16 @@ export const ActivationEditor = ({
             className={textFilterButtonStyle}
           >
             Activation Locked (Founder)
+          </ToggleButton>
+          <ToggleButton
+            active={isFrozen}
+            onClick={() => setData((original) => ({
+              ...original,
+              isFrozen: !original.isFrozen,
+            } satisfies ActivationPropertiesAtClient))}
+            className={textFilterButtonStyle}
+          >
+            Frozen
           </ToggleButton>
         </Flex>
       </InputRowWithTitle>

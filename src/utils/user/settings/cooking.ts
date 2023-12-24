@@ -1,17 +1,17 @@
 import {
-  SynergizedSettingsRequiredData,
-  SynergizedUserSettings,
+  CookingUserSettingsRequiredData,
+  CookingUserSettings,
   UserSettingsBundle,
 } from '@/types/userData/settings';
 import {toTargetMeals} from '@/utils/user/settings/utils';
 
 
-export type ToSynergizedUserSettingsOpts = SynergizedSettingsRequiredData & Pick<UserSettingsBundle, 'cooking'>;
+export type ToCookingUserSettingsOpts = CookingUserSettingsRequiredData & Pick<UserSettingsBundle, 'cooking'>;
 
-export const toSynergizedUserSettings = ({
+export const toCookingUserSettings = ({
   cooking,
   mealMap,
-}: ToSynergizedUserSettingsOpts): SynergizedUserSettings => {
+}: ToCookingUserSettingsOpts): CookingUserSettings => {
   return {
     recipeLevel: cooking.recipeLevel,
     targetMeals: toTargetMeals({

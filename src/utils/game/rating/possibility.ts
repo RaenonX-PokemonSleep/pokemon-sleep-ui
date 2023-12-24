@@ -48,7 +48,7 @@ export const getRatingValueOfPossibility = ({combination, ...opts}: GetRatingVal
       calcBehavior: {
         simulateHelperBonusOnSelf: getSimulateHelperBonusOnSelf(basis),
       },
-    }).rate.final,
+    }).atStage.final,
     singleParams,
   });
 };

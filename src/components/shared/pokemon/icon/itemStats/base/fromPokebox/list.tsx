@@ -82,7 +82,7 @@ export const PokemonItemStatsFromPokeboxList = ({
           berryData: berryDataMap[pokemon.berry.id],
           ingredients,
           skillData: mainSkillMap[pokemon.skill],
-        }).rate.final;
+        }).atStage.final;
 
         return {
           pokemon,

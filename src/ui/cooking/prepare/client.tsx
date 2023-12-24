@@ -21,7 +21,7 @@ export const MealPreparerClient = (props: CookingServerDataProps) => {
   const {mealMap, preloaded} = props;
 
   const {data: session} = useSession();
-  const {calculatedSettings} = useTranslatedUserSettings({
+  const {translatedSettings} = useTranslatedUserSettings({
     bundle: {
       server: preloaded,
       client: session?.user.preloaded,
@@ -41,7 +41,7 @@ export const MealPreparerClient = (props: CookingServerDataProps) => {
     filter,
     setFilter,
     mealTypes,
-    calculatedSettings,
+    calculatedSettings: translatedSettings.calculatedSettings,
     preloaded: preloaded.cooking,
   };
 

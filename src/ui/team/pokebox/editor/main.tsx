@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {PopupCommon} from '@/components/popup/common/main';
-import {Pokebox, PokeInBox} from '@/types/game/pokebox';
+import {Pokebox, PokeInBox} from '@/types/game/pokebox/main';
 import {PokeInBoxEditLayout} from '@/ui/team/pokebox/editor/layout';
 import {PokeInBoxEditCommonProps, PokeInBoxEditorState} from '@/ui/team/pokebox/editor/type';
 import {generateNewPokeInBox} from '@/ui/team/pokebox/utils';

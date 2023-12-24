@@ -11,7 +11,7 @@ import {PopupCommon} from '@/components/popup/common/main';
 import {ClickableIconButton} from '@/components/shared/common/button/clickable';
 import {UserActionStatusIcon} from '@/components/shared/userData/statusIcon';
 import {useUserDataActor} from '@/hooks/userData/actor/main';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 
 
 type Props = {

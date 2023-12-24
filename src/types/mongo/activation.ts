@@ -48,9 +48,9 @@ export type ActivationProperties = {
   expiry: Date,
   source: ActivationSourceAll | null,
   contact: {[contact in ActivationContact]?: string | null},
-  isSpecial: boolean,
   isCmsMod?: boolean,
   isActivationLocked?: boolean,
+  isFrozen?: boolean,
   note: string,
   activation: ActivationStatus,
 };

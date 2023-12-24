@@ -2,7 +2,7 @@ import {Filter} from 'mongodb';
 
 import {PokemonId} from '@/types/game/pokemon';
 import {ActivationPropertiesAtClient} from '@/types/mongo/activation';
-import {PokeInBoxData} from '@/types/mongo/pokebox';
+import {PokeInBoxData} from '@/types/mongo/pokebox/main';
 
 
 export type UserDataLoadingOpts = {

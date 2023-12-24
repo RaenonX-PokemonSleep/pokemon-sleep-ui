@@ -2,6 +2,7 @@ import {UserBonus} from '@/types/game/bonus';
 import {StaminaCalcConfig, StaminaRecoveryRateConfig} from '@/types/game/stamina/config';
 import {StaminaSkillTriggerData} from '@/types/game/stamina/skill';
 import {UserCalculationBehavior, UserSettings} from '@/types/userData/settings';
+import {userSettingsMigrators} from '@/utils/migrate/userSettings/migrators';
 
 
 export const defaultMapBonus = 0;
@@ -50,5 +51,5 @@ export const defaultUserSettings: UserSettings = {
   staminaSkillTrigger: defaultStaminaSkillTrigger,
   behavior: defaultUserCalculationBehavior,
   currentMap: 1,
-  version: 7,
+  version: userSettingsMigrators.length,
 };

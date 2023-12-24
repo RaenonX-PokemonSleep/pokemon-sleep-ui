@@ -1,6 +1,5 @@
 import {Collection} from 'mongodb';
 
-import {teamAnalysisCompVersion} from '@/const/user/teamAnalysis';
 import {getDataAsArray, getSingleData} from '@/controller/common';
 import mongoPromise from '@/lib/mongodb';
 import {TeamAnalysisCompData} from '@/types/mongo/teamAnalysis';
@@ -20,14 +19,14 @@ const getCollection = async (): Promise<Collection<TeamAnalysisCompData>> => {
 export const getTeamMemberById = async ({uuid, slotName}: TeamMemberIdData): Promise<TeamAnalysisMember | null> => {
   const comp = await getSingleData(getCollection(), {uuid});
 
-  if (!comp || comp.version !== teamAnalysisCompVersion) {
+  if (!comp || comp.version !== teamAnalysisCompMigrators.length) {
     return null;
   }
 
   // Migrate to ensure the data structure is the latest
   const migratedComp = migrate({
     original: comp,
-    override: comp,
+    override: null,
     migrators: teamAnalysisCompMigrators,
     migrateParams: {},
   });

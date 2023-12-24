@@ -8,7 +8,7 @@ import {NatureId} from '@/types/game/pokemon/nature';
 import {PokemonProducingParams} from '@/types/game/pokemon/producing';
 import {FriendshipLevelOfGoldLock, PokemonSubSkill, SubSkillMap} from '@/types/game/pokemon/subSkill';
 import {SnorlaxFavorite} from '@/types/game/snorlax';
-import {SynergizedSettingsRequiredData, UserSettingsBundle} from '@/types/userData/settings';
+import {CookingUserSettingsRequiredData, UserSettingsBundle} from '@/types/userData/settings';
 
 
 export const ratingBasis = [
@@ -60,7 +60,7 @@ export type RatingRequest = {
   timestamp: number,
 };
 
-export type RatingOpts = SynergizedSettingsRequiredData & {
+export type RatingOpts = CookingUserSettingsRequiredData & {
   level: number,
   pokemon: PokemonInfo | undefined,
   pokemonProducingParams: PokemonProducingParams,

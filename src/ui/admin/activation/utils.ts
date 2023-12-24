@@ -12,7 +12,6 @@ export const generateInitialActivationPropertiesAtClient = (): ActivationPropert
   },
   source: null,
   contact: {},
-  isSpecial: false,
   note: '',
 });
 

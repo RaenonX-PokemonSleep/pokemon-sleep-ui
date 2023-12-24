@@ -5,6 +5,7 @@ import {testBonus} from '@/tests/data/game/bonus';
 import {testIngredientMap} from '@/tests/data/game/ingredient/data';
 import {testIngredientProductions} from '@/tests/data/game/ingredient/production';
 import {testPokemonData} from '@/tests/data/game/pokemon';
+import {testDefaultCalculatedUserSettings} from '@/tests/data/user/settings';
 import {getIngredientProducingRates} from '@/utils/game/producing/ingredient/multi';
 import {getEnergyMultiplier} from '@/utils/game/producing/multiplier';
 
@@ -16,7 +17,10 @@ describe('Ingredient Production / Multiple', () => {
       level: 30,
       pokemon: testPokemonData.absol,
       frequency: 2920.2,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       ingredients: testIngredientProductions.general,
       ingredientMap: testIngredientMap,
@@ -52,7 +56,10 @@ describe('Ingredient Production / Multiple', () => {
       level: 1,
       pokemon: testPokemonData.absol,
       frequency: 2920.2,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       ingredients: testIngredientProductions.a1,
       ingredientMap: testIngredientMap,
@@ -76,7 +83,10 @@ describe('Ingredient Production / Multiple', () => {
       level: 30,
       pokemon: testPokemonData.absol,
       frequency: 2920.2,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       ingredients: testIngredientProductions.a2,
       ingredientMap: testIngredientMap,
@@ -100,7 +110,10 @@ describe('Ingredient Production / Multiple', () => {
       level: 30,
       pokemon: testPokemonData.absol,
       frequency: 2920.2,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       ingredients: testIngredientProductions.a1b1,
       ingredientMap: testIngredientMap,
@@ -131,7 +144,10 @@ describe('Ingredient Production / Multiple', () => {
       level: 30,
       pokemon: testPokemonData.absol,
       frequency: 2920.2,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       ingredients: testIngredientProductions.a3,
       ingredientMap: testIngredientMap,
@@ -155,7 +171,10 @@ describe('Ingredient Production / Multiple', () => {
       level: 30,
       pokemon: testPokemonData.absol,
       frequency: 2920.2,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       ingredients: testIngredientProductions.a2b1,
       ingredientMap: testIngredientMap,
@@ -186,7 +205,10 @@ describe('Ingredient Production / Multiple', () => {
       level: 30,
       pokemon: testPokemonData.absol,
       frequency: 2920.2,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       ingredients: testIngredientProductions.a1b1c1,
       ingredientMap: testIngredientMap,

@@ -1,6 +1,6 @@
 import {maxSnorlaxRankByTitle} from '@/const/game/rank';
 import {SnorlaxRank} from '@/types/game/rank';
-import {SnorlaxDataAtRank} from '@/types/game/snorlax';
+import {SnorlaxDataAtRank, SnorlaxDataOfMap} from '@/types/game/snorlax';
 
 
 type GetSnorlaxRankAtEnergyProps = {
@@ -19,7 +19,7 @@ export const getSnorlaxRankAtEnergy = ({
 
 export const isSameRank = (a: SnorlaxRank, b: SnorlaxRank): boolean => a.title === b.title && a.number === b.number;
 
-export const getSnorlaxRankEquivalentNumber = ({title, number}: SnorlaxRank) => {
+export const getSnorlaxRankEquivalentNumber = ({title, number}: SnorlaxRank): number => {
   let sum = 0;
 
   for (const passedTitle of Array(title).keys()) {
@@ -28,6 +28,15 @@ export const getSnorlaxRankEquivalentNumber = ({title, number}: SnorlaxRank) => 
 
   return sum + number;
 };
+
+type GetSnorlaxDataAtRankOpts = {
+  snorlaxData: SnorlaxDataOfMap,
+  rank: SnorlaxRank,
+};
+
+export const getSnorlaxDataAtRank = ({snorlaxData, rank}: GetSnorlaxDataAtRankOpts): SnorlaxDataAtRank | null => (
+  snorlaxData.data.find((data) => isSameRank(data.rank, rank)) ?? null
+);
 
 export const sortBySnorlaxRankAsc = (a: SnorlaxRank, b: SnorlaxRank) => {
   if (a.title > b.title) {

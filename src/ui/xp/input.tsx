@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ArrowPathIcon from '@heroicons/react/24/outline/ArrowPathIcon';
 import {useTranslations} from 'next-intl';
 
 import {InputBox} from '@/components/input/box';
@@ -12,6 +13,7 @@ import {PokemonLevelSlider} from '@/components/shared/pokemon/level/slider';
 import {PokemonNatureSelector} from '@/components/shared/pokemon/nature/selector/main';
 import {defaultExpType} from '@/const/game/xp';
 import {PokemonExpCalculatorCommonProps, PokemonExpCalculatorInput} from '@/ui/xp/type';
+import {getDefaultExpRequired, getPokemonExpValueData} from '@/ui/xp/utils';
 import {isNotNullish} from '@/utils/type';
 
 
@@ -21,6 +23,7 @@ type Props = PokemonExpCalculatorCommonProps & {
 
 export const PokemonExpCalculatorInputUI = ({
   pokedexMap,
+  xpValueData,
   filter,
   setFilter,
   maxLevel,
@@ -71,28 +74,61 @@ export const PokemonExpCalculatorInputUI = ({
           {t('ExpToNext')}
         </Flex>
       }>
-        <InputBox
-          type="number"
-          value={xpToNext.toString()}
-          onChange={({target}) => setFilter((original) => ({
-            ...original,
-            xpToNext: parseInt(target.value || '0'),
-          }))}
-        />
+        <Flex direction="row" center className="gap-1">
+          <InputBox
+            type="number"
+            value={xpToNext.toString()}
+            onChange={({target}) => setFilter((original) => ({
+              ...original,
+              xpToNext: parseInt(target.value || '0'),
+            }))}
+          />
+          <button
+            className="button-clickable-bg h-6 w-6 p-1"
+            onClick={() => setFilter((original): PokemonExpCalculatorInput => {
+              const expData = getPokemonExpValueData({
+                pokemonId: original.pokemon,
+                pokedexMap,
+                xpValueData,
+              });
+              if (!expData) {
+                return original;
+              }
+
+              return {
+                ...original,
+                xpToNext: getDefaultExpRequired({
+                  level: original.currentLv,
+                  expData,
+                }),
+              };
+            })}
+          >
+            <ArrowPathIcon/>
+          </button>
+        </Flex>
       </InputRowWithTitle>
       <InputRowWithTitle noFixedTitleWidth title={
         <Flex noFullWidth center className="w-60">
           {t('OwnedCandies')}
         </Flex>
       }>
-        <InputBox
-          type="number"
-          value={ownedCandies.toString()}
-          onChange={({target}) => setFilter((original) => ({
+        <Flex direction="row" center className="gap-1">
+          <InputBox
+            type="number"
+            value={ownedCandies.toString()}
+            onChange={({target}) => setFilter((original) => ({
+              ...original,
+              ownedCandies: parseInt(target.value || '1'),
+            }))}
+          />
+          <button className="button-clickable-bg h-6 w-6 p-1" onClick={() => setFilter((original) => ({
             ...original,
-            ownedCandies: parseInt(target.value || '1'),
-          }))}
-        />
+            ownedCandies: 0,
+          }))}>
+            <ArrowPathIcon/>
+          </button>
+        </Flex>
       </InputRowWithTitle>
       <PokemonNatureSelector
         nature={nature}

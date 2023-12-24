@@ -42,7 +42,7 @@ export const getRatingValueOfBase = (opts: GetRatingValueOfSimulationOpts) => {
       calcBehavior: {
         simulateHelperBonusOnSelf: getSimulateHelperBonusOnSelf(basis),
       },
-    }).rate.final,
+    }).atStage.final,
     singleParams,
   });
 };

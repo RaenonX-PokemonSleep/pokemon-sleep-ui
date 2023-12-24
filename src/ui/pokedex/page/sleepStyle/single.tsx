@@ -1,17 +1,17 @@
 import React from 'react';
 
 import BookmarkIcon from '@heroicons/react/24/outline/BookmarkIcon';
+import {StarIcon} from '@heroicons/react/24/solid';
 import {clsx} from 'clsx';
 import {useTranslations} from 'next-intl';
 
 import {Flex} from '@/components/layout/flex/common';
-import {GenericIconLarger} from '@/components/shared/icon/common/larger';
-import {SnorlaxRankUI} from '@/components/shared/snorlax/rank';
+import {SleepStyleUnlockRequirement} from '@/components/shared/sleepStyle/components/requirement';
 import {useSleepStyleName} from '@/hooks/sleepdex/name';
 import {useUpdateSleepdex} from '@/hooks/sleepdex/update';
 import {getToggleButtonClass} from '@/styles/input';
-import {SnorlaxRank} from '@/types/game/rank';
 import {SleepStyleCommon} from '@/types/game/sleepStyle';
+import {PokemonSleepStyleRewardCell} from '@/ui/pokedex/page/sleepStyle/reward';
 import {PokemonSleepStyleProps} from '@/ui/pokedex/page/sleepStyle/type';
 import {getPokemonSleepStyleId} from '@/utils/game/pokemon';
 import {isInSleepdex} from '@/utils/game/sleepdex';
@@ -19,21 +19,26 @@ import {isInSleepdex} from '@/utils/game/sleepdex';
 
 type Props<TSleepStyle extends SleepStyleCommon> = PokemonSleepStyleProps & {
   sleepStyle: TSleepStyle,
-  getRank?: (style: TSleepStyle) => SnorlaxRank,
 };
 
 export const PokemonSingleSleepStyle = <TSleepStyle extends SleepStyleCommon>({
-  pokemon,
-  pokemonBranch,
-  sleepdex,
-  setSleepdex,
   sleepStyle,
-  getRank,
+  ...props
 }: Props<TSleepStyle>) => {
-  const {style, rewards} = sleepStyle;
+  const {
+    pokemon,
+    pokemonBranch,
+    sleepdex,
+    setSleepdex,
+  } = props;
+  const {
+    style,
+    spo,
+    rarity,
+    rewards,
+  } = sleepStyle;
 
   const pokemonId = pokemon.id;
-  const styleId = sleepStyle.style;
 
   const t = useTranslations('UI.Common');
   const updateSleepdex = useUpdateSleepdex({sleepdex, setSleepdex});
@@ -46,46 +51,47 @@ export const PokemonSingleSleepStyle = <TSleepStyle extends SleepStyleCommon>({
     sleepStyleId: sleepStyle.style,
   });
 
-  const className = clsx(
-    'z-10 h-8 w-8 rounded-lg p-1.5',
-    getToggleButtonClass(isInSleepdex({sleepdex, pokemonId, styleId}) ?? false),
-  );
-
   return (
-    <Flex key={style} center className="gap-1.5 p-2.5" noFullWidth>
-      <button className={className} onClick={(e) => {
+    <Flex direction="row" center className="gap-1.5 p-2.5" noFullWidth>
+      <button className={clsx(
+        'z-10 h-9 w-9 shrink-0 rounded-lg p-1.5',
+        getToggleButtonClass(isInSleepdex({sleepdex, pokemonId, styleId: style}) ?? false),
+      )} onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        updateSleepdex({pokemonId, styleId});
+        updateSleepdex({pokemonId, styleId: style});
       }}>
         <BookmarkIcon/>
       </button>
-      <div className="text-sm">
-        {sleepStyleName}
-      </div>
-      {getRank && <SnorlaxRankUI rank={getRank(sleepStyle)}/>}
-      <Flex direction="row" center>
-        <div>
-          <GenericIconLarger src="/images/generic/gift.png" alt={t('Rewards')}/>
-        </div>
-        <div>
-          <table className="border-separate border-spacing-0.5">
-            <tbody>
-              <tr>
-                <td><GenericIconLarger src="/images/generic/research.png" alt={t('Exp')} noInvert/></td>
-                <td>{rewards.exp}</td>
-              </tr>
-              <tr>
-                <td><GenericIconLarger src="/images/generic/shard.png" alt={t('DreamShards')} noInvert/></td>
-                <td>{rewards.shards}</td>
-              </tr>
-              <tr>
-                <td><GenericIconLarger src="/images/generic/candy.png" alt={t('Candy')} noInvert/></td>
-                <td>{rewards.candy}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <Flex className="gap-1">
+        <Flex direction="row" center className="items-center gap-1">
+          <Flex direction="row" noFullWidth className="items-center gap-0.5">
+            <StarIcon className="h-5 w-5"/>
+            <div>{rarity}</div>
+          </Flex>
+          <Flex direction="row" noFullWidth className="items-end gap-1">
+            <div>{sleepStyleName}</div>
+            <small className="text-slate-600 dark:text-slate-400">#{style}</small>
+          </Flex>
+        </Flex>
+        <SleepStyleUnlockRequirement spo={spo} {...props}/>
+        <Flex direction="row" center className="gap-1.5">
+          <PokemonSleepStyleRewardCell
+            iconSrc="/images/generic/research.png"
+            iconAlt={t('Exp')}
+            value={rewards.exp}
+          />
+          <PokemonSleepStyleRewardCell
+            iconSrc="/images/generic/shard.png"
+            iconAlt={t('DreamShards')}
+            value={rewards.shards}
+          />
+          <PokemonSleepStyleRewardCell
+            iconSrc="/images/generic/candy.png"
+            iconAlt={t('Candy')}
+            value={rewards.candy}
+          />
+        </Flex>
       </Flex>
     </Flex>
   );

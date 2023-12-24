@@ -1,11 +1,11 @@
-import {Announcement, AnnouncementMap} from '@/types/mongo/announcement';
+import {AnnouncementClient, AnnouncementClientMap} from '@/types/mongo/announcement';
 
 
 export type AdminAnnouncementServerDataProps = {
-  preloaded: AnnouncementMap,
+  preloaded: AnnouncementClientMap,
 };
 
 export type AdminAnnouncementModifyProps = {
-  onUpdate: (uuid: string, update: Partial<Announcement>) => void,
+  onUpdate: (uuid: string, update: Partial<AnnouncementClient>) => void,
   onDelete: (uuid: string) => void,
 };

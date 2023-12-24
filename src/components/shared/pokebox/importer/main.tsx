@@ -8,7 +8,7 @@ import {PokeboxImporterView} from '@/components/shared/pokebox/importer/pokebox'
 import {PokeboxImporterCommonProps} from '@/components/shared/pokebox/importer/type';
 import {PokeboxImporterViaUuid} from '@/components/shared/pokebox/importer/uuid';
 import {UserDataLazyLoad} from '@/components/shared/userData/lazyLoad';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 
 
 type Props = PokeboxImporterCommonProps & {

@@ -14,7 +14,7 @@ export const MealExp = ({meal, ingredientMap, translatedSettings}: MealCommonPro
   const t = useTranslations('UI.InPage.Cooking');
   const [level, setLevel] = React.useState(1);
 
-  const mapBonus = translatedSettings.bonus.map;
+  const mapBonus = translatedSettings.calculatedSettings.bonus.map;
   const info = React.useMemo(() => getMealFinalStrength({
     filler: [],
     level,

@@ -16,8 +16,8 @@ import {SnorlaxFavorite} from '@/types/game/snorlax';
 import {Migratable} from '@/types/migrate';
 import {
   CalculatedUserSettings,
-  SynergizedSettingsRequiredData,
-  SynergizedUserSettings,
+  CookingUserSettingsRequiredData,
+  CookingUserSettings,
   UserSettingsBundle,
 } from '@/types/userData/settings';
 import {PokedexDisplayType} from '@/ui/pokedex/index/input/type';
@@ -40,7 +40,7 @@ export type PokedexFilter = PokemonInputFilterExtended & PokedexDisplay & {
   name: string,
 };
 
-export type PokedexDataProps = UsePokemonFilterCommonData & SynergizedSettingsRequiredData & {
+export type PokedexDataProps = UsePokemonFilterCommonData & CookingUserSettingsRequiredData & {
   pokedex: PokedexData,
   pokemonProducingParamsMap: PokemonProducingParamsMap,
   maxLevel: number,
@@ -59,6 +59,6 @@ export type PokedexLinkProps = Pick<PokedexFilter, 'display' | 'level'> & Pokede
   pokemonProducingParams: PokemonProducingParams,
   snorlaxFavorite: SnorlaxFavorite,
   ingredients: IngredientProduction[],
-  synergizedSettings: SynergizedUserSettings,
+  cookingSettings: CookingUserSettings,
   calculatedSettings: CalculatedUserSettings,
 };

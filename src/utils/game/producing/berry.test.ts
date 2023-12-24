@@ -4,6 +4,7 @@ import {durationOfDay} from '@/const/common';
 import {testBerryDataMap} from '@/tests/data/game/berry';
 import {testBonus} from '@/tests/data/game/bonus';
 import {testPokemonData} from '@/tests/data/game/pokemon';
+import {testDefaultCalculatedUserSettings} from '@/tests/data/user/settings';
 import {getBerryProducingRate} from '@/utils/game/producing/berry';
 import {getEnergyMultiplier} from '@/utils/game/producing/multiplier';
 
@@ -16,7 +17,10 @@ describe('Pokemon Berry Production', () => {
       pokemon: testPokemonData.absol,
       frequency: 2920.2,
       subSkillBonus: {},
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       snorlaxFavorite: {},
       berryData: testBerryDataMap['16'],

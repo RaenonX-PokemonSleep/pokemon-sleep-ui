@@ -2,10 +2,10 @@ import React from 'react';
 
 import {UserDataLazyLoad} from '@/components/shared/userData/lazyLoad';
 import {PokemonSleepStylesLoaded} from '@/ui/pokedex/page/sleepStyle/loaded';
-import {PokemonDataProps} from '@/ui/pokedex/page/type';
+import {PokemonDataCommonProps} from '@/ui/pokedex/page/type';
 
 
-export const PokemonSleepStyles = (props: PokemonDataProps) => {
+export const PokemonSleepStyles = (props: PokemonDataCommonProps) => {
   const {pokemon} = props;
 
   return (

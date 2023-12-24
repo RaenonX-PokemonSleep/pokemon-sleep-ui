@@ -1,7 +1,7 @@
 import {FilterInclusionMap} from '@/components/input/filter/type';
 import {PokemonInfoWithSortingPayload} from '@/components/shared/pokemon/sorter/type';
 import {useSortingWorker} from '@/components/shared/pokemon/sorter/worker/hook';
-import {Pokebox, PokeInBox} from '@/types/game/pokebox';
+import {Pokebox, PokeInBox} from '@/types/game/pokebox/main';
 import {UserSettingsBundle} from '@/types/userData/settings';
 import {PokeboxCommonProps} from '@/ui/team/pokebox/type';
 import {PokeboxViewerFilter} from '@/ui/team/pokebox/viewer/type';
@@ -14,7 +14,7 @@ import {
 import {toRecoveryRate} from '@/utils/game/stamina/recovery';
 import {isNotNullish} from '@/utils/type';
 import {toCalculatedUserSettings} from '@/utils/user/settings/calculated';
-import {toSynergizedUserSettings} from '@/utils/user/settings/synergized';
+import {toCookingUserSettings} from '@/utils/user/settings/cooking';
 
 
 type Props = PokeboxCommonProps & {
@@ -70,7 +70,7 @@ export const useProcessedPokebox = ({
           ...bundle,
           recoveryRate: toRecoveryRate(singleParams),
         }),
-        synergizedSettings: toSynergizedUserSettings({
+        cookingSettings: toCookingUserSettings({
           ...bundle,
           mealMap,
         }),

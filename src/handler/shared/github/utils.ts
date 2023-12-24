@@ -62,6 +62,7 @@ export const toActivationPayloadFromGithub = async (
     contact: user.login,
     email,
     activationProperties: {
+      ...existedActivationProperties,
       expiry,
       activation,
       source: 'github',
@@ -70,7 +71,6 @@ export const toActivationPayloadFromGithub = async (
         // Keep the existed ones except `github` to make sure the reference used for polling is correct
         github: contact,
       },
-      isSpecial: false,
       note: !!user.email ? `Email: ${user.email}` : '',
     },
   };

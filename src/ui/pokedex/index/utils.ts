@@ -40,7 +40,7 @@ export const generateInitialFilter = (preloadedDisplay: Partial<PokedexDisplay> 
       ...generatePokemonInputFilterExtended(),
       // Override level to a higher number as lv 1 is actually rare
       level: 15,
-      version: 2,
+      version: pokedexMigrators.length,
     },
     override: preloadedDisplay ?? null,
     migrators: pokedexMigrators,

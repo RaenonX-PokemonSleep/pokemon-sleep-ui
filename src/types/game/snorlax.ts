@@ -18,3 +18,5 @@ export type SnorlaxDataOfMap = {
   mapId: SleepMapId,
   data: SnorlaxDataAtRank[],
 };
+
+export type SnorlaxDataMap = {[mapId in SleepMapId]: SnorlaxDataOfMap};

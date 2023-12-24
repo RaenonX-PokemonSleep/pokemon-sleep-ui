@@ -4,6 +4,7 @@ import {durationOfDay} from '@/const/common';
 import {testBonus} from '@/tests/data/game/bonus';
 import {testMainSkillMap} from '@/tests/data/game/mainSkill';
 import {testPokemonData} from '@/tests/data/game/pokemon';
+import {testDefaultCalculatedUserSettings} from '@/tests/data/user/settings';
 import {getMainSkillProducingRate} from '@/utils/game/producing/mainSkill';
 import {getEnergyMultiplier} from '@/utils/game/producing/multiplier';
 
@@ -14,7 +15,14 @@ describe('Pokemon Skill Production', () => {
     const rate = getMainSkillProducingRate({
       pokemon: testPokemonData.ampharos,
       frequency: 3168,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+        sleepDurationInfo: {
+          durations: [28800],
+          total: 28800,
+        },
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       subSkillBonus: {},
       skillRatePercent: 10,
@@ -22,10 +30,6 @@ describe('Pokemon Skill Production', () => {
       skillLevel: 2,
       skillData: testMainSkillMap['2'],
       timeToFullPack: 21600,
-      sleepDurationInfo: {
-        durations: [28800],
-        total: 28800,
-      },
     });
 
     // Skill freq = 14400
@@ -48,7 +52,14 @@ describe('Pokemon Skill Production', () => {
     const rate = getMainSkillProducingRate({
       pokemon: testPokemonData.ampharos,
       frequency: 3168,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+        sleepDurationInfo: {
+          durations: [21600],
+          total: 21600,
+        },
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       subSkillBonus: {},
       skillRatePercent: 10,
@@ -56,10 +67,6 @@ describe('Pokemon Skill Production', () => {
       skillLevel: 2,
       skillData: testMainSkillMap['2'],
       timeToFullPack: 28800,
-      sleepDurationInfo: {
-        durations: [21600],
-        total: 21600,
-      },
     });
 
     // Skill freq = 14400
@@ -82,7 +89,14 @@ describe('Pokemon Skill Production', () => {
     const rate = getMainSkillProducingRate({
       pokemon: testPokemonData.ampharos,
       frequency: 4752,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+        sleepDurationInfo: {
+          durations: [28800],
+          total: 28800,
+        },
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       subSkillBonus: {},
       skillRatePercent: 10,
@@ -90,10 +104,6 @@ describe('Pokemon Skill Production', () => {
       skillLevel: 2,
       skillData: testMainSkillMap['2'],
       timeToFullPack: 14400,
-      sleepDurationInfo: {
-        durations: [28800],
-        total: 28800,
-      },
     });
 
     // Skill freq = 21600
@@ -116,7 +126,14 @@ describe('Pokemon Skill Production', () => {
     const rate = getMainSkillProducingRate({
       pokemon: testPokemonData.ampharos,
       frequency: 4752,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+        sleepDurationInfo: {
+          durations: [14400],
+          total: 14400,
+        },
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       subSkillBonus: {},
       skillRatePercent: 10,
@@ -124,10 +141,6 @@ describe('Pokemon Skill Production', () => {
       skillLevel: 2,
       skillData: testMainSkillMap['2'],
       timeToFullPack: 28800,
-      sleepDurationInfo: {
-        durations: [14400],
-        total: 14400,
-      },
     });
 
     // Skill freq = 21600
@@ -150,7 +163,14 @@ describe('Pokemon Skill Production', () => {
     const rate = getMainSkillProducingRate({
       pokemon: testPokemonData.ampharos,
       frequency: 6336,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+        sleepDurationInfo: {
+          durations: [21600],
+          total: 21600,
+        },
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       subSkillBonus: {},
       skillRatePercent: 10,
@@ -158,10 +178,6 @@ describe('Pokemon Skill Production', () => {
       skillLevel: 2,
       skillData: testMainSkillMap['2'],
       timeToFullPack: 14400,
-      sleepDurationInfo: {
-        durations: [21600],
-        total: 21600,
-      },
     });
 
     // Skill freq = 28800
@@ -184,7 +200,14 @@ describe('Pokemon Skill Production', () => {
     const rate = getMainSkillProducingRate({
       pokemon: testPokemonData.ampharos,
       frequency: 6336,
-      bonus,
+      calculatedSettings: {
+        ...testDefaultCalculatedUserSettings,
+        bonus,
+        sleepDurationInfo: {
+          durations: [14400],
+          total: 14400,
+        },
+      },
       energyMultiplier: getEnergyMultiplier({bonus}),
       subSkillBonus: {},
       skillRatePercent: 10,
@@ -192,10 +215,6 @@ describe('Pokemon Skill Production', () => {
       skillLevel: 2,
       skillData: testMainSkillMap['2'],
       timeToFullPack: 21600,
-      sleepDurationInfo: {
-        durations: [14400],
-        total: 14400,
-      },
     });
 
     // Skill freq = 28800

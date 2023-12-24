@@ -5,11 +5,11 @@ import PlusCircleIcon from '@heroicons/react/24/outline/PlusCircleIcon';
 import {InputRow} from '@/components/input/filter/row';
 import {ClickableIconButton} from '@/components/shared/common/button/clickable';
 import {UserDataUploadButton} from '@/components/shared/userData/upload';
-import {AnnouncementMap} from '@/types/mongo/announcement';
+import {AnnouncementClientMap} from '@/types/mongo/announcement';
 
 
 type Props = {
-  announcementMap: AnnouncementMap,
+  announcementMap: AnnouncementClientMap,
   onCreateClick: () => void,
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {useSynergizedSettings} from '@/hooks/userData/synergized';
+import {useCookingUserSettings} from '@/hooks/userData/cookingSettings';
 import {ProducingRate} from '@/types/game/producing/rate';
 import {useTeamProducingStatsComp} from '@/ui/team/analysis/calcHook/comp';
 import {useTeamProducingStatsTotal} from '@/ui/team/analysis/calcHook/total';
@@ -36,7 +36,7 @@ export const useTeamProducingStats = (opts: UseTeamProducingStatsOpts): TeamProd
     }).length,
   [members, subSkillMap],
   );
-  const synergizedSettings = useSynergizedSettings({...bundle, mealMap});
+  const cookingSettings = useCookingUserSettings({...bundle, mealMap});
 
   const deps: React.DependencyList = [snorlaxFavorite, analysisPeriod, members, setup, helperCount, bundle];
 
@@ -47,7 +47,7 @@ export const useTeamProducingStats = (opts: UseTeamProducingStatsOpts): TeamProd
     period: analysisPeriod,
     state: stateOfRateToShow,
     deps,
-    synergizedSettings,
+    cookingSettings,
     snorlaxFavorite,
     helperCount,
     ...opts,

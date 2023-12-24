@@ -1,53 +1,43 @@
 import {countBy} from 'lodash';
 
-import {RecipeLevel} from '@/types/game/cooking';
+import {productionMultiplierByPeriod} from '@/const/game/production';
 import {IngredientCounter, IngredientId} from '@/types/game/ingredient';
-import {Meal} from '@/types/game/meal/main';
+import {ProductionPeriod} from '@/types/game/producing/display';
 import {IngredientMultiplier} from '@/types/game/producing/multiplier';
-import {getCommonMaxMealBonus} from '@/utils/game/meal/bonus';
+import {CookingUserSettings} from '@/types/userData/settings';
 import {getMealIngredientInfo} from '@/utils/game/meal/ingredient';
 import {getIngredientBonusOfMeals} from '@/utils/game/producing/ingredient/bonus';
-import {isNotNullish} from '@/utils/type';
 
 
 export type GetIngredientMultiplierOpts = {
+  period: ProductionPeriod,
   production: IngredientCounter,
-  targetMeals: Meal[],
-  recipeLevel: RecipeLevel,
-  useMaxIngredientMultiplier?: boolean,
+  cookingSettings: CookingUserSettings,
 };
 
 export const getIngredientMultiplier = ({
+  period,
   production,
-  targetMeals,
-  recipeLevel,
-  useMaxIngredientMultiplier,
+  cookingSettings,
 }: GetIngredientMultiplierOpts): IngredientMultiplier => {
-  if (useMaxIngredientMultiplier) {
-    return {
-      override: {},
-      defaultValue: getCommonMaxMealBonus({
-        level: Math.max(...Object.values(recipeLevel).filter(isNotNullish)),
-        meals: targetMeals},
-      ),
-    };
-  }
+  const {recipeLevel, targetMeals} = cookingSettings;
 
   const mealIngredientInfo = getMealIngredientInfo({
     meals: targetMeals,
     mealCount: countBy(targetMeals, ({id}) => id),
   });
+  const {ingredientsRequired} = mealIngredientInfo;
+
   const ingredientBonus = getIngredientBonusOfMeals({
     meals: targetMeals,
     mealIngredientInfo,
     recipeLevel,
   });
-  const {ingredientsRequired} = mealIngredientInfo;
 
   return {
     override: Object.fromEntries(Object.entries(production).map(([id, quantity]) => {
       const produced = quantity ?? 0;
-      const required = ingredientsRequired[parseInt(id)] ?? 0;
+      const required = (ingredientsRequired[parseInt(id)] ?? 0) * productionMultiplierByPeriod[period];
 
       const recipe = Math.min(produced, required);
       const filler = Math.max(produced - required, 0);

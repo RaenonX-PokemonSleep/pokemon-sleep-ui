@@ -119,9 +119,9 @@ export const updateActivationKeyByKey = async ({
   expiry,
   source,
   contact,
-  isSpecial,
   isCmsMod,
   isActivationLocked,
+  isFrozen,
   note,
 }: UpdateActivationKeyByKeyOpts) => updateActivationKeyPropertiesSingle({
   executorUserId,
@@ -132,9 +132,9 @@ export const updateActivationKeyByKey = async ({
     expiry,
     source,
     contact,
-    isSpecial,
     isCmsMod: isCmsMod ?? false,
     isActivationLocked: isActivationLocked ?? false,
+    isFrozen: isFrozen ?? false,
     note,
   } satisfies Required<ActivationProperties>,
 });

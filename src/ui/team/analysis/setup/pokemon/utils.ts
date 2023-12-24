@@ -1,6 +1,6 @@
 import {v4} from 'uuid';
 
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {PokemonInfo, PokemonSpecialtyId} from '@/types/game/pokemon';
 import {RatingSetupData} from '@/types/game/pokemon/rating';
 import {SnorlaxFavorite} from '@/types/game/snorlax';

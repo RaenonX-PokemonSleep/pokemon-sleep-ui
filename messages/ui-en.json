@@ -1,6 +1,6 @@
 {
   "Subscription": {
-    "AdBlockActive": "Using Ad-blocker on this website is discouraged. Hosting the website costs, and developing the website needs time.\n\n**Please allow ads. Clicking on the ads will grant you 1 hour ads free experience after enabling ad-block,** or check the \"Subscription Intro\" in the documentation section.\n\nIf you have any feedback on ads placement, please join our Discord (link in About page) and report.",
+    "AdBlockActive": "Using Ad-blocker on this website is discouraged. Hosting the website costs, and developing the website needs time.\n\nPlease allow ads or **check the \"Subscription Intro\" in the documentation section**.\n\nIf you have any feedback on ads placement, please join our Discord (link in About page) and report.",
     "Popup": "Please subscribe if you like using the website :) Check [Subscription Intro](https://pks.raenonx.cc/docs/view/subscription/intro) for details.",
     "PremiumOnly": "Premium subscription required. Please check [Subscription Intro](https://pks.raenonx.cc/docs/view/subscription/intro) for details."
   },
@@ -403,6 +403,13 @@
     "Total": "Total",
     "Probability": {
       "NoSkillAfterWakeup": "Probability of no skill after wakeup"
+    }
+  },
+  "SleepStyle": {
+    "DrowsyPowerRequired": "Drowsy Power Requirement",
+    "DrowsyPowerMultiplier": "Strength × Score",
+    "Message": {
+      "UnlockRankDiffers": "The sleep style unlocking Snorlax rank includes minimum Drowsy Power Requirement. Therefore, what is shown here might differ from Serebii or the other sources. Check the docs accessible at the top right side of the page for details."
     }
   },
   "Stamina": {

@@ -52,7 +52,7 @@ export const updateActivationPropertiesFromPayloads = ({
 }: UpdateActivationPropertiesFromPayloadsOpts) => {
   const updates: UpdateOneModel<ActivationKey>[] = payloads
     .map(({contact, activationProperties}) => {
-      if (!activationProperties) {
+      if (!activationProperties || activationProperties.isFrozen) {
         return null;
       }
 

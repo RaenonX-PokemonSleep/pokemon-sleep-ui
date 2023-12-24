@@ -13,8 +13,15 @@ export type SleepReward = {
   candy: number,
 };
 
+export type SleepStyleSpoRequirement = {
+  drowsyScore: number,
+  snorlaxStrength: number,
+};
+
 export type SleepStyleCommon = {
   style: SleepStyleId,
+  spo: number,
+  rarity: number,
   rewards: SleepReward,
 };
 

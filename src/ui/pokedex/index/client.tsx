@@ -44,7 +44,7 @@ export const PokedexClient = (props: PokedexDataProps) => {
     ...props,
   });
 
-  const {calculatedSettings, synergizedSettings} = useTranslatedUserSettings({
+  const {translatedSettings} = useTranslatedUserSettings({
     bundle: {
       server: preloaded.bundle,
       client: session?.user.preloaded,
@@ -52,7 +52,7 @@ export const PokedexClient = (props: PokedexDataProps) => {
     mealMap,
   });
 
-  const sortingDeps = [filter, calculatedSettings, synergizedSettings];
+  const sortingDeps = [filter, translatedSettings];
 
   const allInfoWithSortingPayload = React.useMemo(() => pokedex.flatMap((
     pokemon,
@@ -66,8 +66,7 @@ export const PokedexClient = (props: PokedexDataProps) => {
       level: filter.level,
       dateAdded: null,
       extra: null,
-      calculatedSettings,
-      synergizedSettings: synergizedSettings,
+      ...translatedSettings,
       ...getProducingRateNeutralParams({pokemon}),
     };
     const chain = ingredientChainMap[pokemon.ingredientChain];
@@ -171,8 +170,7 @@ export const PokedexClient = (props: PokedexDataProps) => {
                 level={filter.level}
                 snorlaxFavorite={filter.snorlaxFavorite}
                 ingredients={source.ingredients}
-                calculatedSettings={calculatedSettings}
-                synergizedSettings={synergizedSettings}
+                {...translatedSettings}
                 {...props}
               />
             );

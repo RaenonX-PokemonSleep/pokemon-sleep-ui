@@ -18,7 +18,7 @@ import {getStaminaEventLogsFlattened} from '@/utils/game/stamina/flatten';
 
 
 export const PokemonDetailedProducingStats = (props: PokemonDetailedProducingStatsProps) => {
-  const {settings, calculatedSettings} = props;
+  const {calculatedSettings} = props;
 
   const t = useTranslations('UI.Producing');
   const t2 = useTranslations('UI.Common');
@@ -52,7 +52,7 @@ export const PokemonDetailedProducingStats = (props: PokemonDetailedProducingSta
       <AdsUnit/>
       <StaminaEfficiencyUI efficiency={calculatedSettings.bonus.stamina}/>
       <StaminaChartOfStamina
-        config={settings.stamina}
+        config={calculatedSettings.origin.stamina}
         logs={getStaminaEventLogsFlattened(calculatedSettings.bonus.stamina.logs)}
       />
       {/* If no +1 for `getEfficiency()`, the efficiency obtained is actually 1 level lower */}

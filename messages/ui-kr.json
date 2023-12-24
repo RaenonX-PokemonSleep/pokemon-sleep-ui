@@ -405,6 +405,13 @@
       "NoSkillAfterWakeup": "Probability of no skill after wakeup"
     }
   },
+  "SleepStyle": {
+    "DrowsyPowerRequired": "필요한 졸음 파워",
+    "DrowsyPowerMultiplier": "에너지 x 스코어",
+    "Message": {
+      "UnlockRankDiffers": "The sleep style unlocking Snorlax rank includes minimum Drowsy Power Requirement. Therefore, what is shown here might differ from Serebii or the other sources. Check the docs accessible at the top right side of the page for details."
+    }
+  },
   "Stamina": {
     "Title": "기력 계산",
     "SleepSession": "수면 시간",

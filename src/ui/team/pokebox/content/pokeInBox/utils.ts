@@ -98,5 +98,5 @@ export const getRateOfPokemon = ({
     ingredients: getEffectiveIngredientProductions({level, ingredients}),
     skillData: mainSkillMap[skill],
     noCap: true,
-  }).rate.final;
+  }).atStage.final;
 };

@@ -1,9 +1,9 @@
 import {v4} from 'uuid';
 
-import {teamAnalysisCompVersion} from '@/const/user/teamAnalysis';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {TeamAnalysisComp} from '@/types/teamAnalysis';
 import {getDefaultTeamName} from '@/ui/team/analysis/utils';
+import {teamAnalysisCompMigrators} from '@/utils/migrate/teamAnalysis/comp/migrators';
 import {toTeamAnalysisMemberNullable} from '@/utils/team/toMember';
 
 
@@ -19,7 +19,7 @@ export const toTeamAnalysisCompFromPokebox = ({
   const uuid = v4();
 
   return {
-    version: teamAnalysisCompVersion,
+    version: teamAnalysisCompMigrators.length,
     uuid,
     name: name || getDefaultTeamName(uuid),
     snorlaxFavorite: {},

@@ -1,4 +1,4 @@
-import {Pokebox, PokeInBox} from '@/types/game/pokebox';
+import {Pokebox, PokeInBox} from '@/types/game/pokebox/main';
 import {SleepdexMap} from '@/types/game/sleepdex';
 import {ActivationInfo} from '@/types/mongo/activation';
 import {TeamAnalysisMember} from '@/types/teamAnalysis';

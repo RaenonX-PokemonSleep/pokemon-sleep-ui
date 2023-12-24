@@ -19,7 +19,7 @@ export const MealIndexClient = ({mealMap, ingredientMap, preloaded}: MealDataPro
   const {cooking} = preloaded;
 
   const {data: session} = useSession();
-  const {calculatedSettings} = useTranslatedUserSettings({
+  const {translatedSettings} = useTranslatedUserSettings({
     bundle: {
       server: preloaded,
       client: session?.user.preloaded,
@@ -71,7 +71,7 @@ export const MealIndexClient = ({mealMap, ingredientMap, preloaded}: MealDataPro
                 level={filter.mealLevel}
                 showEnergy={filter.showEnergy}
                 ingredientMap={ingredientMap}
-                mapBonus={calculatedSettings.bonus.map}
+                mapBonus={translatedSettings.calculatedSettings.bonus.map}
               />
             </div>
           ))}

@@ -29,8 +29,8 @@ export type GetPokemonProducingRateBaseOpts =
   > &
   ProducingRateSingleParams &
   ProducingRateImplicitParams &
-  GetProducingRateSharedOpts &
-  CalculatedUserSettings & {
+  GetProducingRateSharedOpts & {
+    calculatedSettings: CalculatedUserSettings,
     pokemonProducingParams: PokemonProducingParams,
     helperCount: number,
   };
@@ -42,18 +42,22 @@ export const getPokemonProducingRateBase = ({
 }: GetPokemonProducingRateBaseOpts): PokemonProducingRate => {
   const {
     pokemon,
+    calculatedSettings,
     pokemonProducingParams,
     helperCount,
-    sleepDurationInfo,
+  } = opts;
+  const {
     behavior,
     bonus,
-  } = opts;
+    sleepDurationInfo,
+  } = calculatedSettings;
 
   const period = opts.period ?? defaultProductionPeriod;
   const subSkillBonus = opts.subSkillBonus ?? {};
 
   const frequency = getBaseFrequencyFromPokemon({
     ...opts,
+    behavior,
     subSkillBonus,
     helperCount,
   });
@@ -79,6 +83,7 @@ export const getPokemonProducingRateBase = ({
 
   const produceSplit = getProduceSplit({
     specialty: pokemon.specialty,
+    behavior,
     ...opts,
   });
   const fullPackStats = getFullPackStats({
@@ -119,6 +124,7 @@ export const getPokemonProducingRateBase = ({
       produceType: 'berry',
       produceSplit,
       sleepStateSplit,
+      behavior,
       ...opts,
     }),
     ingredient: Object.fromEntries(Object.values(ingredient).map((rate) => [
@@ -130,6 +136,7 @@ export const getPokemonProducingRateBase = ({
         produceType: 'ingredient',
         produceSplit,
         sleepStateSplit,
+        behavior,
         ...opts,
       }),
     ])),
@@ -140,6 +147,7 @@ export const getPokemonProducingRateBase = ({
       produceType: 'skill',
       produceSplit,
       sleepStateSplit,
+      behavior,
       ...opts,
     }),
   };

@@ -64,6 +64,7 @@ export const toActivationPayloadFromDiscord = async (
     contact: userId,
     email: null,
     activationProperties: {
+      ...existedActivationProperties,
       expiry: getActivationExpiryOfDefault(),
       activation,
       source: 'discord',
@@ -72,7 +73,6 @@ export const toActivationPayloadFromDiscord = async (
         ...existedActivationProperties?.contact,
         discord: userId,
       },
-      isSpecial: false,
       note: '',
     },
   };

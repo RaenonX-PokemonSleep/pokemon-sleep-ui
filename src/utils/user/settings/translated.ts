@@ -1,13 +1,13 @@
 import {TranslatedUserSettings} from '@/types/userData/settings';
 import {toCalculatedUserSettings, ToCalculatedUserSettingsOpts} from '@/utils/user/settings/calculated';
-import {toSynergizedUserSettings, ToSynergizedUserSettingsOpts} from '@/utils/user/settings/synergized';
+import {toCookingUserSettings, ToCookingUserSettingsOpts} from '@/utils/user/settings/cooking';
 
 
-type ToTranslatedSettingsOpts = ToCalculatedUserSettingsOpts & ToSynergizedUserSettingsOpts;
+type ToTranslatedSettingsOpts = ToCalculatedUserSettingsOpts & ToCookingUserSettingsOpts;
 
 export const toTranslatedSettings = (opts: ToTranslatedSettingsOpts): TranslatedUserSettings => {
   return {
-    ...toCalculatedUserSettings(opts),
-    ...toSynergizedUserSettings(opts),
+    calculatedSettings: toCalculatedUserSettings(opts),
+    cookingSettings: toCookingUserSettings(opts),
   };
 };

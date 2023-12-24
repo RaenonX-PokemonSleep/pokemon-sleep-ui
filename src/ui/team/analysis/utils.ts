@@ -1,5 +1,5 @@
-import {teamAnalysisCompVersion} from '@/const/user/teamAnalysis';
 import {TeamAnalysisComp, TeamAnalysisMember, TeamAnalysisSetup, TeamAnalysisSlotName} from '@/types/teamAnalysis';
+import {teamAnalysisCompMigrators} from '@/utils/migrate/teamAnalysis/comp/migrators';
 
 
 type GetCurrentTeamOpts = {
@@ -41,7 +41,7 @@ export const getTeamName = (team: TeamAnalysisComp): string => {
 
 export const generateEmptyTeam = (uuid: string): TeamAnalysisComp => {
   return {
-    version: teamAnalysisCompVersion,
+    version: teamAnalysisCompMigrators.length,
     uuid,
     name: getDefaultTeamName(uuid),
     snorlaxFavorite: {},

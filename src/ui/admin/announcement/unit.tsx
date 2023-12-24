@@ -14,14 +14,15 @@ import {announcementLevelToText} from '@/const/announcement';
 import {localeName} from '@/const/website';
 import {textFilterButtonStyle} from '@/styles/input';
 import {announcementTextClasses} from '@/styles/text/announcement';
-import {Announcement, announcementLevels} from '@/types/mongo/announcement';
+import {AnnouncementClient, announcementLevels} from '@/types/mongo/announcement';
 import {locales} from '@/types/next/locale';
 import {AdminAnnouncementModifyProps} from '@/ui/admin/announcement/type';
+import {toLocalIsoTimestampString, toUtcIsoTimestampString} from '@/utils/date';
 
 
 type Props = AdminAnnouncementModifyProps & {
   show: boolean,
-  data: Announcement,
+  data: AnnouncementClient,
 };
 
 export const AdminAnnouncementUnit = ({show, data, onUpdate, onDelete}: Props) => {
@@ -76,8 +77,11 @@ export const AdminAnnouncementUnit = ({show, data, onUpdate, onDelete}: Props) =
               <InputBox
                 type="datetime-local"
                 className="text-center"
-                value={expiry}
-                onChange={({target}) => onUpdate(uuid, {expiry: target.value})}
+                value={toLocalIsoTimestampString(expiry) ?? ''}
+                onChange={({target}) => onUpdate(
+                  uuid,
+                  {expiry: target.value ? toUtcIsoTimestampString(target.value) : null},
+                )}
               />
             </Flex>
             <Flex noFullWidth direction="row" className="items-center gap-1">
@@ -97,8 +101,8 @@ export const AdminAnnouncementUnit = ({show, data, onUpdate, onDelete}: Props) =
                 }}
               />
             </Flex>
+            <DeleteButton dimension="h-7 w-7" onClick={() => onDelete(uuid)}/>
           </Flex>
-          <DeleteButton dimension="h-7 w-7" onClick={() => onDelete(uuid)}/>
         </Flex>
       </Flex>
     </AnimatedCollapseQuick>

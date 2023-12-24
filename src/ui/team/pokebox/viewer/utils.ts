@@ -32,7 +32,7 @@ export const generatePokeboxViewerFilter = (preloaded: PokeboxDataProps['preload
       viewType: 'table',
       previewLevel: null,
       previewFinalEvolution: false,
-      version: 4,
+      version: pokeboxDisplayMigrators.length,
     },
     override: preloaded.display ?? {},
     migrators: pokeboxDisplayMigrators,

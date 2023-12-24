@@ -8,13 +8,13 @@ import remarkGfm from 'remark-gfm';
 import {AnnouncementProps} from '@/components/announcement/type';
 import {useLayout} from '@/hooks/layout/main';
 import {announcementTextClasses} from '@/styles/text/announcement';
-import {Announcement} from '@/types/mongo/announcement';
+import {AnnouncementClient} from '@/types/mongo/announcement';
 
 import styles from './main.module.css';
 
 
 type Props = AnnouncementProps & {
-  announcements: Announcement[],
+  announcements: AnnouncementClient[],
 };
 
 export const AnnouncementsDisplay = ({larger, showOn, height, announcements}: Props) => {
@@ -28,7 +28,7 @@ export const AnnouncementsDisplay = ({larger, showOn, height, announcements}: Pr
   // Could be `undefined` if `idx` goes out of bound
   // - This could happen if the user switch to the other language with less site alerts
   // Reference: https://github.com/RaenonX-DL/dragalia-site-front/issues/253
-  const announcement = announcements[idx] as Announcement | undefined;
+  const announcement = announcements[idx] as AnnouncementClient | undefined;
 
   if (!announcement) {
     setIdx(0);

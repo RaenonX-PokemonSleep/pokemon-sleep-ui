@@ -25,7 +25,7 @@ export const SnorlaxRankUI = ({rank, dimension, hideText, hideTextBelowMd}: Prop
 
   return (
     <Flex direction="row" center noFullWidth className="gap-1">
-      <div className={`relative ${dimension ?? 'h-6 w-6'}`}>
+      <div className={clsx('relative', dimension ?? 'h-6 w-6')}>
         <NextImage
           src={`/images/rank/${rank.title}.png`} alt={t('Rank')}
           sizes={imageSmallIconSizes}

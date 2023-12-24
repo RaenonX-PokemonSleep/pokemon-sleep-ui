@@ -9,6 +9,7 @@ import {Failed} from '@/components/icons/failed';
 import {Flex} from '@/components/layout/flex/common';
 import {authOptions} from '@/const/auth';
 import {getBerryData} from '@/controller/berry';
+import {getPossiblyActiveDrowsyPowerMultiplier} from '@/controller/event/drowsyPowerMultiplier';
 import {getIngredientMap} from '@/controller/ingredient';
 import {getIngredientChainMap} from '@/controller/ingredientChain';
 import {getMainSkillMap} from '@/controller/mainSkill';
@@ -18,6 +19,7 @@ import {getPokedexMap, getSinglePokemonInfo} from '@/controller/pokemon/info';
 import {getSinglePokemonProducingParams} from '@/controller/pokemon/producing';
 import {getSleepStyleNormalList} from '@/controller/sleepStyle';
 import {getSleepStyleSpecialList} from '@/controller/sleepStyleSpecial';
+import {getSnorlaxDataMap} from '@/controller/snorlax';
 import {getSubSkillMap} from '@/controller/subSkill';
 import {PublicPageLayout} from '@/ui/base/layout/public';
 import {PokemonClient} from '@/ui/pokedex/page/client';
@@ -52,7 +54,9 @@ export const Pokemon = async ({params}: Props) => {
     ingredientMap,
     mainSkillMap,
     subSkillMap,
+    snorlaxDataMap,
     mealMap,
+    eventDrowsyPowerMultipliers,
   ] = await Promise.all([
     getServerSession(authOptions),
     getPokedexMap(getRelatedPokemonIds({pokemon, branchData: pokemonBranches})),
@@ -64,7 +68,9 @@ export const Pokemon = async ({params}: Props) => {
     getIngredientMap(),
     getMainSkillMap(),
     getSubSkillMap(),
+    getSnorlaxDataMap(),
     getMealMap(),
+    getPossiblyActiveDrowsyPowerMultiplier(),
   ]);
 
   if (!berryData) {
@@ -83,7 +89,9 @@ export const Pokemon = async ({params}: Props) => {
     ingredientMap,
     mainSkillMap,
     subSkillMap,
+    snorlaxDataMap,
     mealMap,
+    eventDrowsyPowerMultipliers,
     preloaded: createUserSettingsBundle(session),
   };
 
@@ -99,6 +107,7 @@ export const Pokemon = async ({params}: Props) => {
           'UI.InPage.Sleepdex',
           'UI.InPage.Team',
           'UI.Metadata',
+          'UI.SleepStyle',
         ]}>
           <PokemonClient {...props}/>
         </I18nProvider>

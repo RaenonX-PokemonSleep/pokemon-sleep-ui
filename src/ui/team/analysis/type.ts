@@ -11,12 +11,12 @@ import {SubSkillMap} from '@/types/game/pokemon/subSkill';
 import {SnorlaxDataOfMap} from '@/types/game/snorlax';
 import {TeamAnalysisSetup} from '@/types/teamAnalysis';
 import {UserLazyLoadedData} from '@/types/userData/main';
-import {SynergizedSettingsRequiredData, UserSettingsBundle} from '@/types/userData/settings';
+import {CookingUserSettingsRequiredData, UserSettingsBundle} from '@/types/userData/settings';
 
 
 export type TeamAnalysisPokemonFilter = PokemonInputFilter;
 
-export type TeamAnalysisServerDataProps = UsePokemonFilterCommonData & SynergizedSettingsRequiredData & {
+export type TeamAnalysisServerDataProps = UsePokemonFilterCommonData & CookingUserSettingsRequiredData & {
   pokedexMap: PokedexMap,
   pokemonProducingParamsMap: PokemonProducingParamsMap,
   berryDataMap: BerryDataMap,

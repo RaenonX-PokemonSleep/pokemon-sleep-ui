@@ -66,6 +66,7 @@ export const AdminAnnouncementClient = ({preloaded}: AdminAnnouncementServerData
               message: '',
               locale: previewLocale ? [previewLocale] : [],
               level: 'info',
+              expiry: null,
             },
           };
         })}

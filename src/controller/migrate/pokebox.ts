@@ -8,7 +8,7 @@ import {
   ingredientLevels,
   IngredientProduction,
 } from '@/types/game/pokemon/ingredient';
-import {PokeInBoxData} from '@/types/mongo/pokebox';
+import {PokeInBoxData} from '@/types/mongo/pokebox/main';
 import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon';
 
 

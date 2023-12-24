@@ -29,7 +29,7 @@ export const MealMakerClient = (props: CookingServerDataProps) => {
     isIncluded,
   } = useMealMakerFilter(props);
   const {actAsync, session, status} = useUserDataActor();
-  const {calculatedSettings} = useTranslatedUserSettings({
+  const {translatedSettings} = useTranslatedUserSettings({
     bundle: {
       server: preloaded,
       client: session.data?.user.preloaded,
@@ -47,7 +47,7 @@ export const MealMakerClient = (props: CookingServerDataProps) => {
     meals: validMeals,
     mealTypes,
     ingredientMap,
-    calculatedSettings,
+    calculatedSettings: translatedSettings.calculatedSettings,
     status,
     onCook: async (ingredientsUsed) => {
       setFilter((original) => ({

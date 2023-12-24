@@ -1,8 +1,8 @@
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {SleepdexData} from '@/types/game/sleepdex';
 import {ActivationDataAtClient, ActivationKeyAtClient} from '@/types/mongo/activation';
 import {ActivationPresetMap} from '@/types/mongo/activationPreset';
-import {AnnouncementMap} from '@/types/mongo/announcement';
+import {AnnouncementClientMap} from '@/types/mongo/announcement';
 import {DocsData, DocsDataEditable, DocsDataEditableFetched} from '@/types/mongo/docs';
 import {UserCookingPreset} from '@/types/userData/cooking';
 import {UserSettingsBundle} from '@/types/userData/settings';
@@ -56,7 +56,7 @@ export type UserDataUploadOpts = {
   data: ActivationPresetMap,
 } | {
   type: 'admin.announcements',
-  data: AnnouncementMap,
+  data: AnnouncementClientMap,
 } | {
   type: 'cms.docs.create',
   data: DocsDataEditable,

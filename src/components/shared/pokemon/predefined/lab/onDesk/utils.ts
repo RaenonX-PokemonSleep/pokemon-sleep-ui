@@ -1,7 +1,7 @@
 import {v4} from 'uuid';
 
 import {PokemonOnDeskState} from '@/components/shared/pokemon/predefined/lab/onDesk/type';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {PokemonInfo} from '@/types/game/pokemon';
 
 

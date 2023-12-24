@@ -31,7 +31,7 @@ export const getAnalysisStatsOfProducingRate = (opts: GetAnalysisStatsOpts): Ana
     berryData: berryDataMap[pokemon.berry.id],
     skillData: mainSkillMap[pokemon.skill],
     ...getProducingRateNeutralParams({pokemon}),
-  }).rate.final;
+  }).atStage.final;
 
   const rateOfAllPokemon = pokemonList.flatMap((otherPokemon) => [...generatePossibleIngredientProductions({
     level,
@@ -51,7 +51,7 @@ export const getAnalysisStatsOfProducingRate = (opts: GetAnalysisStatsOpts): Ana
       skillData: mainSkillMap[otherPokemon.skill],
       ingredients: otherIngredients,
       ...getProducingRateNeutralParams({pokemon: otherPokemon}),
-    }).rate.final,
+    }).atStage.final,
   })));
 
   return {

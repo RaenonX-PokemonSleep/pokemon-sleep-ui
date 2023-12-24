@@ -1,5 +1,5 @@
 import {defaultSeedUsage} from '@/const/game/seed';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {TeamAnalysisMember} from '@/types/teamAnalysis';
 import {Nullable} from '@/utils/type';
 

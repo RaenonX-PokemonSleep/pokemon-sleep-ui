@@ -1,3 +1,4 @@
+import {IsoTimestampString} from '@/types/date';
 import {Locale} from '@/types/next/locale';
 
 
@@ -16,8 +17,12 @@ export type Announcement = {
   message: string,
   locale: Locale[],
   level: AnnouncementLevel,
-  expiry?: string,
+  expiry?: Date,
   order?: number,
 };
 
-export type AnnouncementMap = {[uuid in string]?: Announcement};
+export type AnnouncementClient = Omit<Announcement, 'expiry'> & {
+  expiry: IsoTimestampString | null,
+};
+
+export type AnnouncementClientMap = {[uuid in string]?: AnnouncementClient};

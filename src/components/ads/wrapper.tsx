@@ -7,6 +7,7 @@ import {adsRefreshIntervalMs} from '@/components/ads/const';
 import {AdsContent} from '@/components/ads/content';
 import {AdsUnitProps} from '@/components/ads/type';
 import {Flex} from '@/components/layout/flex/common';
+import {useTimedTick} from '@/hooks/timedTick';
 import {useUserActivation} from '@/hooks/userData/activation';
 
 
@@ -23,7 +24,11 @@ export const AdsWrapper = ({
   // Therefore caching the ads-free status when the session loading is settled
   const [isAdsFree, setIsAdsFree] = React.useState<boolean | null>(null);
   // Used to force ads rerender
-  const [counter, setCounter] = React.useState(0);
+  const counter = useTimedTick({
+    onTick: () => void 0,
+    intervalMs: adsRefreshIntervalMs,
+    rescheduleDeps: [],
+  });
 
   React.useEffect(() => {
     if (status === 'unauthenticated') {
@@ -32,11 +37,6 @@ export const AdsWrapper = ({
       setIsAdsFree(activation.isAdsFree);
     }
   }, [status]);
-
-  // Set an interval to trigger rerender on load
-  React.useEffect(() => {
-    setInterval(() => setCounter((original) => original + 1), adsRefreshIntervalMs);
-  }, []);
 
   // `isAdsFree` can be `null` indicating not loaded yet, which is falsy
   // When `isAdsFree` is `null`, it shouldn't render anything because the app hasn't determined
@@ -50,6 +50,7 @@ export const AdsWrapper = ({
       <AdsContent
         key={`${counter}a`}
         heightOverride={heightOverride}
+        checkDom
         recheckDeps={[counter]}
       >
         {children}
@@ -60,6 +61,7 @@ export const AdsWrapper = ({
           key={`${counter}b`}
           className="hidden lg:block"
           heightOverride={heightOverride}
+          checkDom={false}
           recheckDeps={[counter]}
         >
           {children}

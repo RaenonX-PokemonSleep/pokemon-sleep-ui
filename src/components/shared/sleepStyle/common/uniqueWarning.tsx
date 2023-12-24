@@ -13,7 +13,7 @@ export const MapUniqueWarning = () => {
   return (
     <Flex center className={clsx(
       'gap-1 rounded-lg py-7 text-2xl text-amber-600 shadow-border shadow-amber-600',
-      'dark:text-amber-400 dark:shadow-amber-400 lg:flex-row',
+      'lg:flex-row dark:text-amber-400 dark:shadow-amber-400',
     )}>
       <ExclamationCircleIcon className="h-8 w-8"/>
       <div>{t('Unique')}</div>

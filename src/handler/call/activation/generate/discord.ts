@@ -43,7 +43,6 @@ export const generateDiscordActivationLink = async (request: NextRequest) => {
       discord: discordId,
     },
     expiry: new Date(now.setDate(now.getDate() + defaultExpiryDays)),
-    isSpecial: false,
     isCmsMod: false,
     activation: preset.activation,
     note: '',

@@ -1,7 +1,6 @@
 import {NatureId} from '@/types/game/pokemon/nature';
 import {GroupedSubSkillBonus} from '@/types/game/pokemon/subSkill';
 import {ProducingRateCommonParams, ProducingRateOfItemOfSessions} from '@/types/game/producing/rate';
-import {SleepDurationInfo} from '@/types/game/sleep';
 import {getMainSkillEquivalentStrengthOfSingle} from '@/utils/game/mainSkill/effect/main';
 import {GetMainSkillEquivalentStrengthOpts} from '@/utils/game/mainSkill/effect/type';
 import {getSkillTriggerRate} from '@/utils/game/mainSkill/utils';
@@ -14,7 +13,6 @@ export type GetMainSkillProducingRateOpts =
   Omit<ProducingRateCommonParams, 'level'> &
   GetMainSkillEquivalentStrengthOpts & {
     timeToFullPack: number,
-    sleepDurationInfo: SleepDurationInfo,
     subSkillBonus: GroupedSubSkillBonus | null,
     skillRatePercent: number | null,
     natureId: NatureId | null,
@@ -23,15 +21,16 @@ export type GetMainSkillProducingRateOpts =
 export const getMainSkillProducingRate = ({
   pokemon,
   frequency,
-  bonus,
+  calculatedSettings,
   energyMultiplier,
   timeToFullPack,
-  sleepDurationInfo,
   subSkillBonus,
   skillRatePercent,
   natureId,
   ...opts
 }: GetMainSkillProducingRateOpts): ProducingRateOfItemOfSessions => {
+  const {bonus, sleepDurationInfo} = calculatedSettings;
+
   frequency *= (1 / getSkillTriggerRate({skillRatePercent, subSkillBonus, natureId}));
 
   const id = pokemon.skill;

@@ -6,6 +6,7 @@ import UserCircleIcon from '@heroicons/react/24/outline/UserCircleIcon';
 import {Link} from '@/components/i18n/exports';
 import {Flex} from '@/components/layout/flex/common';
 import {DiscordLink} from '@/components/static/discord/link';
+import {discordLink} from '@/const/external';
 import {DefaultPageProps} from '@/types/next/page/common';
 import {AboutSection} from '@/ui/about/section';
 import {PublicPageLayout} from '@/ui/base/layout/public';
@@ -48,14 +49,10 @@ export const About = async ({params}: DefaultPageProps) => {
                 https://patreon.com/RaenonX
               </Link>
             </AboutSection>
-            <AboutSection title="USDT (TRC20)">
-              TAztRpSHJk8GbZtNuxoyzndFrAfcorh87v
-            </AboutSection>
-            <AboutSection title="USDT / USDC (ERC20 / Cronos / Polygon)">
-              0x8d3aD05D87f29E3617e93bF7D49b01940E04d8cb
-            </AboutSection>
-            <AboutSection title="Zelle (US)">
-              (Discord / LINE)
+            <AboutSection title="Discord">
+              <Link href={discordLink} className="border-link">
+                {discordLink}
+              </Link>
             </AboutSection>
           </Flex>
         </Flex>

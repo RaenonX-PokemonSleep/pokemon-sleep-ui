@@ -30,16 +30,20 @@ export type UserSettingsBundle = {
 };
 
 export type CalculatedUserSettings = Pick<UserSettings, 'behavior'> & {
+  origin: UserSettings,
   bonus: EffectiveBonus,
   sleepDurationInfo: SleepDurationInfo,
 };
 
-export type SynergizedSettingsRequiredData = {
+export type CookingUserSettingsRequiredData = {
   mealMap: MealMap,
 };
 
-export type SynergizedUserSettings = Pick<UserCookingPreset, 'recipeLevel'> & {
+export type CookingUserSettings = Pick<UserCookingPreset, 'recipeLevel'> & {
   targetMeals: Meal[],
 };
 
-export type TranslatedUserSettings = CalculatedUserSettings & SynergizedUserSettings;
+export type TranslatedUserSettings = {
+  calculatedSettings: CalculatedUserSettings,
+  cookingSettings: CookingUserSettings,
+};

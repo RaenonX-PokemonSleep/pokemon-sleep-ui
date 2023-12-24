@@ -6,7 +6,7 @@ import {MainSkillData} from '@/types/game/pokemon/mainSkill';
 import {PokemonProducingParams} from '@/types/game/pokemon/producing';
 import {ProducingRateImplicitParams, ProducingRateSingleParams} from '@/types/game/producing/rate';
 import {SnorlaxFavorite} from '@/types/game/snorlax';
-import {CalculatedUserSettings, SynergizedUserSettings} from '@/types/userData/settings';
+import {CalculatedUserSettings, CookingUserSettings} from '@/types/userData/settings';
 
 
 export const pokedexSortExclusion = [
@@ -55,7 +55,7 @@ export type PokemonSortingRequiredData = ProducingRateImplicitParams & {
   ingredients: IngredientProduction[],
   dateAdded: number | null,
   calculatedSettings: CalculatedUserSettings,
-  synergizedSettings: SynergizedUserSettings,
+  cookingSettings: CookingUserSettings,
 };
 
 export type PokemonInfoWithSortingPayload<TExtra> = PokemonSortingRequiredData & ProducingRateSingleParams & {

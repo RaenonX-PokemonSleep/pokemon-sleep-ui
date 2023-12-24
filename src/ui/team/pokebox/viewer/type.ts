@@ -4,7 +4,7 @@ import {FilterInclusionMap, FilterWithUpdaterProps} from '@/components/input/fil
 import {PokemonInputFilter, UsePokemonFilterCommonData} from '@/components/shared/pokemon/filter/type';
 import {PokemonSortType} from '@/components/shared/pokemon/sorter/type';
 import {FieldMetaMap} from '@/types/game/mapMeta';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {PokemonInfo} from '@/types/game/pokemon';
 import {PokemonKeyLevel} from '@/types/game/pokemon/level';
 import {NatureEffectId} from '@/types/game/pokemon/nature';

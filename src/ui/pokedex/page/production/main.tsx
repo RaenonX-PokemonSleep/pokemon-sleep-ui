@@ -2,7 +2,7 @@ import React from 'react';
 
 import LinkIcon from '@heroicons/react/24/outline/LinkIcon';
 import {clsx} from 'clsx';
-import {useSession} from 'next-auth/react';
+import {Session} from 'next-auth';
 import {useTranslations} from 'next-intl';
 
 import {Flex} from '@/components/layout/flex/common';
@@ -14,24 +14,26 @@ import {PokemonIndividualParamsInput} from '@/components/shared/pokemon/predefin
 import {specialtyIdMap} from '@/const/game/pokemon';
 import {defaultLevel} from '@/const/game/production';
 import {useUserActivation} from '@/hooks/userData/activation';
-import {useTranslatedUserSettings} from '@/hooks/userData/translated';
 import {imageIconSizes} from '@/styles/image';
 import {PokemonMetaSection} from '@/ui/pokedex/page/meta/section';
 import {PokemonBerryProduction} from '@/ui/pokedex/page/production/berry';
 import {PokemonProductionCombination} from '@/ui/pokedex/page/production/combination';
 import {PokemonIngredientPossibilities} from '@/ui/pokedex/page/production/ingredient/possibility';
 import {metaTitleClass} from '@/ui/pokedex/page/style';
-import {PokemonDataProps} from '@/ui/pokedex/page/type';
+import {PokemonDataCommonProps} from '@/ui/pokedex/page/type';
 
 
-export const PokemonProduction = (props: PokemonDataProps) => {
+type Props = PokemonDataCommonProps & {
+  session: Session | null,
+};
+
+export const PokemonProduction = (props: Props) => {
   const {
     pokemon,
     berryData,
     ingredientChainMap,
-    mealMap,
     subSkillMap,
-    preloaded,
+    session,
   } = props;
   const {specialty, berry, ingredientChain} = pokemon;
 
@@ -40,15 +42,7 @@ export const PokemonProduction = (props: PokemonDataProps) => {
     subSkill: {},
     nature: null,
   });
-  const {data} = useSession();
-  const {isPremium} = useUserActivation(data);
-  const {translatedSettings} = useTranslatedUserSettings({
-    bundle: {
-      server: preloaded,
-      client: data?.user.preloaded,
-    },
-    mealMap,
-  });
+  const {isPremium} = useUserActivation(session);
 
   const t = useTranslations('Game');
   const t2 = useTranslations('UI.InPage.Pokedex');
@@ -86,7 +80,6 @@ export const PokemonProduction = (props: PokemonDataProps) => {
         <PokemonProductionCombination
           input={input}
           chain={chain}
-          translatedSettings={translatedSettings}
           {...props}
         />
       </PokemonMetaSection>

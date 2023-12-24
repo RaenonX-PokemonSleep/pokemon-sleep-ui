@@ -5,7 +5,7 @@ import {useTranslations} from 'next-intl';
 
 import {useAutoUpload} from '@/hooks/userData/autoUpload';
 import {useUserSettingsBundle} from '@/hooks/userData/bundle';
-import {Pokebox} from '@/types/game/pokebox';
+import {Pokebox} from '@/types/game/pokebox/main';
 import {useProcessedPokebox} from '@/ui/team/pokebox/client/hook/process';
 import {PokeboxCommonProps} from '@/ui/team/pokebox/type';
 import {usePokeboxViewerFilter} from '@/ui/team/pokebox/viewer/hook';

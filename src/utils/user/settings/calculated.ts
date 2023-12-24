@@ -39,7 +39,11 @@ export const toCalculatedUserSettings = ({
   }
 
   return {
-    bonus: toEffectiveBonus(opts),
+    origin: settings,
+    bonus: toEffectiveBonus({
+      ...opts,
+      settings,
+    }),
     sleepDurationInfo: getSleepDurationInfo(settings.stamina.sleepSession),
     behavior: {
       ...settings.behavior,

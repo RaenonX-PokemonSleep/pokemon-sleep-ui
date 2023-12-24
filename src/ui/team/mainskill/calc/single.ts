@@ -8,7 +8,7 @@ import {getPokemonProducingParams, getProducingRateSingleParams} from '@/utils/g
 import {toRecoveryRate} from '@/utils/game/stamina/recovery';
 import {getSubSkillBonus} from '@/utils/game/subSkill/effect';
 import {toCalculatedUserSettings} from '@/utils/user/settings/calculated';
-import {toSynergizedUserSettings} from '@/utils/user/settings/synergized';
+import {toCookingUserSettings} from '@/utils/user/settings/cooking';
 
 
 type GetSkillTriggerValueOfUnitOpts = GetSkillTriggerValueCommonOpts & {
@@ -61,11 +61,11 @@ export const getSkillTriggerValueOfUnit = ({
     // `unit` could have `pokemon` from Poke-in-box, therefore it should always be at the top
     ...unit,
     ...singleParams,
-    ...toCalculatedUserSettings({
+    calculatedSettings: toCalculatedUserSettings({
       ...bundle,
       recoveryRate: toRecoveryRate(singleParams),
     }),
-    ...toSynergizedUserSettings({
+    cookingSettings: toCookingUserSettings({
       ...bundle,
       mealMap,
     }),
@@ -76,7 +76,7 @@ export const getSkillTriggerValueOfUnit = ({
     skillData: mainSkillMap[skill],
     pokemonProducingParams,
     ingredients: getEffectiveIngredientProductions({level, ingredients}),
-  }).rate.final;
+  }).atStage.final;
 
   const skillTriggerValue = getSkillTriggerValue({
     rate,

@@ -6,7 +6,7 @@ import {clsx} from 'clsx';
 
 import {Flex} from '@/components/layout/flex/common';
 import {PokeboxImporter} from '@/components/shared/pokebox/importer/main';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {SkillTriggerAnalysisCommonProps} from '@/ui/team/mainskill/targets/type';
 
 

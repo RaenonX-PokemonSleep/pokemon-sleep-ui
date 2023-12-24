@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import format from 'date-fns/format';
+import {format} from 'date-fns/format';
 
 
 type Props = {

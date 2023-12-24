@@ -22,7 +22,7 @@ import {PokemonNatureIndicator} from '@/components/shared/pokemon/nature/indicat
 import {PokemonSubSkillIndicator} from '@/components/shared/pokemon/subSkill/indicator';
 import {pokeInBoxFavoriteStyle} from '@/styles/game/pokebox';
 import {imageIconSizes, imageSmallIconSizes} from '@/styles/image';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {isNotNullish} from '@/utils/type';
 
 

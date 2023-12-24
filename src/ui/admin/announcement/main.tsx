@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {getAnnouncementMap} from '@/controller/announcement';
+import {getAnnouncementMap} from '@/controller/announcement/main';
 import {DefaultPageProps} from '@/types/next/page/common';
 import {AdminAnnouncementClient} from '@/ui/admin/announcement/client';
 import {AdminAnnouncementServerDataProps} from '@/ui/admin/announcement/type';

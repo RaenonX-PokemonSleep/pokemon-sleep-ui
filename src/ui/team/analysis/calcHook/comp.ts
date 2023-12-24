@@ -3,7 +3,7 @@ import React from 'react';
 import {ProducingRate} from '@/types/game/producing/rate';
 import {SnorlaxFavorite} from '@/types/game/snorlax';
 import {TeamAnalysisSlotName, teamAnalysisSlotName} from '@/types/teamAnalysis';
-import {SynergizedUserSettings} from '@/types/userData/settings';
+import {CookingUserSettings} from '@/types/userData/settings';
 import {getTeamProducingStatsSlot} from '@/ui/team/analysis/calcHook/slot';
 import {
   UseTeamCompStatsReturn,
@@ -17,7 +17,7 @@ import {isNotNullish} from '@/utils/type';
 
 
 type UseTeamProducingStatsCompOpts = UseTeamProducingStatsCommonOpts & UseTeamProducingStatsOpts & {
-  synergizedSettings: SynergizedUserSettings,
+  cookingSettings: CookingUserSettings,
   snorlaxFavorite: SnorlaxFavorite,
   helperCount: number,
 };
@@ -26,14 +26,14 @@ export const useTeamProducingStatsComp = ({
   period,
   state,
   deps,
-  synergizedSettings,
+  cookingSettings,
   snorlaxFavorite,
   helperCount,
   ...opts
 }: UseTeamProducingStatsCompOpts): UseTeamCompStatsReturn => {
   return React.useMemo(() => {
     const {rates, grouped} = getPokemonProducingRateMulti({
-      ...synergizedSettings,
+      cookingSettings,
       groupingState: state,
       sharedOpts: {
         snorlaxFavorite,
@@ -69,14 +69,14 @@ export const useTeamProducingStatsComp = ({
     return {
       bySlot: Object.fromEntries(rates.map(({
         payload,
-        rate,
+        atStage,
       }): [TeamAnalysisSlotName, TeamProducingStatsSingle] => {
         const {slotName, calculatedSettings} = payload;
-        const total: ProducingRate = getTotalOfPokemonProducingRate({rate: rate.final, state});
+        const total: ProducingRate = getTotalOfPokemonProducingRate({rate: atStage.final, state});
 
         return [
           slotName,
-          {...rate.final, calculatedSettings, total},
+          {...atStage.final, calculatedSettings, total},
         ];
       })) as TeamProducingStatsBySlot,
       grouped,

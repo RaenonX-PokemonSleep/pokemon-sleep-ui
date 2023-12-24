@@ -7,13 +7,13 @@ import {MainSkillMap} from '@/types/game/pokemon/mainSkill';
 import {PokemonProducingParamsMap} from '@/types/game/pokemon/producing';
 import {SubSkillMap} from '@/types/game/pokemon/subSkill';
 import {
-  SynergizedSettingsRequiredData,
+  CookingUserSettingsRequiredData,
   TranslatedUserSettings,
   UserSettingsBundle,
 } from '@/types/userData/settings';
 
 
-export type MealServerDataProps = SynergizedSettingsRequiredData & {
+export type MealServerDataProps = CookingUserSettingsRequiredData & {
   meal: Meal,
   pokedex: PokedexMap,
   pokemonProducingParamsMap: PokemonProducingParamsMap,

@@ -39,7 +39,9 @@ export const SnorlaxFavoriteInput = <
           <Flex direction="row" center>
             <div className="relative h-7 w-7">
               <NextImage
-                src="/images/generic/snorlax.png" alt={t2('SnorlaxFavorite')} sizes={imageSmallIconSizes}
+                src="/images/generic/snorlax.png"
+                alt={t2('SnorlaxFavorite')}
+                sizes={imageSmallIconSizes}
               />
             </div>
           </Flex>

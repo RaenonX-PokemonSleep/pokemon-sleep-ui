@@ -6,7 +6,7 @@ import {
   getUserPokebox,
   getUserPokeboxSorted,
   getUserPokeboxWithFilter,
-} from '@/controller/pokebox';
+} from '@/controller/pokebox/main';
 import {getSleepdexMap, getSleepdexMapOfPokemon} from '@/controller/sleepdex';
 import {getActivationDataByFilter} from '@/controller/user/activation/data';
 import {generateActivationKey, getActivationKeyByFilter} from '@/controller/user/activation/key';

@@ -1,5 +1,4 @@
 import {BerryId} from '@/types/game/berry';
-import {EffectiveBonus} from '@/types/game/bonus';
 import {IngredientId} from '@/types/game/ingredient';
 import {PokemonInfo} from '@/types/game/pokemon';
 import {MainSkillId} from '@/types/game/pokemon/mainSkill';
@@ -10,6 +9,7 @@ import {CarryLimitInfo, FullPackStats} from '@/types/game/producing/carryLimit';
 import {ProductionPeriod} from '@/types/game/producing/display';
 import {ProducingSleepStateSplit} from '@/types/game/producing/split';
 import {ProducingState, ProducingStateOfRate} from '@/types/game/producing/state';
+import {CalculatedUserSettings} from '@/types/userData/settings';
 import {Indexable} from '@/utils/type';
 
 
@@ -58,7 +58,7 @@ export type ProducingRateCommonParams = {
   level: number,
   pokemon: PokemonInfo,
   frequency: number,
-  bonus: EffectiveBonus,
+  calculatedSettings: CalculatedUserSettings,
   energyMultiplier: number,
 };
 
@@ -72,13 +72,21 @@ export type PokemonProducingRate = {
   skill: ProducingRateOfStates,
 };
 
+export const pokemonProducingRateStage = [
+  'original',
+  'final',
+] as const;
+
+export type PokemonProducingRateStage = typeof pokemonProducingRateStage[number];
+
+export type PokemonProducingRateAtStage = {[stage in PokemonProducingRateStage]: PokemonProducingRate};
+
 export type PokemonProducingRateWithPayload<TPayload> = {
-  rate: {
-    final: PokemonProducingRate,
-    original: PokemonProducingRate,
-  },
   payload: TPayload,
+  calculatedSettings: CalculatedUserSettings,
+  atStage: PokemonProducingRateAtStage,
 };
+
 export type PokemonProducingRateByType = {
   berry: GroupedProducingRate<BerryId>,
   ingredient: GroupedProducingRate<IngredientId>,

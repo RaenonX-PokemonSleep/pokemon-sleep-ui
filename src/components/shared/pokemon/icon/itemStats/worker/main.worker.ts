@@ -54,7 +54,7 @@ const onMessage = ({data}: MessageEvent<PokemonItemStatsWorkerOpts>) => {
             }),
             ...data,
             ...translatedSettings,
-          }).rate.final;
+          }).atStage.final;
 
           return {
             pokemon,

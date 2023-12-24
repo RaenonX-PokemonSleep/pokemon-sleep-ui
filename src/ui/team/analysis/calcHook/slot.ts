@@ -71,7 +71,7 @@ export const getTeamProducingStatsSlot = ({
   return {
     rateOpts: {
       ...singleParams,
-      ...calculatedSettings,
+      calculatedSettings,
       level,
       pokemon,
       pokemonProducingParams: getPokemonProducingParams({

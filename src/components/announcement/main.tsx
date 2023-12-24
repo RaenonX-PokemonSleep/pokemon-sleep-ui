@@ -4,7 +4,7 @@ import {useLocale} from 'next-intl';
 
 import {AnnouncementsDisplay} from '@/components/announcement/display';
 import {AnnouncementProps} from '@/components/announcement/type';
-import {getAnnouncementsOfLocale} from '@/controller/announcement';
+import {getAnnouncementsOfLocale} from '@/controller/announcement/main';
 import {isLocale} from '@/utils/i18n';
 
 

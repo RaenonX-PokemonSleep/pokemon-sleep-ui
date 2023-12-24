@@ -1,7 +1,7 @@
 import {v4} from 'uuid';
 
 import {defaultSeedUsage} from '@/const/game/seed';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {PokemonInfo} from '@/types/game/pokemon';
 import {IngredientChainMap} from '@/types/game/pokemon/ingredient';
 import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon';

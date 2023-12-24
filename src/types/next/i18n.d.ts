@@ -307,6 +307,13 @@ declare interface IntlMessages extends UiMessages, GameMessages {
         NoSkillAfterWakeup: string,
       },
     },
+    SleepStyle: {
+      DrowsyPowerRequired: string,
+      DrowsyPowerMultiplier: string,
+      Message: {
+        UnlockRankDiffers: string,
+      },
+    },
     Stamina: {
       Title: string,
       SleepSession: string,

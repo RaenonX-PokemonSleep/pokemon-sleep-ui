@@ -4,7 +4,7 @@ import {clsx} from 'clsx';
 
 import {PokemonNameSmall} from '@/components/shared/pokemon/name/small';
 import {pokeInBoxFavoriteStyle} from '@/styles/game/pokebox';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {PokemonInfo} from '@/types/game/pokemon';
 
 

@@ -2,7 +2,7 @@ import {FilterInclusionMap} from '@/components/input/filter/type';
 import {IngredientId, IngredientMap} from '@/types/game/ingredient';
 import {MealTypeId} from '@/types/game/meal/main';
 import {Migratable} from '@/types/migrate';
-import {SynergizedSettingsRequiredData, UserSettingsBundle} from '@/types/userData/settings';
+import {CookingUserSettingsRequiredData, UserSettingsBundle} from '@/types/userData/settings';
 
 
 export type MealFilter = Migratable & {
@@ -13,7 +13,7 @@ export type MealFilter = Migratable & {
   showEnergy: boolean,
 };
 
-export type MealDataProps = SynergizedSettingsRequiredData & {
+export type MealDataProps = CookingUserSettingsRequiredData & {
   ingredientMap: IngredientMap,
   preloaded: UserSettingsBundle,
 };

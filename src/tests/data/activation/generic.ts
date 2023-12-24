@@ -9,7 +9,6 @@ const testActivationKey: Omit<ActivationKey, 'key'> = {
   contact: {
     patreon: 'test@email.com',
   },
-  isSpecial: false,
   note: '',
 };
 

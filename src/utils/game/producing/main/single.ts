@@ -1,14 +1,14 @@
 import {PokemonProducingRateWithPayload} from '@/types/game/producing/rate';
-import {GetIngredientMultiplierOpts} from '@/utils/game/producing/ingredient/multiplier';
+import {CookingUserSettings} from '@/types/userData/settings';
 import {getPokemonProducingRateMulti} from '@/utils/game/producing/main/multi';
 import {GetPokemonProducingRateOpts} from '@/utils/game/producing/main/type';
 import {GetProducingRateBehavior, GetProducingRateSharedOpts} from '@/utils/game/producing/type';
 
 
 type GetPokemonProducingRateSingleOpts =
-  Omit<GetIngredientMultiplierOpts, 'production'> &
   GetPokemonProducingRateOpts &
   GetProducingRateSharedOpts & {
+    cookingSettings: CookingUserSettings,
     calcBehavior?: GetProducingRateBehavior,
   };
 

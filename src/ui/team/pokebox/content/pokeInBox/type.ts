@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {PokemonInfoWithSortingPayload, SortedPokemonInfo} from '@/components/shared/pokemon/sorter/type';
-import {PokeInBox} from '@/types/game/pokebox';
+import {PokeInBox} from '@/types/game/pokebox/main';
 import {PokedexMap, PokemonInfo} from '@/types/game/pokemon';
 import {RatingResultOfLevel, RatingSetupData} from '@/types/game/pokemon/rating';
 import {UserSettingsBundle} from '@/types/userData/settings';

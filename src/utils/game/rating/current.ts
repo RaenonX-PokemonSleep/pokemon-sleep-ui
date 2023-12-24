@@ -31,7 +31,7 @@ export const getRatingValueOfCurrent = (opts: GetRatingValueOfSimulationOpts) =>
       calcBehavior: {
         simulateHelperBonusOnSelf: getSimulateHelperBonusOnSelf(basis),
       },
-    }).rate.final,
+    }).atStage.final,
     singleParams,
   });
 };

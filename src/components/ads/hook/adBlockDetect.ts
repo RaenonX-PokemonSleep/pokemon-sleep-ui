@@ -1,6 +1,8 @@
 import React from 'react';
 
+import {adsCheckIntervalMs} from '@/components/ads/const';
 import {AdBlockState} from '@/components/ads/type';
+import {useTimedTick} from '@/hooks/timedTick';
 
 
 type UseAdBlockDetectorOpts = {
@@ -10,6 +12,25 @@ type UseAdBlockDetectorOpts = {
 
 export const useAdBlockDetector = ({setAdblockState, recheckDeps}: UseAdBlockDetectorOpts) => {
   const adsRef = React.useRef<HTMLDivElement>(null);
+  // For triggering ads check
+  // https://github.com/gorhill/uBlock/wiki/Resources-Library#nosiifjs-
+  // https://github.com/gorhill/uBlock/wiki/Resources-Library#no-setinterval-ifjs-
+  // https://github.com/gorhill/uBlock/wiki/Resources-Library#no-settimeout-ifjs-
+  useTimedTick({
+    onTick: (counter) => {
+      // Ignore the first tick
+      if (!counter) {
+        return;
+      }
+
+      setAdblockState((original) => ({
+        ...original,
+        isBlocked: !original.found && !adsRef.current?.querySelector('ins.adsbygoogle > div'),
+      } satisfies AdBlockState));
+    },
+    intervalMs: adsCheckIntervalMs,
+    rescheduleDeps: recheckDeps,
+  });
 
   const observer = new MutationObserver((mutations) => {
     setAdblockState({
@@ -27,16 +48,6 @@ export const useAdBlockDetector = ({setAdblockState, recheckDeps}: UseAdBlockDet
 
     return () => observer.disconnect();
   }, [adsRef.current]);
-
-  React.useEffect(() => {
-    // Simply keep checking every 15 secs
-    // uBO has a `no-setTimeout` defuser that invalidates the very 1st call of the `setTimeout()`
-    // https://github.com/gorhill/uBlock/wiki/Resources-Library#no-settimeout-ifjs-
-    setInterval(() => setAdblockState((original) => ({
-      ...original,
-      isBlocked: !original.found && !adsRef.current?.querySelector('ins.adsbygoogle > div'),
-    } satisfies AdBlockState)), 15000);
-  }, recheckDeps);
 
   return adsRef;
 };
