@@ -39,28 +39,24 @@ export const useOcr = ({
   const runOcr = React.useCallback(async () => {
     const image = imageRef.current;
     if (!image) {
-      const msg = 'No image ref available';
-      onError(msg);
+      onError('No image ref available');
       return;
     }
 
     const canvas = canvasRef.current;
     if (!canvas || !imageRef.current) {
-      const msg = 'No canvas ref available';
-      onError(msg);
+      onError('No canvas ref available');
       return;
     }
 
     const ctx = canvas.getContext('2d', {willReadFrequently: true});
     if (!ctx) {
-      const msg = 'No canvas 2D context available';
-      onError(msg);
+      onError('No canvas 2D context available');
       return;
     }
 
     if (!image.width || !image.height) {
-      const msg = 'Image is 0 dimension for either width or height';
-      onError(msg);
+      onError('Image is 0 dimension for either width or height');
       return;
     }
 
@@ -144,7 +140,6 @@ export const useOcr = ({
       text,
     });
     await worker.terminate();
-    // return Promise.resolve();
   }, [onError, setState, setStateGated, settings, whitelistChars]);
 
   return {state, canvasRef, imageRef, runOcr};
