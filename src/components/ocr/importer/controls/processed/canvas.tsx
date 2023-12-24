@@ -23,7 +23,7 @@ export const OcrImporterProcessedImageCanvas = ({processed}: OcrImporterProcesse
     context.canvas.width = processed.width;
 
     requestAnimationFrame(() => context.putImageData(processed, 0, 0));
-  }, []);
+  }, [processed]);
 
   return (
     <Flex ref={refContainer} noFullWidth className="w-full p-2 sm:w-[60vw]">

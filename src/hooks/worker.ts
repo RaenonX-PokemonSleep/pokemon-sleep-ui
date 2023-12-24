@@ -28,7 +28,7 @@ export const useWorker = <TWorkerMessage, TWorkerResult>({
     };
 
     return () => worker.current?.terminate();
-  }, []);
+  }, [generateWorker, onCompleted, onError, workerName]);
 
   const work = React.useCallback((message: TWorkerMessage) => {
     const webWorker = worker.current;
@@ -38,7 +38,7 @@ export const useWorker = <TWorkerMessage, TWorkerResult>({
     }
 
     webWorker.postMessage(message);
-  }, [worker.current]);
+  }, [workerName]);
 
   return {work};
 };

@@ -27,6 +27,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
+    "extendedDiagnostics": true,
     "incremental": true,
     "plugins": [
       {
