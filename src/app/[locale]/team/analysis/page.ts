@@ -1,8 +1,14 @@
 import {GenerateMetadata} from '@/types/next/metadata';
 import {TeamAnalysis} from '@/ui/team/analysis/main';
+import {isProduction} from '@/utils/environment';
 import {getI18nTranslator} from '@/utils/i18n';
 import {generatePageMetaFromString} from '@/utils/meta';
+import {loadTeamAnalysisLogger} from '@/utils/team/utils';
 
+
+if (! isProduction) {
+  loadTeamAnalysisLogger();
+}
 
 export const generateMetadata: GenerateMetadata = async ({params}) => {
   const {locale} = params;
