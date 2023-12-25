@@ -10,6 +10,9 @@
   },
   "scripts": {
     "dev": "next dev",
+    "dev:debug:server": "node --inspect=9229 ./node_modules/next/dist/bin/next",
+    "dev:debug:delay": "node scripts/client-ready.js",
+    "dev:react-devtools": "react-devtools",
     "build": "next build",
     "start": "next start",
     "tsc": "tsc --noemit",
@@ -17,10 +20,7 @@
     "lint:css": "stylelint **/*.css",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "devops": "node scripts/discord-webhook.js",
-    "dev:debug-server": "node --inspect=9229 ./node_modules/next/dist/bin/next",
-    "dev:debug-client": "react-devtools",
-    "dev:debug:client-delay": "node scripts/client-ready.js"
+    "devops": "node scripts/discord-webhook.js"
   },
   "dependencies": {
     "@auth/mongodb-adapter": "2.0.9",

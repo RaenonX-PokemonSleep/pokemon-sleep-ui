@@ -17,7 +17,7 @@
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev:debug-server"],
+      "runtimeArgs": ["run", "dev:debug:server"],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "presentation": {

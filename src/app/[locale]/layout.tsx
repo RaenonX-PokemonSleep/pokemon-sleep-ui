@@ -6,6 +6,7 @@ import {Noto_Sans} from 'next/font/google';
 import {notFound} from 'next/navigation';
 import Script from 'next/script';
 
+import {ReactDevTools} from '@/components/reactDevTools';
 import {SiteTracking} from '@/components/tracking/main';
 import {LocaleLayoutParams, LocaleLayoutProps} from '@/types/next/layout';
 import {locales} from '@/types/next/locale';
@@ -37,13 +38,9 @@ const RootLayout = ({children, params}: React.PropsWithChildren<LocaleLayoutProp
   return (
     <html lang={locale} className="h-full" suppressHydrationWarning>
       {/* Google Analytics */}
-      {
-        isProduction() &&
+      {isProduction() && (
         <>
-          <Script
-            strategy="lazyOnload"
-            src="https://www.googletagmanager.com/gtag/js?id=G-2LL7T4CCZP"
-          />
+          <Script strategy="lazyOnload" src="https://www.googletagmanager.com/gtag/js?id=G-2LL7T4CCZP"/>
           <Script id="google-analytics">
             {`
               window.dataLayer = window.dataLayer || [];
@@ -56,7 +53,8 @@ const RootLayout = ({children, params}: React.PropsWithChildren<LocaleLayoutProp
             `}
           </Script>
         </>
-      }
+      )}
+      <ReactDevTools/>
       <React.Suspense>
         <SiteTracking/>
       </React.Suspense>

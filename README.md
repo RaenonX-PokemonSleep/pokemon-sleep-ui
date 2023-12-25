@@ -62,3 +62,14 @@ Discord: https://discord.gg/eeveesleep
 ### Video Tutorial (Traditional Chinese)
 
 - Discord `yuhsin#5108`
+
+## Development
+
+### React DevTools
+
+To enable React DevTools, follow the steps below to enable it:
+1. Set environment variable `REACT_APP_DEV_TOOLS` to any value. This can be done using either `.env` or `.env.local` file.
+2. Run both `yarn run dev:react-devtools` and `yarn dev`.
+3. React debug/profiling on Safari will be available at `http://localhost:8097`.
+
+Read the [React Native document](https://reactnative.dev/docs/react-devtools) for more information.

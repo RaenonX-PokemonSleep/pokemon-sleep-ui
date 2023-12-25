@@ -14,6 +14,8 @@ declare global {
       API_TOKEN_INBOUND: string;
       API_TOKEN_OUTBOUND: string;
 
+      REACT_APP_DEV_TOOLS?: string;
+
       // `next-auth` URLs
       NEXTAUTH_URL: string;
       NEXTAUTH_COOKIE_DOMAIN: string;

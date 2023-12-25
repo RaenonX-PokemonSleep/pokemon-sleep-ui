@@ -2,8 +2,9 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "npm: dev",
-      "command": "npm",
+      "label": "Yarn: Dev",
+      "detail": "Starts the next.js dev server without server debugging.",
+      "command": "yarn",
       "type": "process",
       "args": ["run", "dev"],
       "isBackground": true,
@@ -64,10 +65,11 @@
       }
     },
     {
-      "label": "npm: debug server",
-      "command": "npm",
+      "label": "Yarn: Debug Server",
+      "detail": "Starts the next.js dev server with server debugging.",
+      "command": "yarn",
       "type": "process",
-      "args": ["run", "dev:debug-server"],
+      "args": ["run", "dev:debug:server"],
       "isBackground": true,
       "problemMatcher": [
         "$tsc-watch",
@@ -102,10 +104,12 @@
     },
     {
       "label": "wait for server delay",
+      "detail": "Waits for http://localhost:3000 response or up to 25 seconds.",
       "type": "process",
-      "command": "node",
+      "command": "yarn",
+      "hide": true,
       "isBackground": true,
-      "args": ["scripts/client-ready.js"],
+      "args": ["run", "dev:debug:delay"],
       "problemMatcher": [
         {
           "owner": "javascript",
@@ -135,24 +139,37 @@
       }
     },
     {
-      "label": "npm: debug client",
+      "label": "Yarn: React DevTools",
+      "detail": "Starts the standalone React DevTools applicaiton.",
       "type": "process",
-      "command": "npm",
+      "command": "yarn",
       "isBackground": true,
-      "args": ["run", "dev:debug-client"],
+      "args": ["run", "dev:react-devtools"],
       "problemMatcher": [],
       "presentation": {
         "group": "dev"
       }
     },
     {
-      "label": "debug client",
-      "dependsOn": ["wait for server delay", "npm: debug client"],
-      "dependsOrder": "sequence",
+      "label": "Launch: Client (Chrome) & Server Debug Session",
+      "detail": "Starts a debug session in Chrome with complete breakpoint support through VSCode.",
+      "type": "process",
+      "command": "echo ${command:workbench.action.debug.start}",
+      "args": ["Debug Next.js Server & Client"],
+      "problemMatcher": [],
       "presentation": {
-        "group": "dev"
-      },
-      "problemMatcher": []
-    }
+        "group": "debug"
+      }
+    },
+    {
+      "label": "Launch: Select Debug",
+      "detail": "Select and Start a VSCode debug session.",
+      "type": "process",
+      "command": "echo ${command:workbench.action.debug.selectandstart}",
+      "problemMatcher": [],
+      "presentation": {
+        "group": "debug"
+      }
+    },
   ]
 }
