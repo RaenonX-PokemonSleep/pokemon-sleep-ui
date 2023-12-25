@@ -1,0 +1,53 @@
+{
+  "editor.formatOnSave": true,
+  "editor.formatOnType": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSaveMode": "file", // required to format on save
+  "eslint.options": {
+    "overrideConfigFile": ".eslintrc.yml"
+  },
+  "editor.minimap.enabled": false,
+  "eslint.format.enable": true,
+  "eslint.debug": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+	"stylelint.stylelintPath": "./node_modules/stylelint",
+	"stylelint.configBasedir": "./",
+	"stylelint.configFile": ".stylelintrc.yml",
+	"stylelint.validate": ["css", "scss"],
+	"[css]": {
+		"editor.formatOnSave": false,
+		"editor.defaultFormatter": "stylelint.vscode-stylelint",
+		"editor.codeActionsOnSave": {
+			"source.formatDocument": "always",
+			"source.fixAll.stylelint": "always"
+		}
+	},
+  "emmet.includeLanguages": {
+    "postcss": "css"
+  },
+  "files.associations": { 
+      "*.css": "tailwindcss" 
+  },
+  "search.exclude": {
+    "**/.editorconfig": true,
+    "**/node_modules/**": true,
+    "**/.git": true,
+    "**/tests/*": false,
+    "package-lock.json": true,
+    "**/.github": true,
+    "**/logs": true,
+    "**/.next": true,
+    "**/yarn.lock": true,
+  },
+  "files.exclude": {
+    "**/yarn.lock": true,
+    "**/node_modules/**": false,
+    "**/.git": false
+  },
+  "eslint.useESLintClass": true,
+  "eslint.run": "onType",
+}

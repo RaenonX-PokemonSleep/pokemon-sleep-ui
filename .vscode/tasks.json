@@ -1,0 +1,158 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "npm: dev",
+      "command": "npm",
+      "type": "process",
+      "args": ["run", "dev"],
+      "isBackground": true,
+      "problemMatcher": [
+        "$tsc-watch",
+        "$node-sass",
+        {
+          "owner": "typescript",
+          "source": "Typescript",
+          "fileLocation": ["relative", "${workspaceRoot}"],
+          "applyTo": "allDocuments",
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "^(▲ Next.js)",
+            "endsPattern": "^(✓ Ready in (.*)s)$"
+          },
+          "pattern": [
+            {
+              "regexp": "(ERROR|WARNING)\\(TypeScript\\)  (.*)",
+              "severity": 1,
+              "message": 2
+            },
+            {
+              "regexp": "^ FILE  (.*):(\\d*):(\\d*)$",
+              "file": 1,
+              "line": 2,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "owner": "eslint",
+          "source": "ESLint",
+          "fileLocation": "relative",
+          "applyTo": "allDocuments",
+          "background": {
+            "activeOnStart": true
+            // "beginsPattern": "sd",
+            // "endsPattern": " > "
+          },
+          "pattern": [
+            {
+              "regexp": "^ (ERROR|WARNING)\\(ESLint\\)  (.*)$",
+              "severity": 1,
+              "message": 2
+            },
+            {
+              "regexp": "^ FILE  (.*):(\\d*):(\\d*)$",
+              "file": 1,
+              "line": 2,
+              "column": 3
+            }
+          ]
+        }
+      ],
+      "presentation": {
+        "group": "dev"
+      }
+    },
+    {
+      "label": "npm: debug server",
+      "command": "npm",
+      "type": "process",
+      "args": ["run", "dev:debug-server"],
+      "isBackground": true,
+      "problemMatcher": [
+        "$tsc-watch",
+        {
+          "owner": "typescript",
+          "source": "Typescript",
+          "fileLocation": ["relative", "${workspaceRoot}"],
+          "applyTo": "allDocuments",
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "^(▲ Next.js)",
+            "endsPattern": "^(✓ Ready in (.*)s)$"
+          },
+          "pattern": [
+            {
+              "regexp": "(ERROR|WARNING)\\(TypeScript\\)  (.*)",
+              "severity": 1,
+              "message": 2
+            },
+            {
+              "regexp": "^ FILE  (.*):(\\d*):(\\d*)$",
+              "file": 1,
+              "line": 2,
+              "column": 3
+            }
+          ]
+        }
+      ],
+      "presentation": {
+        "group": "dev"
+      }
+    },
+    {
+      "label": "wait for server delay",
+      "type": "process",
+      "command": "node",
+      "isBackground": true,
+      "args": ["scripts/client-ready.js"],
+      "problemMatcher": [
+        {
+          "owner": "javascript",
+          "source": "Javascript",
+          "fileLocation": "relative",
+          "pattern": [
+            {
+              "regexp": "ERROR in [^ ]* (.*):(.*):(.*)",
+              "file": 1,
+              "line": 2,
+              "column": 3
+            },
+            {
+              "regexp": ".*",
+              "message": 0
+            }
+          ],
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "^(Waiting for server to come online)",
+            "endsPattern": "^(✓ Done)$"
+          }
+        }
+      ],
+      "presentation": {
+        "group": "dev"
+      }
+    },
+    {
+      "label": "npm: debug client",
+      "type": "process",
+      "command": "npm",
+      "isBackground": true,
+      "args": ["run", "dev:debug-client"],
+      "problemMatcher": [],
+      "presentation": {
+        "group": "dev"
+      }
+    },
+    {
+      "label": "debug client",
+      "dependsOn": ["wait for server delay", "npm: debug client"],
+      "dependsOrder": "sequence",
+      "presentation": {
+        "group": "dev"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Debug Next.js Server & Client",
+      "configurations": ["Next.js: debug server-side", "Next.js: debug client-side"],
+      "stopAll": true,
+      "presentation": {
+        "group": "dev",
+        "order": 1
+      }
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Next.js: debug server-side",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:debug-server"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "presentation": {
+        "group": "dev"
+      }
+    },
+    {
+      "name": "Next.js: debug client-side",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "wait for server delay",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}",
+      "cleanUp": "wholeBrowser",
+      "internalConsoleOptions": "neverOpen",
+      "sourceMaps": true,
+      "presentation": {
+        "group": "dev"
+      }
+    }
+  ]
+}
