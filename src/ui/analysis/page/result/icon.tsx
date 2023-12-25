@@ -3,9 +3,9 @@ import React from 'react';
 import {clsx} from 'clsx';
 import {useTranslations} from 'next-intl';
 
-import {Link} from '@/components/i18n/exports';
 import {Flex} from '@/components/layout/flex/common';
 import {NextImage} from '@/components/shared/common/image/main';
+import {NextLink} from '@/components/shared/common/link/main';
 import {GenericPokeballIcon} from '@/components/shared/icon/pokeball';
 import {imageIconSizes} from '@/styles/image';
 import {AnalysisStatsLinkedData} from '@/ui/analysis/page/calc/type';
@@ -39,17 +39,17 @@ export const AnalysisPokemonIcon = <TData, >({linked, renderData}: Props<TData>)
       }
       <Flex direction="row" className="gap-2">
         <Flex center>
-          <Link href={`/pokedex/${pokemonId}`} className="button-clickable group relative h-6 w-6">
+          <NextLink href={`/pokedex/${pokemonId}`} className="button-clickable group relative h-6 w-6">
             <GenericPokeballIcon alt={t2('Pokedex.Page.Title', {name})} noWrap/>
-          </Link>
+          </NextLink>
         </Flex>
         <Flex center>
-          <Link href={`/analysis/${pokemonId}`} className="button-clickable group relative h-6 w-6">
+          <NextLink href={`/analysis/${pokemonId}`} className="button-clickable group relative h-6 w-6">
             <NextImage
               src="/images/generic/analysis.png" alt={t2('Analysis.Title', {name})}
               sizes={imageIconSizes} className="invert-hoverable"
             />
-          </Link>
+          </NextLink>
         </Flex>
       </Flex>
     </Flex>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import XCircleIcon from '@heroicons/react/24/outline/XCircleIcon';
 
-import {Link} from '@/components/i18n/exports';
+import {NextLink} from '@/components/shared/common/link/main';
 import {PokemonIngredientIconContent} from '@/components/shared/pokemon/ingredients/iconContent';
 import {IngredientIconCommonProps} from '@/components/shared/pokemon/ingredients/type';
 
@@ -24,8 +24,8 @@ export const PokemonIngredientIcon = (props: Props) => {
 
   return (
     // `tabIndex` -1 to avoid tab selecting
-    <Link href={`/ingredient/${id}`} tabIndex={-1} target="_blank">
+    <NextLink href={`/ingredient/${id}`} tabIndex={-1} target="_blank">
       <PokemonIngredientIconContent {...props} id={id} clickableStyle/>
-    </Link>
+    </NextLink>
   );
 };

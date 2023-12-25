@@ -2,8 +2,8 @@ import React from 'react';
 
 import {useTranslations} from 'next-intl';
 
-import {Link} from '@/components/i18n/exports';
 import {Flex} from '@/components/layout/flex/common';
+import {NextLink} from '@/components/shared/common/link/main';
 import {PokemonTypeIcon} from '@/components/shared/icon/pokeType';
 import {PokemonBerryIcon} from '@/components/shared/pokemon/berry/icon';
 import {PokemonFilterTitle} from '@/components/shared/pokemon/filter/title';
@@ -78,9 +78,9 @@ export const AnalysisStatsOfPokemonMeta = ({pokemon, stats, level}: AnalysisStat
       </AnalysisStatsGroupedUI>
       <AnalysisStatsGroupedUI stats={stats.pokemon.mainSkill} title={<PokemonFilterTitle type="mainSkill"/>}>
         <Flex center className="h-12 text-2xl">
-          <Link href={`/info/mainskill/${skill}`} className="button-clickable p-1 px-1.5">
+          <NextLink href={`/info/mainskill/${skill}`} className="button-clickable p-1 px-1.5">
             {t(`MainSkill.Name.${skill}`)}
-          </Link>
+          </NextLink>
         </Flex>
       </AnalysisStatsGroupedUI>
     </AnalysisStatsLayout>

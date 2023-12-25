@@ -2,9 +2,9 @@ import React from 'react';
 
 import {useTranslations} from 'next-intl';
 
-import {Link} from '@/components/i18n/exports';
 import {Flex} from '@/components/layout/flex/common';
 import {IconWithInfo} from '@/components/shared/common/image/iconWithInfo';
+import {NextLink} from '@/components/shared/common/link/main';
 import {ColoredEnergyIcon} from '@/components/shared/icon/energyColored';
 import {IngredientIconsFromMeal} from '@/components/shared/meal/ingredients/iconsFromMeal';
 import {recipeMaxLevel} from '@/const/game/meal';
@@ -38,7 +38,7 @@ export const IngredientCookableMeals = ({mealMap, ingredientMap, ingredientId}: 
           getMealBaseStrength({level: recipeMaxLevel, meal: b, ingredientMap}).strengthFinal
         ))
         .map((meal) => (
-          <Link key={meal.id} href={`/meal/${meal.id}`}>
+          <NextLink key={meal.id} href={`/meal/${meal.id}`}>
             <Flex center className="button-clickable-bg gap-1 p-1.5">
               <div className="text-sm">
                 {t(meal.id.toString())}
@@ -58,7 +58,7 @@ export const IngredientCookableMeals = ({mealMap, ingredientMap, ingredientId}: 
                 </div>
               </Flex>
             </Flex>
-          </Link>
+          </NextLink>
         ))}
     </Flex>
   );

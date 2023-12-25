@@ -2,9 +2,9 @@ import React from 'react';
 
 import {useTranslations} from 'next-intl';
 
-import {Link} from '@/components/i18n/exports';
 import {Flex} from '@/components/layout/flex/common';
 import {IconWithInfo} from '@/components/shared/common/image/iconWithInfo';
+import {NextLink} from '@/components/shared/common/link/main';
 import {imageSmallIconSizes} from '@/styles/image';
 import {IngredientProduction} from '@/types/game/pokemon/ingredient';
 
@@ -21,7 +21,7 @@ export const PokemonProductionIngredientLink = ({production}: Props) => {
   const ingredientName = t(id.toString());
 
   return (
-    <Link href={`/ingredient/${id}`} className="button-clickable-bg p-1.5">
+    <NextLink href={`/ingredient/${id}`} className="button-clickable-bg p-1.5">
       <Flex center className="gap-0.5">
         <IconWithInfo
           imageSrc={`/images/ingredient/${id}.png`}
@@ -34,6 +34,6 @@ export const PokemonProductionIngredientLink = ({production}: Props) => {
           {ingredientName}
         </div>
       </Flex>
-    </Link>
+    </NextLink>
   );
 };

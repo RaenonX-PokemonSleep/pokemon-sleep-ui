@@ -3,8 +3,8 @@ import React from 'react';
 import {clsx} from 'clsx';
 import {useTranslations} from 'next-intl';
 
-import {Link} from '@/components/i18n/exports';
 import {Flex} from '@/components/layout/flex/common';
+import {NextLink} from '@/components/shared/common/link/main';
 import {MealImage} from '@/components/shared/meal/image';
 import {MealLinkDetail} from '@/components/shared/meal/linkDetail';
 import {MealLinkProps} from '@/components/shared/meal/type';
@@ -20,7 +20,7 @@ export const MealLink = (props: MealLinkProps) => {
   const mealName = t(id.toString());
 
   return (
-    <Link href={`/meal/${id}`} className={clsx(
+    <NextLink href={`/meal/${id}`} className={clsx(
       'relative flex h-20 w-full flex-col items-end rounded-lg',
       mealTypeBackgroundStyle[type],
     )}>
@@ -33,6 +33,6 @@ export const MealLink = (props: MealLinkProps) => {
           <MealLinkDetail {...props}/>
         </Flex>
       </Flex>
-    </Link>
+    </NextLink>
   );
 };

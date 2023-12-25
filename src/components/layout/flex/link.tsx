@@ -2,14 +2,16 @@ import {UrlObject} from 'url';
 
 import React, {HTMLAttributeAnchorTarget} from 'react';
 
-import {Link} from '@/components/i18n/exports';
 import {FlexCommonProps} from '@/components/layout/flex/type';
 import {getFlexStyles} from '@/components/layout/flex/utils';
+import {NextLink} from '@/components/shared/common/link/main';
 
 
 type Props = FlexCommonProps & {
   href: string | UrlObject,
   target?: HTMLAttributeAnchorTarget,
+  scroll?: boolean,
+  prefetch?: boolean,
 };
 
 const FlexLinkInternal = ({
@@ -17,12 +19,21 @@ const FlexLinkInternal = ({
   noFullWidth = true,
   href,
   target,
+  scroll,
+  prefetch,
   children,
   ...props
 }: React.PropsWithChildren<Props>, ref: React.ForwardedRef<HTMLAnchorElement>) => (
-  <Link ref={ref} href={href} className={getFlexStyles(direction, {noFullWidth, ...props})} target={target}>
+  <NextLink
+    ref={ref}
+    href={href}
+    className={getFlexStyles(direction, {noFullWidth, ...props})}
+    target={target}
+    scroll={scroll}
+    prefetch={prefetch}
+  >
     {children}
-  </Link>
+  </NextLink>
 );
 
 export const FlexLink = React.forwardRef(FlexLinkInternal);

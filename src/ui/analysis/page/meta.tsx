@@ -2,8 +2,8 @@ import React from 'react';
 
 import InformationCircleIcon from '@heroicons/react/24/solid/InformationCircleIcon';
 
-import {Link} from '@/components/i18n/exports';
 import {Flex} from '@/components/layout/flex/common';
+import {NextLink} from '@/components/shared/common/link/main';
 import {PokemonImage} from '@/components/shared/pokemon/image/main';
 import {PokemonNameBig} from '@/components/shared/pokemon/name/big';
 import {AnalysisPageCommonProps} from '@/ui/analysis/page/type';
@@ -17,12 +17,12 @@ export const AnalysisMeta = ({pokemon}: Props) => {
       <PokemonNameBig pokemon={pokemon}/>
       <div className="relative h-60 w-60">
         <PokemonImage pokemonId={pokemon.id} image="portrait" isShiny={false}/>
-        <Link
+        <NextLink
           href={`/pokedex/${pokemon.id}`}
           className="button-clickable absolute bottom-0 right-0 h-7 w-7 rounded-full"
         >
           <InformationCircleIcon/>
-        </Link>
+        </NextLink>
       </div>
     </Flex>
   );

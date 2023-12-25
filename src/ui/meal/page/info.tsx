@@ -2,9 +2,9 @@ import React from 'react';
 
 import {useTranslations} from 'next-intl';
 
-import {Link} from '@/components/i18n/exports';
 import {Flex} from '@/components/layout/flex/common';
 import {NextImage} from '@/components/shared/common/image/main';
+import {NextLink} from '@/components/shared/common/link/main';
 import {MealMeta} from '@/components/shared/meal/meta';
 import {imageIconSizes} from '@/styles/image';
 import {MealExp} from '@/ui/meal/page/exp';
@@ -23,7 +23,7 @@ export const MealInfo = (props: MealCommonProps) => {
         <MealExp {...props}/>
         <Flex direction="row" center className="gap-1.5">
           {meal.ingredients.map(({id, quantity}) => (
-            <Link key={id} href={`/ingredient/${id}`} className="button-clickable-bg p-1.5">
+            <NextLink key={id} href={`/ingredient/${id}`} className="button-clickable-bg p-1.5">
               <Flex center>
                 <div className="relative h-12 w-12">
                   <NextImage src={`/images/ingredient/${id}.png`} alt={t(id.toString())} sizes={imageIconSizes}/>
@@ -32,7 +32,7 @@ export const MealInfo = (props: MealCommonProps) => {
                   {quantity}
                 </div>
               </Flex>
-            </Link>
+            </NextLink>
           ))}
         </Flex>
       </Flex>
