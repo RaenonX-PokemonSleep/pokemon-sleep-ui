@@ -6,6 +6,7 @@ import {OcrImporterImagePreview} from '@/components/ocr/importer/controls/image'
 import {OcrImporterProcessedImage} from '@/components/ocr/importer/controls/processed/main';
 import {OcrImporterText} from '@/components/ocr/importer/controls/text';
 import {OcrRenderImageData} from '@/components/ocr/type';
+import {getCanvas2dContext} from '@/utils/ocr/canvas';
 
 
 type Props = {
@@ -23,8 +24,8 @@ export const OcrImporterControls = ({text, image, onConfirm, disableConfirm}: Pr
       return null;
     }
 
-    return canvas.getContext('2d')?.getImageData(0, 0, canvas.width, canvas.height);
-  }, [image.processedCanvasRef.current]);
+    return getCanvas2dContext(canvas)?.getImageData(0, 0, canvas.width, canvas.height);
+  }, [image]);
 
   return (
     <Flex direction="row" className="justify-end gap-1.5">

@@ -55,8 +55,8 @@ export const Ocr = <TData, >({buttonText, textToData, renderData, getWhitelistCh
 
   return (
     <Flex className="gap-1.5">
-      <div className="hidden">
-        <NextImage ref={imageRef} src={image ?? ''} alt="OCR Origin"/>
+      <div className="fixed hidden">
+        {image && <NextImage ref={imageRef} src={image} alt="OCR Origin" priority/>}
         <canvas id="output" ref={canvasRef}/>
       </div>
       <AdsUnit/>

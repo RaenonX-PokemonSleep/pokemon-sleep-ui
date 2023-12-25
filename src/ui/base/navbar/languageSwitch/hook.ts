@@ -14,7 +14,7 @@ export const useLanguageSwitch = () => {
 
   const onLocaleSwitch = (nextLocale: string) => {
     startTransition(() => {
-      router.push(pathname, {locale: nextLocale});
+      router.push(pathname, {locale: nextLocale, scroll: false});
     });
   };
 

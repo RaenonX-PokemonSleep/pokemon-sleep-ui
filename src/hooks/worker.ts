@@ -38,7 +38,7 @@ export const useWorker = <TWorkerMessage, TWorkerResult>({
     }
 
     webWorker.postMessage(message);
-  }, [worker.current]);
+  }, [worker]);
 
   return {work};
 };

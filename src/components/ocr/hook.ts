@@ -6,6 +6,7 @@ import {ocrLocaleToTesseract} from '@/components/ocr/const';
 import {OcrSettings, OcrState, UseOcrReturn} from '@/components/ocr/type';
 import {ocrThresholdImage} from '@/components/ocr/utils';
 import {useGatedUpdateState} from '@/hooks/gatedUpdate';
+import {getCanvas2dContext} from '@/utils/ocr/canvas';
 
 
 type UseOcrOpts = {
@@ -49,7 +50,7 @@ export const useOcr = ({
       return;
     }
 
-    const ctx = canvas.getContext('2d');
+    const ctx = getCanvas2dContext(canvas);
     if (!ctx) {
       onError('No canvas 2D context available');
       return;
@@ -140,7 +141,7 @@ export const useOcr = ({
       text,
     });
     await worker.terminate();
-  }, [settings]);
+  }, [settings, whitelistChars]);
 
   return {state, canvasRef, imageRef, runOcr};
 };

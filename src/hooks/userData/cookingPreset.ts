@@ -9,7 +9,7 @@ import {cloneMerge} from '@/utils/object/cloneMerge';
 export const useUserCookingPreset = ({server, client}: UseUserDataOpts<UserCookingPreset>): UserCookingPreset => {
   return useCustomCompareMemo(
     () => cloneMerge(server, client),
-    [client],
+    [server, client],
     (prev, next) => isEqual(prev, next),
   );
 };

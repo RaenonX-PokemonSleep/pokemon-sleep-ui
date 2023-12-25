@@ -2,6 +2,7 @@ import React from 'react';
 
 import {Flex} from '@/components/layout/flex/common';
 import {OcrImporterProcessedImageProps} from '@/components/ocr/importer/controls/processed/type';
+import {getCanvas2dContext} from '@/utils/ocr/canvas';
 
 
 export const OcrImporterProcessedImageCanvas = ({processed}: OcrImporterProcessedImageProps) => {
@@ -14,7 +15,7 @@ export const OcrImporterProcessedImageCanvas = ({processed}: OcrImporterProcesse
       return;
     }
 
-    const context = refCanvas.current?.getContext('2d');
+    const context = getCanvas2dContext(refCanvas.current);
     if (!context) {
       return;
     }
@@ -23,7 +24,7 @@ export const OcrImporterProcessedImageCanvas = ({processed}: OcrImporterProcesse
     context.canvas.width = processed.width;
 
     requestAnimationFrame(() => context.putImageData(processed, 0, 0));
-  }, []);
+  }, [processed]);
 
   return (
     <Flex ref={refContainer} noFullWidth className="w-full p-2 sm:w-[60vw]">

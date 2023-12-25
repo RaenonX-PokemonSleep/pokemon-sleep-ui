@@ -1,5 +1,4 @@
-import isEqual from 'lodash/isEqual';
-import {useCustomCompareMemo} from 'use-custom-compare';
+import React from 'react';
 
 import {defaultUserSettings} from '@/const/user/settings';
 import {UseUserDataOpts} from '@/hooks/userData/type';
@@ -10,14 +9,10 @@ import {cloneMerge} from '@/utils/object/cloneMerge';
 
 
 export const useUserSettings = ({server, client}: UseUserDataOpts<UserSettings>): UserSettings => {
-  return useCustomCompareMemo(
-    () => migrate({
-      original: defaultUserSettings,
-      override: cloneMerge(server, client),
-      migrators: userSettingsMigrators,
-      migrateParams: {},
-    }),
-    [client],
-    (prev, next) => isEqual(prev, next),
-  );
+  return React.useMemo(() => migrate({
+    original: defaultUserSettings,
+    override: cloneMerge(server, client),
+    migrators: userSettingsMigrators,
+    migrateParams: {},
+  }), [client, server]);
 };
