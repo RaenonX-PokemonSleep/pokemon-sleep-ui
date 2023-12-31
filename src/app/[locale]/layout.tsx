@@ -15,6 +15,7 @@ import {Providers} from '@/ui/base/providers';
 import {isProduction} from '@/utils/environment';
 import {isLocale} from '@/utils/i18n';
 
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import '../globals.css';
 
 

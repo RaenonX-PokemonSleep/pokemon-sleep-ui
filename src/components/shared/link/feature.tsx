@@ -6,6 +6,7 @@ import {Flex} from '@/components/layout/flex/common';
 import {NextLink} from '@/components/shared/common/link/main';
 import {FeatureLinkProps} from '@/components/shared/link/type';
 
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import styles from './main.module.css';
 
 

@@ -10,6 +10,7 @@ import {useLayout} from '@/hooks/layout/main';
 import {announcementTextClasses} from '@/styles/text/announcement';
 import {AnnouncementClient} from '@/types/mongo/announcement';
 
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import styles from './main.module.css';
 
 

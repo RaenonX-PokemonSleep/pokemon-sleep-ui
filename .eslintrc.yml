@@ -44,16 +44,16 @@ rules:
   "unused-imports/no-unused-imports":
     - error
 
+  # Need to disable this for `@typescript-eslint/indent` to work properly
+  indent:
+    - off
+
   "@typescript-eslint/indent":
     - error
     - 2
     - ignoredNodes:
         - TSTypeParameterInstantiation
       MemberExpression: 1
-
-  # Needs to disable local indent for this rule to work properly
-  indent:
-    - off
 
   linebreak-style:
     - error
@@ -68,6 +68,17 @@ rules:
     - allow:
       - warn
       - error
+
+  # Need to disable this for `@typescript-eslint/no-restricted-imports` to work properly
+  no-restricted-imports:
+    - off
+
+  "@typescript-eslint/no-restricted-imports":
+    - error
+    - patterns:
+      - group:
+          - .*
+        message: Only absolute import, such as `@/const/auth` is allowed.
 
   import/order:
     - error
@@ -90,12 +101,14 @@ rules:
     - error
     - count: 2
 
+  # Need to disable this for `@typescript-eslint/object-curly-spacing` to work properly
   object-curly-spacing: off
 
   "@typescript-eslint/object-curly-spacing":
     - error
     - never
 
+  # Need to disable this for `@typescript-eslint/semi` to work properly
   semi:
     - off
 

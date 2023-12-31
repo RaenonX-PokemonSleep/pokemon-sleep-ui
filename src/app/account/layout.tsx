@@ -1,6 +1,7 @@
 /* eslint-disable new-cap */
 import React from 'react';
 
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import '../globals.css';
 
 
