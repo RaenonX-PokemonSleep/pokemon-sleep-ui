@@ -5,8 +5,6 @@ import React from 'react';
 import {Noto_Sans} from 'next/font/google';
 import {notFound} from 'next/navigation';
 import Script from 'next/script';
-// eslint-disable-next-line camelcase
-import {unstable_setRequestLocale} from 'next-intl/server';
 
 import {SiteTracking} from '@/components/tracking/main';
 import {LocaleLayoutParams, LocaleLayoutProps} from '@/types/next/layout';
@@ -35,8 +33,6 @@ const RootLayout = ({children, params}: React.PropsWithChildren<LocaleLayoutProp
   if (!isLocale(locale)) {
     notFound();
   }
-
-  unstable_setRequestLocale(locale);
 
   return (
     <html lang={locale} className="h-full" suppressHydrationWarning>

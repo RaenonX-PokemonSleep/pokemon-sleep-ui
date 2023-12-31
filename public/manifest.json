@@ -1,0 +1,18 @@
+{
+  "name": "Pokemon Sleep Info Wiki",
+  "short_name": "PKS by RaenonX",
+  "theme_color": "#aa97d7",
+  "background_color": "#2aa97d7",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "images/icon.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

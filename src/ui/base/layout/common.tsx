@@ -3,6 +3,8 @@ import React from 'react';
 import {clsx} from 'clsx';
 import Script from 'next/script';
 import {getServerSession} from 'next-auth';
+// eslint-disable-next-line camelcase
+import {unstable_setRequestLocale} from 'next-intl/server';
 import {Toaster} from 'react-hot-toast';
 
 import {adsClientId} from '@/components/ads/const';
@@ -27,6 +29,7 @@ export const PageLayout = ({
   ...props
 }: React.PropsWithChildren<UiPageProps>) => {
   const {locale} = props;
+  unstable_setRequestLocale(locale);
 
   setLocale(locale);
 
