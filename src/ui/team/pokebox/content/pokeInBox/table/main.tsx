@@ -16,7 +16,7 @@ export const PokeInBoxTable = ({
   ...props
 }: PokeInBoxViewOfTypeProps) => {
   return (
-    <Flex className="h-[70vh]">
+    <Flex className="h-[85vh]">
       <AutoSizer disableWidth>
         {({height}) => (
           <FixedSizeList

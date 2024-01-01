@@ -107,13 +107,13 @@ export const PokeboxLoadedClient = (props: Props) => {
         setEditingPokeInBox={setEditingPokeInBox}
         {...props}
       />
-      <Flex className="gap-1.5 xl:flex-row">
+      <Flex className="gap-1.5">
+        <AdsUnit/>
         <PokeboxPickerInput
           pokemonList={pokemonList}
           onClick={(pokemonId) => setEditingPokeInBox({action: 'create', pokemonId})}
           {...props}
         />
-        <AdsUnit className="block lg:hidden"/>
         <PokeboxViewerInput
           {...props}
           pokemonList={pokemonList}

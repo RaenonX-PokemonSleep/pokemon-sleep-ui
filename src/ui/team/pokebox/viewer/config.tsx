@@ -41,13 +41,13 @@ export const PokeboxViewerConfig = ({session, ...props}: PokeboxViewerInputCommo
   const {filter, setFilter} = props;
 
   const {isPremium} = useUserActivation(session);
-  const viewCollapsible = useCollapsible();
+  const collapsible = useCollapsible();
   const {showPremiumRequiredToast} = usePremiumRequiredToast();
   const t = useTranslations('UI.InPage.Team.Box.DisplayType');
   const t2 = useTranslations('UI.InPage.Pokedex.Input');
 
   return (
-    <Collapsible state={viewCollapsible} classNameForHeight={inputSectionHeight} appear button={
+    <Collapsible state={collapsible} classNameForHeight={inputSectionHeight} button={
       <Flex direction="row" center className="gap-0.5">
         <GenericPokeballIcon alt="Pokemon" dimension="h-6 w-6"/>
         <AdjustmentsHorizontalIcon className="h-6 w-6"/>
