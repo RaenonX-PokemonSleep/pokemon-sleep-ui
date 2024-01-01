@@ -15,12 +15,14 @@ import {PokeInBoxViewUnitProps} from '@/ui/team/pokebox/content/pokeInBox/type';
 import {getRateOfPokemon} from '@/ui/team/pokebox/content/pokeInBox/utils';
 import {PokeInBoxCommonProps} from '@/ui/team/pokebox/content/type';
 import {PokeboxDisplayType} from '@/ui/team/pokebox/viewer/type';
+import {getPokemonProducingParams} from '@/utils/game/producing/params';
 
 
 export const PokeInBoxTableRow = (props: PokeInBoxViewUnitProps) => {
   const {
     pokeInBox,
     pokedexMap,
+    pokemonProducingParamsMap,
     display,
     isLevelPreview,
     onClick,
@@ -44,6 +46,10 @@ export const PokeInBoxTableRow = (props: PokeInBoxViewUnitProps) => {
     isLevelPreview,
     rateOfPokemon,
     display,
+    pokemonProducingParams: getPokemonProducingParams({
+      pokemonId: pokemon.id,
+      pokemonProducingParamsMap,
+    }),
   };
 
   return (

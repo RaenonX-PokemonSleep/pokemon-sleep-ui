@@ -9,26 +9,18 @@ import {PokemonMainSkillTriggerRate} from '@/components/shared/pokemon/productio
 import {PokemonSleepTypeIcon} from '@/components/shared/pokemon/sleepType/icon';
 import {specialtyIdMap} from '@/const/game/pokemon';
 import {PokeInBoxTableDetailsProps} from '@/ui/team/pokebox/content/pokeInBox/table/details/type';
-import {getPokemonProducingParams} from '@/utils/game/producing/params';
 
 
 export const PokeInBoxTablePokemon = (props: PokeInBoxTableDetailsProps) => {
   const {
     pokemon,
-    pokemonProducingParamsMap,
+    pokemonProducingParams,
   } = props;
-
   const {
-    id,
     sleepType,
     specialty,
     berry,
   } = pokemon;
-
-  const producingParams = getPokemonProducingParams({
-    pokemonId: id,
-    pokemonProducingParamsMap,
-  });
 
   return (
     <>
@@ -40,10 +32,10 @@ export const PokeInBoxTablePokemon = (props: PokeInBoxTableDetailsProps) => {
         <PokemonBerryIcon id={berry.id}/>
       </Flex>
       <Flex noFullWidth center className="w-36 text-sm">
-        <PokemonIngredientRate params={producingParams} dimension="h-5 w-5"/>
+        <PokemonIngredientRate params={pokemonProducingParams} dimension="h-5 w-5"/>
       </Flex>
       <Flex noFullWidth center className="w-36 text-sm">
-        <PokemonMainSkillTriggerRate params={producingParams} dimension="h-5 w-5"/>
+        <PokemonMainSkillTriggerRate params={pokemonProducingParams} dimension="h-5 w-5"/>
       </Flex>
     </>
   );
