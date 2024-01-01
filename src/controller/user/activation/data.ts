@@ -16,6 +16,7 @@ import {
   ActivationProperties,
   activationSourceAutomated,
   ActivationStatus,
+  activationType,
 } from '@/types/mongo/activation';
 import {toActivationDataAtClient} from '@/utils/user/activation/utils';
 
@@ -42,7 +43,6 @@ export const consumeActivationKey = async (userIdString: string, key: string): P
       await session.withTransaction(async () => {
         const userId = new ObjectId(userIdString);
 
-        await collection.deleteOne({userId}, {session});
         await collection.insertOne(
           {userId: new ObjectId(userId), ...activationKey},
           {session},
@@ -99,20 +99,19 @@ export const getActivationDataByFilter = ({executorUserId, filter}: GetActivatio
   return getSingleData(getCollection(), filter);
 };
 
-export const getActivatedUser = async (userId: string | undefined): Promise<ActivationData | null> => {
-  const data = await getSingleData(getCollection(), {userId: new ObjectId(userId)});
-
-  if (!data) {
-    return null;
-  }
-
-  return data;
+export const getUserActivationList = async (userId: string | undefined): Promise<ActivationData[]> => {
+  return getDataAsArray(getCollection(), {userId: new ObjectId(userId)});
 };
 
-export const getActivationData = async (userId: string): Promise<ActivationStatus | null> => {
-  const data = await getActivatedUser(userId);
+export const getActivationStatus = async (userId: string): Promise<ActivationStatus> => {
+  const activationStatus: ActivationStatus = Object.fromEntries(activationType.map((type) => [type, false]));
+  for (const {activation} of await getUserActivationList(userId)) {
+    for (const type of activationType) {
+      activationStatus[type] ||= activation[type];
+    }
+  }
 
-  return data?.activation ?? null;
+  return activationStatus;
 };
 
 type GetAllActivationDataOpts = ControllerRequireUserIdOpts & {

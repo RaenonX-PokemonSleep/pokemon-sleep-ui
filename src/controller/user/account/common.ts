@@ -1,6 +1,6 @@
 import {ObjectId} from 'bson';
 
-import {getActivatedUser} from '@/controller/user/activation/data';
+import {getUserActivationList} from '@/controller/user/activation/data';
 
 
 const adminUid = process.env.NEXTAUTH_ADMIN_UID ? new ObjectId(process.env.NEXTAUTH_ADMIN_UID) : null;
@@ -24,9 +24,7 @@ export const isCmsMod = async (userId: string | undefined): Promise<boolean> => 
     return false;
   }
 
-  const user = await getActivatedUser(userId);
-
-  return user?.isCmsMod ?? false;
+  return (await getUserActivationList(userId)).some(({isCmsMod}) => isCmsMod);
 };
 
 export const throwIfNotCmsMod = async (userId: string | undefined) => {

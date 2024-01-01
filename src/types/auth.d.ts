@@ -14,7 +14,7 @@ export type NextAuthSessionUser = DefaultSession['user'] & {
   errorOnUpdate: boolean,
   preloaded: UserPreloadedData,
   lazyLoaded: UserLazyLoadedData,
-  activation: ActivationStatus | null,
+  activation: ActivationStatus,
   build: string,
 };
 
