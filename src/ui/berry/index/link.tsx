@@ -3,7 +3,7 @@ import React from 'react';
 import {useTranslations} from 'next-intl';
 
 import {Flex} from '@/components/layout/flex/common';
-import {NextLink} from '@/components/shared/common/link/main';
+import {FlexLink} from '@/components/layout/flex/link';
 import {ColoredEnergyIcon} from '@/components/shared/icon/energyColored';
 import {PokemonTypeIcon} from '@/components/shared/icon/pokeType';
 import {PokemonBerryIconNoLink} from '@/components/shared/pokemon/berry/iconNoLink';
@@ -25,24 +25,27 @@ export const BerryLink = ({berryData}: Props) => {
   const berryEnergyArray = berryData.energy.map(({energy}) => energy);
 
   return (
-    <NextLink href={`/berry/${id}`} className="w-full">
-      <Flex key={id} center className="button-clickable-bg gap-0.5 p-1">
-        <Flex center className="relative">
-          <div className="absolute bottom-0 right-1">
-            <PokemonTypeIcon type={id} dimension="h-8 w-8"/>
-          </div>
-          <PokemonBerryIconNoLink id={id} dimension="h-12 w-12"/>
-        </Flex>
-        <div className="whitespace-nowrap p-1">
-          {berryName}
+    <FlexLink
+      href={`/berry/${id}`}
+      direction='col'
+      center
+      className="button-clickable-bg w-full gap-0.5 p-1"
+    >
+      <Flex center className="relative">
+        <div className="absolute bottom-0 right-1">
+          <PokemonTypeIcon type={id} dimension="h-8 w-8"/>
         </div>
-        <Flex direction="row" center className="gap-1">
-          <ColoredEnergyIcon alt={t2('Strength')}/>
-          <div>
-            {formatInt(Math.min(...berryEnergyArray))} ~ {formatInt(Math.max(...berryEnergyArray))}
-          </div>
-        </Flex>
+        <PokemonBerryIconNoLink id={id} dimension="h-12 w-12"/>
       </Flex>
-    </NextLink>
+      <div className="whitespace-nowrap p-1">
+        {berryName}
+      </div>
+      <Flex direction="row" center className="gap-1">
+        <ColoredEnergyIcon alt={t2('Strength')}/>
+        <div>
+          {formatInt(Math.min(...berryEnergyArray))} ~ {formatInt(Math.max(...berryEnergyArray))}
+        </div>
+      </Flex>
+    </FlexLink>
   );
 };

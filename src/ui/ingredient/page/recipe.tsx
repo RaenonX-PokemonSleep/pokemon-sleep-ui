@@ -3,8 +3,8 @@ import React from 'react';
 import {useTranslations} from 'next-intl';
 
 import {Flex} from '@/components/layout/flex/common';
+import {FlexLink} from '@/components/layout/flex/link';
 import {IconWithInfo} from '@/components/shared/common/image/iconWithInfo';
-import {NextLink} from '@/components/shared/common/link/main';
 import {ColoredEnergyIcon} from '@/components/shared/icon/energyColored';
 import {IngredientIconsFromMeal} from '@/components/shared/meal/ingredients/iconsFromMeal';
 import {recipeMaxLevel} from '@/const/game/meal';
@@ -38,27 +38,31 @@ export const IngredientCookableMeals = ({mealMap, ingredientMap, ingredientId}: 
           getMealBaseStrength({level: recipeMaxLevel, meal: b, ingredientMap}).strengthFinal
         ))
         .map((meal) => (
-          <NextLink key={meal.id} href={`/meal/${meal.id}`}>
-            <Flex center className="button-clickable-bg gap-1 p-1.5">
+          <FlexLink
+            href={`/meal/${meal.id}`}
+            direction='col'
+            key={meal.id}
+            center
+            className="button-clickable-bg gap-1 p-1.5"
+          >
+            <div className="text-sm">
+              {t(meal.id.toString())}
+            </div>
+            <IconWithInfo
+              imageSrc={`/images/meal/portrait/${meal.id}.png`}
+              imageAlt={t(meal.id.toString())}
+              imageDimension="h-12 w-12"
+              imageSizes={imageGallerySizes}
+              info={getMealIngredientCount(meal)}
+            />
+            <IngredientIconsFromMeal meal={meal} useTextShadow={false}/>
+            <Flex direction="row" center className="gap-0.5">
+              <ColoredEnergyIcon dimension="h-4 w-4" alt={t2('Energy')}/>
               <div className="text-sm">
-                {t(meal.id.toString())}
+                {getMealBaseStrength({level: recipeMaxLevel, meal, ingredientMap}).strengthFinal}
               </div>
-              <IconWithInfo
-                imageSrc={`/images/meal/portrait/${meal.id}.png`}
-                imageAlt={t(meal.id.toString())}
-                imageDimension="h-12 w-12"
-                imageSizes={imageGallerySizes}
-                info={getMealIngredientCount(meal)}
-              />
-              <IngredientIconsFromMeal meal={meal} useTextShadow={false}/>
-              <Flex direction="row" center className="gap-0.5">
-                <ColoredEnergyIcon dimension="h-4 w-4" alt={t2('Energy')}/>
-                <div className="text-sm">
-                  {getMealBaseStrength({level: recipeMaxLevel, meal, ingredientMap}).strengthFinal}
-                </div>
-              </Flex>
             </Flex>
-          </NextLink>
+          </FlexLink>
         ))}
     </Flex>
   );
