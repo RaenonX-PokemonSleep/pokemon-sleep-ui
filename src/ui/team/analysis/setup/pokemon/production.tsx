@@ -9,11 +9,11 @@ import {PokemonFrequencyFromProducingRate} from '@/components/shared/pokemon/fre
 import {PokemonTimeToFullPack} from '@/components/shared/pokemon/fullPack/main';
 import {PokemonBerryProduction} from '@/components/shared/pokemon/production/berry';
 import {PokemonIngredientProduction} from '@/components/shared/pokemon/production/ingredient';
+import {PokemonProbabilityOfNoSkill} from '@/components/shared/pokemon/production/noSkill';
+import {PokemonSkillProduction} from '@/components/shared/pokemon/production/skill';
 import {PokemonProductionSplitFromPokemonRate} from '@/components/shared/pokemon/production/split/fromPokemon';
-import {PokemonProbabilityOfNoSkill} from '@/components/shared/pokemon/production/stats/noSkill';
 import {ProducingRateUI} from '@/components/shared/production/rate/main';
 import {specialtyIdMap} from '@/const/game/pokemon';
-import {TeamAnalysisSkillRate} from '@/ui/team/analysis/setup/common/skill';
 import {stateOfRateToShow} from '@/ui/team/analysis/setup/const';
 import {TeamAnalysisPokemonProps} from '@/ui/team/analysis/setup/pokemon/type';
 import {toProducingRateOfState} from '@/utils/game/producing/convert';
@@ -64,7 +64,7 @@ export const TeamAnalysisPokemonProduction = (props: TeamAnalysisPokemonProps) =
       </Flex>
       <HorizontalSplitter className="w-full"/>
       <Flex center className={clsx(specialty === specialtyIdMap.skill && 'info-highlight')}>
-        <TeamAnalysisSkillRate
+        <PokemonSkillProduction
           id={skill}
           rate={toProducingRateOfState({rate: stats.skill, state: 'equivalent'})}
         />
