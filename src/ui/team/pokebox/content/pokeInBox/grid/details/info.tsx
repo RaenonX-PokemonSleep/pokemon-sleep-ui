@@ -5,10 +5,10 @@ import {clsx} from 'clsx';
 import {Flex} from '@/components/layout/flex/common';
 import {PokemonIngredientIcons} from '@/components/shared/pokemon/ingredients/icons';
 import {specialtyIdMap} from '@/const/game/pokemon';
-import {PokeInBoxCommonProps} from '@/ui/team/pokebox/content/type';
+import {PokeInBoxGridDetailsProps} from '@/ui/team/pokebox/content/pokeInBox/grid/details/type';
 
 
-export const PokeInBoxGridInfo = ({pokemon, pokeInBox}: PokeInBoxCommonProps) => {
+export const PokeInBoxGridInfo = ({pokemon, pokeInBox}: PokeInBoxGridDetailsProps) => {
   const {ingredients} = pokeInBox;
   const {specialty} = pokemon;
 

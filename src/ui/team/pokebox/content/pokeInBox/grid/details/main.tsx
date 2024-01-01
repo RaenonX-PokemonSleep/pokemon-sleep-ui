@@ -11,51 +11,64 @@ import {
 import {PokeInBoxGridProductionTotal} from '@/ui/team/pokebox/content/pokeInBox/grid/details/productionTotal';
 import {PokeInBoxGridRating} from '@/ui/team/pokebox/content/pokeInBox/grid/details/rating';
 import {PokeInBoxGridSkills} from '@/ui/team/pokebox/content/pokeInBox/grid/details/skills';
+import {PokeInBoxGridDetailsProps} from '@/ui/team/pokebox/content/pokeInBox/grid/details/type';
 import {PokeInBoxCommonProps} from '@/ui/team/pokebox/content/type';
 import {PokeboxViewerDisplay} from '@/ui/team/pokebox/viewer/type';
+import {getPokemonProducingParams} from '@/utils/game/producing/params';
 
 
 type Props = PokeInBoxCommonProps & {
   displayType: PokeboxViewerDisplay['displayOfGrid'],
 };
 
-export const PokeInBoxDetails = (props: Props) => {
-  const {displayType} = props;
+export const PokeInBoxDetails = ({displayType, ...props}: Props) => {
+  const {
+    pokemon,
+    pokemonProducingParamsMap,
+  } = props;
+
+  const detailProps: PokeInBoxGridDetailsProps = {
+    ...props,
+    pokemonProducingParams: getPokemonProducingParams({
+      pokemonId: pokemon.id,
+      pokemonProducingParamsMap,
+    }),
+  };
 
   if (displayType === 'productionTotal') {
-    return <PokeInBoxGridProductionTotal {...props}/>;
+    return <PokeInBoxGridProductionTotal {...detailProps}/>;
   }
 
   if (displayType === 'productionBerry') {
-    return <PokeInBoxGridProductionBerry {...props}/>;
+    return <PokeInBoxGridProductionBerry {...detailProps}/>;
   }
 
   if (displayType === 'productionIngredient') {
-    return <PokeInBoxGridProductionIngredient {...props}/>;
+    return <PokeInBoxGridProductionIngredient {...detailProps}/>;
   }
 
   if (displayType === 'rating') {
-    return <PokeInBoxGridRating {...props}/>;
+    return <PokeInBoxGridRating {...detailProps}/>;
   }
 
   if (displayType === 'skills') {
-    return <PokeInBoxGridSkills {...props}/>;
+    return <PokeInBoxGridSkills {...detailProps}/>;
   }
 
   if (displayType === 'frequency') {
-    return <PokeInBoxGridFrequency {...props}/>;
+    return <PokeInBoxGridFrequency {...detailProps}/>;
   }
 
   if (displayType === 'maxCarry') {
-    return <PokeInBoxGridMaxCarry {...props}/>;
+    return <PokeInBoxGridMaxCarry {...detailProps}/>;
   }
 
   if (displayType === 'info') {
-    return <PokeInBoxGridInfo {...props}/>;
+    return <PokeInBoxGridInfo {...detailProps}/>;
   }
 
   if (displayType === 'pokemon') {
-    return <PokeInBoxGridPokemon {...props}/>;
+    return <PokeInBoxGridPokemon {...detailProps}/>;
   }
 
   console.error(`Unhandled Pokebox poke-in-box details display type: ${displayType satisfies never}`);

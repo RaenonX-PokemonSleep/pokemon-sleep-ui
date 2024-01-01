@@ -6,13 +6,13 @@ import {Flex} from '@/components/layout/flex/common';
 import {ColoredEnergyIcon} from '@/components/shared/icon/energyColored';
 import {PokemonProductionSplitFromPokemonRate} from '@/components/shared/pokemon/production/split/fromPokemon';
 import {stateOfRateToShow} from '@/ui/team/pokebox/content/pokeInBox/const';
+import {PokeInBoxGridDetailsProps} from '@/ui/team/pokebox/content/pokeInBox/grid/details/type';
 import {getRateOfPokemon} from '@/ui/team/pokebox/content/pokeInBox/utils';
-import {PokeInBoxCommonProps} from '@/ui/team/pokebox/content/type';
 import {getTotalEnergyOfPokemonProducingRate} from '@/utils/game/producing/rateReducer';
 import {formatFloat} from '@/utils/number/format';
 
 
-export const PokeInBoxGridProductionTotal = (props: PokeInBoxCommonProps) => {
+export const PokeInBoxGridProductionTotal = (props: PokeInBoxGridDetailsProps) => {
   const {pokemon} = props;
 
   const t = useTranslations('UI.InPage.Pokedex');

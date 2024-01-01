@@ -8,12 +8,12 @@ import {ColoredEnergyIcon} from '@/components/shared/icon/energyColored';
 import {PokemonBerryIcon} from '@/components/shared/pokemon/berry/icon';
 import {specialtyIdMap} from '@/const/game/pokemon';
 import {stateOfRateToShow} from '@/ui/team/pokebox/content/pokeInBox/const';
+import {PokeInBoxGridDetailsProps} from '@/ui/team/pokebox/content/pokeInBox/grid/details/type';
 import {getRateOfPokemon} from '@/ui/team/pokebox/content/pokeInBox/utils';
-import {PokeInBoxCommonProps} from '@/ui/team/pokebox/content/type';
 import {formatFloat} from '@/utils/number/format';
 
 
-export const PokeInBoxGridProductionBerry = (props: PokeInBoxCommonProps) => {
+export const PokeInBoxGridProductionBerry = (props: PokeInBoxGridDetailsProps) => {
   const {pokemon} = props;
   const t = useTranslations('UI.InPage.Pokedex');
 
