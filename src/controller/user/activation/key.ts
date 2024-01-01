@@ -5,13 +5,9 @@ import {Collection, Filter, UpdateOneModel} from 'mongodb';
 import {getDataAsArray, getSingleData} from '@/controller/common';
 import {throwIfNotAdmin} from '@/controller/user/account/common';
 import {ControllerRequireUserIdOpts} from '@/controller/user/account/type';
+import {addActivationKeyIndex} from '@/controller/user/activation/index';
 import mongoPromise from '@/lib/mongodb';
-import {
-  activationContact,
-  ActivationKey,
-  ActivationKeyAtClient,
-  ActivationProperties,
-} from '@/types/mongo/activation';
+import {ActivationKey, ActivationKeyAtClient, ActivationProperties} from '@/types/mongo/activation';
 import {toActivationKeyAtClient} from '@/utils/user/activation/utils';
 
 
@@ -159,17 +155,5 @@ export const removeActivationKeyByKey = async (key: string) => (
   removeActivationKeySingle({executorUserId: process.env.NEXTAUTH_ADMIN_UID, filter: {key}})
 );
 
-const addIndex = async () => {
-  const collection = await getCollection();
-
-  return Promise.all([
-    collection.createIndex({key: 1}, {unique: true}),
-    collection.createIndex({expiry: 1}, {expireAfterSeconds: 0}),
-    collection.createIndex({source: 1}),
-    ...activationContact.map((channel) => (
-      collection.createIndex({[`contact.${channel}`]: 1}, {unique: true, sparse: true})
-    )),
-  ]);
-};
-
-addIndex().catch((e) => console.error('MongoDB failed to initialize user activation key index', e));
+addActivationKeyIndex(getCollection)
+  .catch((e) => console.error('MongoDB failed to initialize user activation key index', e));

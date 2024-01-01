@@ -6,10 +6,10 @@ import {adsFreeByAdsClickDuration} from '@/const/activation/common';
 import {getDataAsArray, getSingleData} from '@/controller/common';
 import {throwIfNotAdmin} from '@/controller/user/account/common';
 import {ControllerRequireUserIdOpts} from '@/controller/user/account/type';
+import {addActivationKeyIndex} from '@/controller/user/activation/index';
 import {getActivationKey, removeActivationKeyByKey} from '@/controller/user/activation/key';
 import mongoPromise from '@/lib/mongodb';
 import {
-  activationContact,
   ActivationData,
   ActivationDataAtClient,
   ActivationKey,
@@ -222,18 +222,9 @@ export const removeActivationDataByKey = ({executorUserId, key}: RemoveActivatio
   removeActivationDataSingle({executorUserId, filter: {key}})
 );
 
-const addIndex = async () => {
-  const collection = await getCollection();
+const addIndex = async () => Promise.all([
+  addActivationKeyIndex(getCollection),
+  (await getCollection()).createIndex({userId: 1}),
+]);
 
-  return Promise.all([
-    collection.createIndex({userId: 1}, {unique: true}),
-    collection.createIndex({key: 1}, {unique: true}),
-    collection.createIndex({expiry: 1}, {expireAfterSeconds: 0}),
-    collection.createIndex({source: 1}),
-    ...activationContact.map((channel) => (
-      collection.createIndex({[`contact.${channel}`]: 1}, {unique: true, sparse: true})
-    )),
-  ]);
-};
-
-addIndex().catch((e) => console.error('MongoDB failed to initialize user ads free data index', e));
+addIndex().catch((e) => console.error('MongoDB failed to initialize user activation data index', e));
