@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {useCookingUserSettings} from '@/hooks/userData/cookingSettings';
+import {MealCoverage} from '@/types/game/cooking';
 import {ProducingRate} from '@/types/game/producing/rate';
 import {useTeamProducingStatsComp} from '@/ui/team/analysis/calcHook/comp';
 import {useTeamProducingStatsTotal} from '@/ui/team/analysis/calcHook/total';
@@ -8,6 +9,8 @@ import {UseTeamProducingStatsOpts} from '@/ui/team/analysis/calcHook/type';
 import {stateOfRateToShow} from '@/ui/team/analysis/setup/const';
 import {TeamProducingStats} from '@/ui/team/analysis/setup/type';
 import {getCurrentTeam} from '@/ui/team/analysis/utils';
+import {getMealCoverage} from '@/utils/game/cooking';
+import {toIngredientProductionCounterFromGroupedRate} from '@/utils/game/producing/ingredient/utils';
 import {getTotalOfGroupedProducingRate} from '@/utils/game/producing/rateReducer';
 
 
@@ -52,5 +55,17 @@ export const useTeamProducingStats = (opts: UseTeamProducingStatsOpts): TeamProd
     quantity: getTotalOfGroupedProducingRate({rate: total, key: 'quantity'}),
   }), deps);
 
-  return {bySlot, total, grouped, overall};
+  const mealCoverage: MealCoverage = React.useMemo(() => getMealCoverage({
+    meals: cookingSettings.targetMeals,
+    ingredientProduction: toIngredientProductionCounterFromGroupedRate(grouped.ingredient),
+    period: analysisPeriod,
+  }), deps);
+
+  return {
+    bySlot,
+    total,
+    grouped,
+    overall,
+    mealCoverage,
+  };
 };

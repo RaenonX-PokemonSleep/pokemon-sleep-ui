@@ -18,7 +18,7 @@ export const MealCoverageDetailsSingle = ({id, coverage}: Props) => {
   return (
     <Flex direction="row" noFullWidth className="w-24">
       <PokemonIngredientIcon id={id} noLink/>
-      <Flex className="text-xs">
+      <Flex center className="text-xs">
         <div>{formatFloat3(percent)}%</div>
         <ProgressBar percent={percent} classBarHeight="h-1"/>
       </Flex>

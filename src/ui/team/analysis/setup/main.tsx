@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {AdsUnit} from '@/components/ads/main';
+import {MealCoverageDetails} from '@/components/shared/meal/coverage/details/main';
 import {usePokemonLinkPopup} from '@/components/shared/pokemon/linkPopup/hook';
 import {PokemonLinkPopup} from '@/components/shared/pokemon/linkPopup/main';
 import {PokemonGroupedProduction} from '@/components/shared/pokemon/production/grouped/main';
@@ -52,6 +53,7 @@ export const TeamAnalysisSetupView = (props: Props) => {
       <TeamAnalysisSetupControl setup={setup} setSetup={setSetup}/>
       <AdsUnit/>
       <PokemonGroupedProduction grouped={statsOfTeam.grouped}/>
+      <MealCoverageDetails coverage={statsOfTeam.mealCoverage} className="button-bg rounded-lg p-2"/>
       <TeamAnalysisSummary
         period="weekly"
         stats={statsOfTeam}

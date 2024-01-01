@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {clsx} from 'clsx';
+
 import {Flex} from '@/components/layout/flex/common';
 import {ProgressBar} from '@/components/progressBar';
 import {MealCoverageDetailsSingle} from '@/components/shared/meal/coverage/details/single';
@@ -9,11 +11,12 @@ import {MealCoverage} from '@/types/game/cooking';
 
 type Props = {
   coverage: MealCoverage,
+  className?: string,
 };
 
-export const MealCoverageDetails = ({coverage}: Props) => {
+export const MealCoverageDetails = ({coverage, className}: Props) => {
   return (
-    <Flex className="items-center gap-1.5 md:flex-row">
+    <Flex className={clsx('items-center gap-1.5 md:flex-row', className)}>
       <Flex className="gap-1.5">
         <Flex direction="row" noFullWidth wrap className="items-center justify-between gap-1.5">
           {Object.entries(coverage.byIngredient).map(([id, coverage]) => {

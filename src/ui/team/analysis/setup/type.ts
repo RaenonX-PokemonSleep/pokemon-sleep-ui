@@ -1,3 +1,4 @@
+import {MealCoverage} from '@/types/game/cooking';
 import {PokemonProducingRate, PokemonProducingRateByType, ProducingRate} from '@/types/game/producing/rate';
 import {TeamAnalysisSlotName} from '@/types/teamAnalysis';
 import {CalculatedUserSettings} from '@/types/userData/settings';
@@ -21,6 +22,7 @@ export type TeamProducingStats = {
   total: TeamProducingStatsTotal,
   grouped: PokemonProducingRateByType,
   overall: ProducingRate,
+  mealCoverage: MealCoverage,
 };
 
 export type TeamFinalEstimateInput = {
