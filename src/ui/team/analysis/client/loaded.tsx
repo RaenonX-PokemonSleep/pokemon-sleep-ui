@@ -5,8 +5,6 @@ import {v4} from 'uuid';
 import {AdsUnit} from '@/components/ads/main';
 import {TeamAnalysisComp, TeamAnalysisConfig, TeamAnalysisSetup} from '@/types/teamAnalysis';
 import {UserSettingsBundle} from '@/types/userData/settings';
-import {useTeamAnalysisPokemonFilter} from '@/ui/team/analysis/hook';
-import {TeamAnalysisPokemonFilterUI} from '@/ui/team/analysis/input/main';
 import {TeamAnalysisSetupView} from '@/ui/team/analysis/setup/main';
 import {TeamAnalysisCompDependentInput} from '@/ui/team/analysis/setup/team/input';
 import {TeamAnalysisDataProps} from '@/ui/team/analysis/type';
@@ -59,23 +57,10 @@ export const TeamAnalysisLoadedClient = (props: Props) => {
   }, []);
   const [setup, setSetup] = React.useState<TeamAnalysisSetup>(initialSetup);
   const currentTeam = getCurrentTeam({setup});
-  const {filter, setFilter, isIncluded} = useTeamAnalysisPokemonFilter({
-    pokemonList,
-    ...props,
-  });
 
   return (
     <>
       <AdsUnit/>
-      <TeamAnalysisPokemonFilterUI
-        pokemonList={pokemonList}
-        setup={setup}
-        setSetup={setSetup}
-        isIncluded={isIncluded}
-        filter={filter}
-        setFilter={setFilter}
-        {...props}
-      />
       <TeamAnalysisCompDependentInput
         pokemonList={pokemonList}
         currentTeam={currentTeam}

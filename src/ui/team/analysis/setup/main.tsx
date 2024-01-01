@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {AdsUnit} from '@/components/ads/main';
-import {Flex} from '@/components/layout/flex/common';
 import {usePokemonLinkPopup} from '@/components/shared/pokemon/linkPopup/hook';
 import {PokemonLinkPopup} from '@/components/shared/pokemon/linkPopup/main';
 import {PokemonGroupedProduction} from '@/components/shared/pokemon/production/grouped/main';
@@ -44,23 +43,21 @@ export const TeamAnalysisSetupView = (props: Props) => {
   return (
     <>
       <PokemonLinkPopup state={state} setState={setState}/>
-      <Flex className="gap-1.5">
-        <TeamAnalysisTeamView
-          {...props}
-          showPokemon={showPokemon}
-          statsOfTeam={statsOfTeam}
-          bundle={bundle}
-        />
-        <TeamAnalysisSetupControl setup={setup} setSetup={setSetup}/>
-        <AdsUnit/>
-        <PokemonGroupedProduction grouped={statsOfTeam.grouped}/>
-        <TeamAnalysisSummary
-          period="weekly"
-          stats={statsOfTeam}
-          snorlaxData={snorlaxData}
-        />
-        <AdsUnit/>
-      </Flex>
+      <TeamAnalysisTeamView
+        {...props}
+        showPokemon={showPokemon}
+        statsOfTeam={statsOfTeam}
+        bundle={bundle}
+      />
+      <TeamAnalysisSetupControl setup={setup} setSetup={setSetup}/>
+      <AdsUnit/>
+      <PokemonGroupedProduction grouped={statsOfTeam.grouped}/>
+      <TeamAnalysisSummary
+        period="weekly"
+        stats={statsOfTeam}
+        snorlaxData={snorlaxData}
+      />
+      <AdsUnit/>
     </>
   );
 };

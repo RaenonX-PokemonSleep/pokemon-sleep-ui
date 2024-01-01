@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {PokemonInputFilter, UsePokemonFilterCommonData} from '@/components/shared/pokemon/filter/type';
+import {UsePokemonFilterCommonData} from '@/components/shared/pokemon/filter/type';
 import {BerryDataMap} from '@/types/game/berry';
 import {IngredientMap} from '@/types/game/ingredient';
 import {FieldMetaMap} from '@/types/game/mapMeta';
@@ -13,8 +13,6 @@ import {TeamAnalysisSetup} from '@/types/teamAnalysis';
 import {UserLazyLoadedData} from '@/types/userData/main';
 import {CookingUserSettingsRequiredData, UserSettingsBundle} from '@/types/userData/settings';
 
-
-export type TeamAnalysisPokemonFilter = PokemonInputFilter;
 
 export type TeamAnalysisServerDataProps = UsePokemonFilterCommonData & CookingUserSettingsRequiredData & {
   pokedexMap: PokedexMap,
