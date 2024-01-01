@@ -7,6 +7,7 @@ import {FlexButton} from '@/components/layout/flex/button';
 import {GenericPokeballIcon} from '@/components/shared/icon/pokeball';
 import {PokemonVanillaPopup} from '@/components/shared/pokemon/vanillaPopup/main';
 import {PokemonId, PokemonInfo} from '@/types/game/pokemon';
+import {pokeboxInputDimension} from '@/ui/team/pokebox/const';
 import {PokeboxCommonProps} from '@/ui/team/pokebox/type';
 
 
@@ -30,8 +31,8 @@ export const PokeboxPickerInput = ({pokemonList, onClick, ...props}: Props) => {
       <FlexButton direction="row" center onClick={() => setShow(true)} className={clsx(
         'button-clickable-bg group gap-0.5 p-1',
       )}>
-        <GenericPokeballIcon alt="Pokemon" dimension="h-6 w-6"/>
-        <PlusCircleIcon className="h-6 w-6"/>
+        <GenericPokeballIcon alt="Pokemon" dimension={pokeboxInputDimension}/>
+        <PlusCircleIcon className={pokeboxInputDimension}/>
       </FlexButton>
     </>
   );

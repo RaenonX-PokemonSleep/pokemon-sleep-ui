@@ -13,7 +13,7 @@ import {GenericPokeballIcon} from '@/components/shared/icon/pokeball';
 import {PokemonFilter} from '@/components/shared/pokemon/filter/main';
 import {PokemonNatureEffectInput} from '@/components/shared/pokemon/nature/input/effect';
 import {PokemonSubSkillFilter} from '@/components/shared/pokemon/subSkill/input';
-import {inputSectionHeight} from '@/ui/team/pokebox/const';
+import {inputSectionHeight, pokeboxInputDimension} from '@/ui/team/pokebox/const';
 import {PokeboxViewerInputCommonProps} from '@/ui/team/pokebox/viewer/type';
 
 
@@ -29,9 +29,9 @@ export const PokeboxViewerFilterUI = (props: PokeboxViewerInputCommonProps) => {
   return (
     <Collapsible state={filterCollapsible} classNameForHeight={inputSectionHeight} button={
       <Flex direction="row" center className="gap-0.5">
-        <GenericPokeballIcon alt="Pokemon" dimension="h-6 w-6"/>
-        <EyeIcon className="h-6 w-6"/>
-        <FunnelIcon className="h-6 w-6"/>
+        <GenericPokeballIcon alt="Pokemon" dimension={pokeboxInputDimension}/>
+        <EyeIcon className={pokeboxInputDimension}/>
+        <FunnelIcon className={pokeboxInputDimension}/>
       </Flex>
     }>
       <Flex className="gap-1 pr-1">

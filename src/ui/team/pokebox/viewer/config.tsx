@@ -23,7 +23,7 @@ import {PremiumIcon} from '@/components/static/premium/icon';
 import {usePremiumRequiredToast} from '@/hooks/toast/main';
 import {useUserActivation} from '@/hooks/userData/activation';
 import {iconFilterButtonStyle, textFilterButtonStyle} from '@/styles/input';
-import {inputSectionHeight} from '@/ui/team/pokebox/const';
+import {inputSectionHeight, pokeboxInputDimension} from '@/ui/team/pokebox/const';
 import {
   pokeboxDisplayTypeToI18nId,
   pokeboxDisplayTypeToImageSrc,
@@ -49,8 +49,8 @@ export const PokeboxViewerConfig = ({session, ...props}: PokeboxViewerInputCommo
   return (
     <Collapsible state={collapsible} classNameForHeight={inputSectionHeight} button={
       <Flex direction="row" center className="gap-0.5">
-        <GenericPokeballIcon alt="Pokemon" dimension="h-6 w-6"/>
-        <AdjustmentsHorizontalIcon className="h-6 w-6"/>
+        <GenericPokeballIcon alt="Pokemon" dimension={pokeboxInputDimension}/>
+        <AdjustmentsHorizontalIcon className={pokeboxInputDimension}/>
       </Flex>
     }>
       <Flex className="gap-1 pr-1">
