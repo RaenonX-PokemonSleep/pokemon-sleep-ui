@@ -86,7 +86,13 @@ export const Pokedex = async ({params}: DefaultPageProps) => {
 
   return (
     <PublicPageLayout locale={locale}>
-      <I18nProvider locale={locale} namespaces={['Game', 'UI.Common', 'UI.Metadata', 'UI.InPage.Pokedex']}>
+      <I18nProvider locale={locale} namespaces={[
+        'Game',
+        'UI.Common',
+        'UI.Metadata',
+        'UI.InPage.Pokedex',
+        'UI.InPage.Team',
+      ]}>
         <PokedexClient {...props}/>
       </I18nProvider>
     </PublicPageLayout>
