@@ -29,9 +29,7 @@ export const PokemonSubSkillSelected = ({level, selected, onClick}: Props) => {
         </div>
         <Flex direction="row" center className="gap-1 text-sm">
           <PokemonSubSkillIcon subSkill={selected}/>
-          <div>
-            {selected ? t(selected.id.toString()) : '-'}
-          </div>
+          {selected && <span>{t(selected.id.toString())}</span>}
         </Flex>
       </Flex>
     </button>
