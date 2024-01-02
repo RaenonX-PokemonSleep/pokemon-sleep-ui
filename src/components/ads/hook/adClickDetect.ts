@@ -9,10 +9,14 @@ export const useAdClickDetector = () => {
     hovered: false,
     blurred: false,
   });
-  const isBlurredRef = React.useRef(false);
+  const isInvalidBlur = React.useRef(false);
   const {act} = useUserDataActor({statusNoReset: true, statusToast: true});
 
-  React.useEffect(() => {
+  // Expected state change behavior (*H* for hovered; *B* for blurred)
+  // (O) PointerEnter -> Focus Element -> Click on Ads -> Element Blurred -> Doc Visible -> Grant Ads-Free
+  // (X) PointerEnter -> Focus Element -> PointerLeave -> (Reset State)
+
+  React.useLayoutEffect(() => {
     const onVisibilityChange = () => {
       if (!act || !stateRef.current.blurred || !stateRef.current.hovered || document.visibilityState !== 'visible') {
         return;
@@ -34,6 +38,10 @@ export const useAdClickDetector = () => {
 
 
   const onBlur = React.useCallback(() => {
+    if (isInvalidBlur.current) {
+      return;
+    }
+
     stateRef.current = {
       hovered: true,
       blurred: true,
@@ -44,6 +52,8 @@ export const useAdClickDetector = () => {
       hovered: true,
       blurred: false,
     };
+
+    isInvalidBlur.current = false;
     contentRef.current?.focus();
   }, []);
   const onPointerLeave = React.useCallback(() => {
@@ -51,7 +61,9 @@ export const useAdClickDetector = () => {
       hovered: false,
       blurred: false,
     };
-    isBlurredRef.current = false;
+
+    isInvalidBlur.current = true;
+    contentRef.current?.blur();
   }, []);
 
   return {
