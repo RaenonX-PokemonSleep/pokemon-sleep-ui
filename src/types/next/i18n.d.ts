@@ -19,6 +19,10 @@ declare interface IntlMessages extends UiMessages, GameMessages {
       AdBlockActive: string,
       Popup: string,
       PremiumOnly: string,
+      Activation: {
+        AdsFree: string,
+        Premium: string,
+      },
     },
     Auth: {
       EmailSent: string,

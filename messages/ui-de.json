@@ -2,7 +2,11 @@
   "Subscription": {
     "AdBlockActive": "Von der Nutzung eines Ad-Blockers auf dieser Website wird abgeraten. Das Hosten der Website ist teuer, und die Entwicklung der Website braucht Zeit.\n\nBitte lasse Werbung zu, oder besuche die \"Abonnement-Einführung\" im Dokumentationsbereich.",
     "Popup": "Bitte abonniere die Website, wenn du sie gern nutzt :) Siehe [Abonnement-Einführung] (https://pks.raenonx.cc/docs/view/subscription/intro) für Details.",
-    "PremiumOnly": "Premium-Abonnement erforderlich. Bitte siehe [Abonnement-Einführung](https://pks.raenonx.cc/docs/view/subscription/intro) für Details."
+    "PremiumOnly": "Premium-Abonnement erforderlich. Bitte siehe [Abonnement-Einführung](https://pks.raenonx.cc/docs/view/subscription/intro) für Details.",
+    "Activation": {
+      "AdsFree": "Ads-Free Browsing",
+      "Premium": "Premium Feature Access"
+    }
   },
   "Auth": {
     "EmailSent": "Email für den Login wurde gesendet."

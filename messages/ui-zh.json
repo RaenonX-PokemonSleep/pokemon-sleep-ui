@@ -2,7 +2,11 @@
   "Subscription": {
     "AdBlockActive": "本網站不鼓勵使用廣告封鎖 (AdBlocker)。架設網站需要金錢；開發功能並維護需要時間。\n\n**請解除封鎖廣告，點擊廣告可以免費獲得無廣告瀏覽 1 小時** 或參閱網站幫助文件區內的「訂閱方案說明」。\n\n如果對於廣告投放有任何問題或建議，請加入 Discord (連結在關於頁面) 回報。",
     "Popup": "歡迎訂閱網站以去除廣告並使用進階功能 :D 詳情請見 [訂閱方案說明](https://pks.raenonx.cc/docs/view/subscription/intro)",
-    "PremiumOnly": "請訂閱 Premium 以使用。詳情請見 [訂閱方案說明](https://pks.raenonx.cc/docs/view/subscription/intro)。"
+    "PremiumOnly": "請訂閱 Premium 以使用。詳情請見 [訂閱方案說明](https://pks.raenonx.cc/docs/view/subscription/intro)。",
+    "Activation": {
+      "AdsFree": "無廣告瀏覽",
+      "Premium": "付費功能 (Premium) 使用權"
+    }
   },
   "Auth": {
     "EmailSent": "已發送登入用電子信件。"
