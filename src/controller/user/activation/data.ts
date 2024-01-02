@@ -14,6 +14,7 @@ import {
   ActivationDataAtClient,
   ActivationKey,
   ActivationProperties,
+  activationSourceAutomated,
   ActivationStatus,
   activationType,
 } from '@/types/mongo/activation';
@@ -130,6 +131,9 @@ export const getAllActivationDataAsClient = async (): Promise<ActivationDataAtCl
 
 export const getPaidUserCount = async (): Promise<number> => {
   const result = await (await getCollection()).aggregate([
+    {$match: {
+      source: {$nin: [null, ...activationSourceAutomated]},
+    }},
     {$group: {
       _id: '$userId',
       data: {'$sum': 1},
