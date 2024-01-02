@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {adsCheckIntervalMs} from '@/components/ads/const';
+import {adsCheckInitialTimeoutMs, adsCheckIntervalMs} from '@/components/ads/const';
 import {AdBlockState} from '@/components/ads/type';
 import {useTimedTick} from '@/hooks/timedTick';
 
@@ -30,6 +30,7 @@ export const useAdBlockDetector = ({setAdblockState, recheckDeps}: UseAdBlockDet
     },
     intervalMs: adsCheckIntervalMs,
     rescheduleDeps: recheckDeps,
+    onLoadTriggerTimeoutMs: adsCheckInitialTimeoutMs,
   });
 
   const observer = new MutationObserver((mutations) => {

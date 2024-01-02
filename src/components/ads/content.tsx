@@ -2,7 +2,12 @@ import React from 'react';
 
 import {clsx} from 'clsx';
 
-import {adsCheckIntervalMs, adsHeight, adsHeightAdBlockActive} from '@/components/ads/const';
+import {
+  adsCheckInitialTimeoutMs,
+  adsCheckIntervalMs,
+  adsHeight,
+  adsHeightAdBlockActive,
+} from '@/components/ads/const';
 import {useAdBlockDetector} from '@/components/ads/hook/adBlockDetect';
 import {useAdClickDetector} from '@/components/ads/hook/adClickDetect';
 import {AdBlockState, AdsContentProps} from '@/components/ads/type';
@@ -53,6 +58,7 @@ export const AdsContent = ({
     },
     intervalMs: adsCheckIntervalMs,
     rescheduleDeps: [],
+    onLoadTriggerTimeoutMs: adsCheckInitialTimeoutMs,
   });
 
   if (checkDom && domHidden) {
