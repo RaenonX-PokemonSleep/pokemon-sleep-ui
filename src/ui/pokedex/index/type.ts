@@ -10,14 +10,16 @@ import {FieldMetaMap} from '@/types/game/mapMeta';
 import {PokemonInfo} from '@/types/game/pokemon';
 import {IngredientProduction} from '@/types/game/pokemon/ingredient';
 import {MainSkillMap} from '@/types/game/pokemon/mainSkill';
+import {PokemonIndividualParams} from '@/types/game/pokemon/params';
 import {PokemonProducingParams, PokemonProducingParamsMap} from '@/types/game/pokemon/producing';
+import {SubSkillMap} from '@/types/game/pokemon/subSkill';
 import {SleepStyleNormal} from '@/types/game/sleepStyle';
 import {SnorlaxFavorite} from '@/types/game/snorlax';
 import {Migratable} from '@/types/migrate';
 import {
   CalculatedUserSettings,
-  CookingUserSettingsRequiredData,
   CookingUserSettings,
+  CookingUserSettingsRequiredData,
   UserSettingsBundle,
 } from '@/types/userData/settings';
 import {PokedexDisplayType} from '@/ui/pokedex/index/input/type';
@@ -30,10 +32,9 @@ export type PokemonInfoForPokedex = PokemonInfo & {
 
 export type PokedexData = PokemonInfoForPokedex[];
 
-export type PokedexDisplay = Migratable & Pick<PokemonInputFilter, 'mainSkill'> & {
+export type PokedexDisplay = Migratable & Pick<PokemonInputFilter, 'mainSkill'> & PokemonIndividualParams & {
   sort: PokemonSortType,
   display: PokedexDisplayType,
-  level: number,
 };
 
 export type PokedexFilter = PokemonInputFilterExtended & PokedexDisplay & {
@@ -47,6 +48,7 @@ export type PokedexDataProps = UsePokemonFilterCommonData & CookingUserSettingsR
   ingredientMap: IngredientMap,
   berryDataMap: BerryDataMap,
   mainSkillMap: MainSkillMap,
+  subSkillMap: SubSkillMap,
   mapMeta: FieldMetaMap,
   preloaded: {
     display: Partial<PokedexDisplay> | undefined,
@@ -54,7 +56,7 @@ export type PokedexDataProps = UsePokemonFilterCommonData & CookingUserSettingsR
   }
 };
 
-export type PokedexLinkProps = Pick<PokedexFilter, 'display' | 'level'> & PokedexDataProps & {
+export type PokedexLinkProps = Pick<PokedexFilter, 'display' | keyof PokemonIndividualParams> & PokedexDataProps & {
   pokemon: PokemonInfo,
   pokemonProducingParams: PokemonProducingParams,
   snorlaxFavorite: SnorlaxFavorite,

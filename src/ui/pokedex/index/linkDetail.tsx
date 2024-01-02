@@ -22,7 +22,7 @@ import {PokemonSpecialty} from '@/components/shared/pokemon/specialty/main';
 import {imageSmallIconSizes} from '@/styles/image';
 import {PokedexLinkProps} from '@/ui/pokedex/index/type';
 import {getPokemonProducingRateSingle} from '@/utils/game/producing/main/single';
-import {getProducingRateNeutralParams} from '@/utils/game/producing/params';
+import {getProducingRateIndividualParams} from '@/utils/game/producing/params';
 import {formatFloat, formatFloat3} from '@/utils/number/format';
 
 
@@ -31,9 +31,12 @@ export const PokedexLinkDetail = React.memo(({
   pokemonProducingParams,
   display,
   level,
+  subSkill,
+  nature,
   berryDataMap,
   ingredientMap,
   mainSkillMap,
+  subSkillMap,
   ingredients,
   snorlaxFavorite,
   calculatedSettings,
@@ -99,6 +102,11 @@ export const PokedexLinkDetail = React.memo(({
     return <PokemonMainSkillTriggerRate params={pokemonProducingParams} dimension="h-4 w-4"/>;
   }
 
+  const individualParams = getProducingRateIndividualParams({
+    input: {level, subSkill, nature},
+    pokemon,
+    subSkillMap,
+  });
   // Need to calculate here because display and sort could be different
   const sorter = getPokemonSorter({
     type: display,
@@ -108,12 +116,11 @@ export const PokedexLinkDetail = React.memo(({
     ingredientMap,
     ingredients,
     mainSkillMap,
-    level,
     snorlaxFavorite,
     calculatedSettings,
     cookingSettings,
     dateAdded: null,
-    ...getProducingRateNeutralParams({pokemon}),
+    ...individualParams,
   });
 
   if (display === 'friendshipPoint') {
@@ -168,7 +175,6 @@ export const PokedexLinkDetail = React.memo(({
 
   if (display === 'ingredientCount') {
     const {ingredient} = getPokemonProducingRateSingle({
-      level,
       pokemon,
       pokemonProducingParams,
       berryData: berryDataMap[pokemon.berry.id],
@@ -178,7 +184,7 @@ export const PokedexLinkDetail = React.memo(({
       snorlaxFavorite: {},
       calculatedSettings,
       cookingSettings,
-      ...getProducingRateNeutralParams({pokemon}),
+      ...individualParams,
     }).atStage.final;
 
     return (

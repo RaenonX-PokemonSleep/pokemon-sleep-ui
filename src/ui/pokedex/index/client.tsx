@@ -20,7 +20,7 @@ import {PokedexDataProps} from '@/ui/pokedex/index/type';
 import {toCalculateAllIngredientPossibilities} from '@/ui/pokedex/index/utils';
 import {getPossibleIngredientsFromChain} from '@/utils/game/ingredientChain';
 import {generatePossibleIngredientProductions} from '@/utils/game/producing/ingredient/chain';
-import {getPokemonProducingParams, getProducingRateNeutralParams} from '@/utils/game/producing/params';
+import {getPokemonProducingParams, getProducingRateIndividualParams} from '@/utils/game/producing/params';
 import {isNotNullish} from '@/utils/type';
 
 
@@ -32,6 +32,7 @@ export const PokedexClient = (props: PokedexDataProps) => {
     ingredientChainMap,
     ingredientMap,
     mainSkillMap,
+    subSkillMap,
     mealMap,
     preloaded,
   } = props;
@@ -63,11 +64,14 @@ export const PokedexClient = (props: PokedexDataProps) => {
         pokemonId: pokemon.id,
         pokemonProducingParamsMap,
       }),
-      level: filter.level,
       dateAdded: null,
       extra: null,
       ...translatedSettings,
-      ...getProducingRateNeutralParams({pokemon}),
+      ...getProducingRateIndividualParams({
+        input: filter,
+        pokemon,
+        subSkillMap,
+      }),
     };
     const chain = ingredientChainMap[pokemon.ingredientChain];
 
@@ -126,6 +130,8 @@ export const PokedexClient = (props: PokedexDataProps) => {
         display: filter.display,
         mainSkill: filter.mainSkill,
         level: filter.level,
+        subSkill: filter.subSkill,
+        nature: filter.nature,
         version: filter.version,
       },
     },
@@ -168,6 +174,8 @@ export const PokedexClient = (props: PokedexDataProps) => {
                 })}
                 display={filter.display}
                 level={filter.level}
+                subSkill={filter.subSkill}
+                nature={filter.nature}
                 snorlaxFavorite={filter.snorlaxFavorite}
                 ingredients={source.ingredients}
                 {...translatedSettings}

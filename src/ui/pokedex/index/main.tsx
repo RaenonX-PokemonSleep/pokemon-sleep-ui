@@ -13,6 +13,7 @@ import {getMealMap} from '@/controller/meal';
 import {getAllPokemon} from '@/controller/pokemon/info';
 import {getPokemonProducingParamsMap} from '@/controller/pokemon/producing';
 import {getSleepStyleNormalMap} from '@/controller/sleepStyle';
+import {getSubSkillMap} from '@/controller/subSkill';
 import {locales} from '@/types/next/locale';
 import {DefaultPageProps} from '@/types/next/page/common';
 import {PublicPageLayout} from '@/ui/base/layout/public';
@@ -49,6 +50,7 @@ export const Pokedex = async ({params}: DefaultPageProps) => {
     ingredientMap,
     ingredientChainMap,
     mainSkillMap,
+    subSkillMap,
     mealMap,
     mapMeta,
   ] = await Promise.all([
@@ -60,6 +62,7 @@ export const Pokedex = async ({params}: DefaultPageProps) => {
     getIngredientMap(),
     getIngredientChainMap(),
     getMainSkillMap(),
+    getSubSkillMap(),
     getMealMap(),
     getFieldMetaMap(),
   ]);
@@ -72,6 +75,7 @@ export const Pokedex = async ({params}: DefaultPageProps) => {
     ingredientMap,
     ingredientChainMap,
     mainSkillMap,
+    subSkillMap,
     mealMap,
     mapMeta,
     preloaded: {

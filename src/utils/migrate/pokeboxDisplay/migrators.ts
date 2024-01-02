@@ -1,3 +1,4 @@
+import {defaultPokemonIndividualParams} from '@/const/game/pokemon';
 import {Migrator} from '@/types/migrate';
 import {PokeboxViewerDisplay} from '@/ui/team/pokebox/viewer/type';
 import {PokeboxViewerDisplayMigrateParams} from '@/utils/migrate/pokeboxDisplay/type';
@@ -50,6 +51,14 @@ export const pokeboxDisplayMigrators: Migrator<PokeboxViewerDisplay, PokeboxView
     migrate: (old) => ({
       ...old,
       previewFinalEvolution: false,
+    }),
+  },
+  {
+    // `PokemonIndividualParams` usage
+    toVersion: 5,
+    migrate: (old) => ({
+      ...old,
+      ...defaultPokemonIndividualParams,
     }),
   },
 ];
