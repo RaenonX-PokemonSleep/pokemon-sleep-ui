@@ -29,8 +29,8 @@ export const PageLayout = ({
   ...props
 }: React.PropsWithChildren<UiPageProps>) => {
   const {locale} = props;
-  unstable_setRequestLocale(locale);
 
+  unstable_setRequestLocale(locale);
   setLocale(locale);
 
   const session = React.use(getServerSession(authOptions));
