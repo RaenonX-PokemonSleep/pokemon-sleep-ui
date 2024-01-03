@@ -107,7 +107,7 @@
       "Title": "{name} - ポケモン分析"
     },
     "Rating": {
-      "Title": "個体評価"
+      "Title": "個体値チェッカー / 個体評価"
     },
     "Cooking": {
       "Index": {
@@ -338,7 +338,7 @@
           "ProductionBerry": "生産 (きのみ)",
           "ProductionIngredient": "生産 (食材)",
           "ProductionTotal": "生産 (トータル)",
-          "Rating": "評価",
+          "Rating": "個体値",
           "Skills": "スキル"
         },
         "Preview": {
