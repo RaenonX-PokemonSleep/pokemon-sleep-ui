@@ -2,6 +2,7 @@ import React from 'react';
 
 import FunnelIcon from '@heroicons/react/24/outline/FunnelIcon';
 import InformationCircleIcon from '@heroicons/react/24/solid/InformationCircleIcon';
+import {useSession} from 'next-auth/react';
 import {useTranslations} from 'next-intl';
 
 import {InputBox} from '@/components/input/box';
@@ -13,12 +14,12 @@ import {Collapsible} from '@/components/layout/collapsible/main';
 import {Flex} from '@/components/layout/flex/common';
 import {PokemonFilter} from '@/components/shared/pokemon/filter/main';
 import {PokemonMapFilter} from '@/components/shared/pokemon/filter/map';
-import {PokemonNatureSelector} from '@/components/shared/pokemon/nature/selector/main';
+import {PokemonIndividualParamsPicker} from '@/components/shared/pokemon/predefined/individual/main';
 import {PokemonSortingPicker} from '@/components/shared/pokemon/sorter/picker';
 import {pokedexSortExclusion} from '@/components/shared/pokemon/sorter/type';
 import {isPokedexSortExclusion} from '@/components/shared/pokemon/sorter/utils';
-import {PokemonSubSkillSelector} from '@/components/shared/pokemon/subSkill/selector/main';
 import {SnorlaxFavoriteInput} from '@/components/shared/snorlax/favorite';
+import {useUserActivation} from '@/hooks/userData/activation';
 import {PokedexInputClearer} from '@/ui/pokedex/index/input/clearer';
 import {displayTypeToI18nId} from '@/ui/pokedex/index/input/const';
 import {pokedexDisplayType, PokedexInputProps} from '@/ui/pokedex/index/input/type';
@@ -35,13 +36,11 @@ export const PokedexInput = ({pokedex, maxLevel, ...props}: Props) => {
     preloaded,
     subSkillMap,
   } = props;
-  const {
-    subSkill,
-    nature,
-  } = filter;
 
   const t = useTranslations('UI.InPage.Pokedex');
   const collapsible = useCollapsible();
+  const {data} = useSession();
+  const {isPremium} = useUserActivation(data);
 
   return (
     <Flex className="gap-1">
@@ -74,6 +73,7 @@ export const PokedexInput = ({pokedex, maxLevel, ...props}: Props) => {
             </InputRowWithTitle>
             <PokemonFilter
               pokemonList={pokedex}
+              skipLevelInput
               {...props}
             />
             <SnorlaxFavoriteInput
@@ -107,25 +107,14 @@ export const PokedexInput = ({pokedex, maxLevel, ...props}: Props) => {
           </Flex>
         </Collapsible>
       </div>
-      <Flex className="gap-1 md:flex-row">
-        <PokemonSubSkillSelector
-          subSkill={subSkill}
-          setSubSkill={(subSkill) => setFilter((original) => ({
-            ...original,
-            subSkill,
-          } satisfies PokedexInputProps['filter']))}
-          subSkillMap={subSkillMap}
-          classNameForHeight="h-8"
-        />
-        <PokemonNatureSelector
-          nature={nature}
-          setNature={(nature) => setFilter((original) => ({
-            ...original,
-            nature,
-          } satisfies PokedexInputProps['filter']))}
-          classNameForHeight="h-8"
-        />
-      </Flex>
+      <PokemonIndividualParamsPicker
+        filter={filter}
+        setFilter={setFilter}
+        maxLevel={maxLevel}
+        isPremium={isPremium}
+        subSkillMap={subSkillMap}
+        className="bg-plate"
+      />
     </Flex>
   );
 };
