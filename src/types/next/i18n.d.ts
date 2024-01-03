@@ -215,6 +215,12 @@ declare interface IntlMessages extends UiMessages, GameMessages {
         SleepStyle: string,
         SleepStylesUnlocked: string,
         UnlockConditions: string,
+        Toggle: {
+          SleepdexRegisterMode: string,
+          CompletionStatus: string,
+          Registered: string,
+          NoNewSleepStyle: string,
+        },
       },
       Team: {
         AnalysisPeriod: string,

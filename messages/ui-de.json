@@ -316,7 +316,13 @@
       "Pokemon": "Pokémon",
       "SleepStyle": "Schlafpose",
       "SleepStylesUnlocked": "Freigeschaltete Schlafstile",
-      "UnlockConditions": "Unlock Requirements"
+      "UnlockConditions": "Unlock Requirements",
+      "Toggle": {
+        "SleepdexRegisterMode": "Sleepdex Register Mode",
+        "CompletionStatus": "Completion Status",
+        "Registered": "Registered",
+        "NoNewSleepStyle": "Rank without Sleep Style Unlock"
+      }
     },
     "Team": {
       "AnalysisPeriod": "Analysezeitraum",

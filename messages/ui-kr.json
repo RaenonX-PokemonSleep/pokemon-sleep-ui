@@ -316,7 +316,13 @@
       "Pokemon": "포켓몬",
       "SleepStyle": "잠자는 모습",
       "SleepStylesUnlocked": "개방된 잠자는 모습의 수",
-      "UnlockConditions": "Unlock Requirements"
+      "UnlockConditions": "Unlock Requirements",
+      "Toggle": {
+        "SleepdexRegisterMode": "Sleepdex Register Mode",
+        "CompletionStatus": "Completion Status",
+        "Registered": "Registered",
+        "NoNewSleepStyle": "Rank without Sleep Style Unlock"
+      }
     },
     "Team": {
       "AnalysisPeriod": "분석 주기",

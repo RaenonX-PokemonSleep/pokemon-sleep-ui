@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {LockOpenIcon} from '@heroicons/react/24/outline';
 import EyeIcon from '@heroicons/react/24/solid/EyeIcon';
 import EyeSlashIcon from '@heroicons/react/24/solid/EyeSlashIcon';
 import {clsx} from 'clsx';
+import {useTranslations} from 'next-intl';
 
 import {ToggleButton} from '@/components/input/toggleButton';
 import {Flex} from '@/components/layout/flex/common';
@@ -14,6 +14,8 @@ import {textFilterButtonStyle} from '@/styles/input';
 
 export const MapInputLockedOnlyToggle = ({filter, setFilter, isLoggedIn}: MapInputWithDataProps) => {
   const {showLockedOnly} = filter;
+
+  const t = useTranslations('UI.InPage.Map.Toggle');
 
   if (!isLoggedIn) {
     return null;
@@ -32,7 +34,9 @@ export const MapInputLockedOnlyToggle = ({filter, setFilter, isLoggedIn}: MapInp
         <div className="h-5 w-5">
           {showLockedOnly ? <EyeIcon/> : <EyeSlashIcon/>}
         </div>
-        <LockOpenIcon className="h-5 w-5"/>
+        <div>
+          {t('Registered')}
+        </div>
       </Flex>
     </ToggleButton>
   );

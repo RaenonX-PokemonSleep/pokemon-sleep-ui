@@ -316,7 +316,13 @@
       "Pokemon": "寶可夢",
       "SleepStyle": "睡姿",
       "SleepStylesUnlocked": "已解鎖睡姿",
-      "UnlockConditions": "解鎖條件"
+      "UnlockConditions": "解鎖條件",
+      "Toggle": {
+        "SleepdexRegisterMode": "圖鑑登錄模式",
+        "CompletionStatus": "登錄進度",
+        "Registered": "已登錄",
+        "NoNewSleepStyle": "無睡姿解鎖的卡比獸等級"
+      }
     },
     "Team": {
       "AnalysisPeriod": "分析週期",

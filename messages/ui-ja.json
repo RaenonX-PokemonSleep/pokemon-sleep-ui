@@ -316,7 +316,13 @@
       "Pokemon": "ポケモン",
       "SleepStyle": "寝顔",
       "SleepStylesUnlocked": "寝顔解放数",
-      "UnlockConditions": "開放条件"
+      "UnlockConditions": "開放条件",
+      "Toggle": {
+        "SleepdexRegisterMode": "図鑑登録モード",
+        "CompletionStatus": "進捗",
+        "Registered": "登録済み",
+        "NoNewSleepStyle": "寝顔追加の無いランク"
+      }
     },
     "Team": {
       "AnalysisPeriod": "分析周期",
