@@ -14,6 +14,7 @@ import {setLocale} from '@/components/i18n/exports';
 import {I18nProvider} from '@/components/i18n/provider';
 import {Loading} from '@/components/icons/loading';
 import {Flex} from '@/components/layout/flex/common';
+import {ScrollToAnchorOnLoad} from '@/components/shared/common/anchor';
 import {DocsAutoLink} from '@/components/shared/docs/autoLink/main';
 import {authOptions} from '@/const/auth';
 import {AdsLayout} from '@/ui/base/layout/ads';
@@ -48,6 +49,7 @@ export const PageLayout = ({
           crossOrigin="anonymous"
         />
       }
+      <ScrollToAnchorOnLoad/>
       <I18nProvider locale={locale} namespaces={[]}>
         <Toaster position="bottom-center" toastOptions={{duration: 3000}}/>
       </I18nProvider>
