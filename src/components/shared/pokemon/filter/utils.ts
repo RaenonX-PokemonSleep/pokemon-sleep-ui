@@ -6,6 +6,7 @@ import {
   PokemonInputFilterExtended,
   PokemonInputType,
 } from '@/components/shared/pokemon/filter/type';
+import {defaultPokemonIndividualParams} from '@/const/game/pokemon';
 import {defaultLevel} from '@/const/game/production';
 import {PokemonInfo} from '@/types/game/pokemon';
 import {toUnique} from '@/utils/array';
@@ -94,10 +95,10 @@ export const generatePokemonInputFilter = ({
 });
 
 export const generatePokemonInputFilterExtended = (): PokemonInputFilterExtended => ({
-  ...generatePokemonInputFilter({isLevelAgnostic: false}),
-  level: defaultLevel,
   mapId: {},
   snorlaxFavorite: {},
+  ...generatePokemonInputFilter({isLevelAgnostic: false}),
+  ...defaultPokemonIndividualParams,
 });
 
 type GetFilterIdsFromPokemonOpts<TId> = {

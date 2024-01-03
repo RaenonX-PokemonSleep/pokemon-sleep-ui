@@ -10,6 +10,7 @@ import {
 } from '@/types/game/pokemon';
 import {EvolutionStage} from '@/types/game/pokemon/evolution';
 import {IngredientChainMap} from '@/types/game/pokemon/ingredient';
+import {PokemonIndividualParams} from '@/types/game/pokemon/params';
 import {SleepMapId} from '@/types/game/sleepStyle';
 import {SnorlaxFavorite} from '@/types/game/snorlax';
 
@@ -31,8 +32,7 @@ export type PokemonInputFilter = {
 
 export type PokemonInputType = keyof PokemonInputFilter;
 
-export type PokemonInputFilterExtended = Omit<PokemonInputFilter, 'level'> & {
-  level: number,
+export type PokemonInputFilterExtended = Omit<PokemonInputFilter, 'level'> & PokemonIndividualParams & {
   mapId: FilterInclusionMap<SleepMapId>,
   snorlaxFavorite: SnorlaxFavorite,
 };
