@@ -284,6 +284,7 @@ declare interface IntlMessages extends UiMessages, GameMessages {
           DreamShardDepletion: string,
           ExpBoost: string,
         },
+        KeyLevel: string,
       },
       Docs: {
         Title: string,

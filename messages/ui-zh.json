@@ -385,7 +385,8 @@
       "Multiplier": {
         "DreamShardDepletion": "夢之碎片消耗倍率",
         "ExpBoost": "經驗獲取倍率"
-      }
+      },
+      "KeyLevel": "關鍵等級"
     },
     "Docs": {
       "Title": "標題"

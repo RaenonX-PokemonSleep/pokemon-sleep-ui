@@ -385,7 +385,8 @@
       "Multiplier": {
         "DreamShardDepletion": "ゆめのかけら消費倍率",
         "ExpBoost": "EXPボーナス倍率"
-      }
+      },
+      "KeyLevel": "キーレベル"
     },
     "Docs": {
       "Title": "タイトル"

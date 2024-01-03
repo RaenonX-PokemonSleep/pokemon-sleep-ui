@@ -1,6 +1,5 @@
 import React from 'react';
 
-import RocketLaunchIcon from '@heroicons/react/24/outline/RocketLaunchIcon';
 import EyeIcon from '@heroicons/react/24/solid/EyeIcon';
 import EyeSlashIcon from '@heroicons/react/24/solid/EyeSlashIcon';
 import {clsx} from 'clsx';
@@ -64,7 +63,7 @@ export const PokemonExpCalculatorTable = ({
             <div className="h-5 w-5">
               {showNonBreakthroughLevel ? <EyeIcon/> : <EyeSlashIcon/>}
             </div>
-            <RocketLaunchIcon className="h-5 w-5"/>
+            <div>{t('KeyLevel')}</div>
           </Flex>
         </ToggleButton>
       </InputRow>

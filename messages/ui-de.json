@@ -385,7 +385,8 @@
       "Multiplier": {
         "DreamShardDepletion": "Dream Shard Depletion Rate",
         "ExpBoost": "EXP Boost Rate"
-      }
+      },
+      "KeyLevel": "Key Level"
     },
     "Docs": {
       "Title": "Titel"
