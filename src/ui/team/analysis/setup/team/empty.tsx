@@ -58,7 +58,7 @@ export const TeamAnalysisEmptySlot = ({
       />
       <UnavailableIcon/>
       <Flex direction="row" center className="gap-1.5">
-        <button className={buttonClass} disabled={buttonDisabled} onClick={() => setPopup('vanilla')}>
+        <button className={buttonClass} onClick={() => setPopup('vanilla')}>
           <PlusCircleIcon/>
         </button>
         <button className={buttonClass} disabled={buttonDisabled} onClick={() => setPopup('pokebox')}>
