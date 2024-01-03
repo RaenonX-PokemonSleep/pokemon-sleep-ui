@@ -26,12 +26,14 @@ import {isNotNullish, KeysOfType} from '@/utils/type';
 type Props<TFilter extends PokemonInputFilter> = FilterWithUpdaterProps<TFilter> & {
   pokemonList: PokemonInfo[],
   ingredientMap: IngredientMap,
+  skipLevelInput?: boolean,
   className?: string,
 };
 
 export const PokemonFilter = <TFilter extends PokemonInputFilter>({
   pokemonList,
   ingredientMap,
+  skipLevelInput,
   className,
   ...props
 }: Props<TFilter>) => {
@@ -43,7 +45,7 @@ export const PokemonFilter = <TFilter extends PokemonInputFilter>({
   return (
     <Flex className={clsx('gap-1', className)}>
       {
-        filter.level &&
+        filter.level && !skipLevelInput &&
         <PokemonLevelSliderRow
           value={filter.level}
           setValue={(level) => setFilter((original) => ({
