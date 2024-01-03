@@ -2,24 +2,15 @@ import React from 'react';
 
 import {useWorker} from '@/hooks/worker';
 import {PokemonInfo} from '@/types/game/pokemon';
-import {IngredientProduction} from '@/types/game/pokemon/ingredient';
-import {SnorlaxFavorite} from '@/types/game/snorlax';
-import {TranslatedUserSettings} from '@/types/userData/settings';
 import {AnalysisStats, GetAnalysisStatsOpts} from '@/ui/analysis/page/calc/type';
-import {AnalysisPageCommonProps} from '@/ui/analysis/page/type';
 
 
-type UseCalculationWorkerOpts =
-  Omit<AnalysisPageCommonProps, 'pokemonList' | 'mapMeta' | 'preloaded'> &
-  TranslatedUserSettings & {
-    level: number,
-    ingredients: IngredientProduction[],
-    pokemonToAnalyze: PokemonInfo[],
-    snorlaxFavorite: SnorlaxFavorite,
-    setStats: (stats: AnalysisStats) => void,
-    setLoading: (loading: boolean) => void,
-    calculateDeps: React.DependencyList,
-  };
+type UseCalculationWorkerOpts = Omit<GetAnalysisStatsOpts, 'pokemonList'> & {
+  pokemonToAnalyze: PokemonInfo[],
+  setStats: (stats: AnalysisStats) => void,
+  setLoading: (loading: boolean) => void,
+  calculateDeps: React.DependencyList,
+};
 
 export const useCalculationWorker = ({
   pokemon,
@@ -28,11 +19,15 @@ export const useCalculationWorker = ({
   ingredientMap,
   ingredientChainMap,
   mainSkillMap,
+  subSkillMap,
   sleepStyleMap,
   mealMap,
+  pokemonMaxLevel,
   calculatedSettings,
   cookingSettings,
   level,
+  subSkill,
+  nature,
   ingredients,
   pokemonToAnalyze,
   snorlaxFavorite,
@@ -58,11 +53,15 @@ export const useCalculationWorker = ({
       ingredientMap,
       ingredientChainMap,
       mainSkillMap,
+      subSkillMap,
       sleepStyleMap,
       mealMap,
+      pokemonMaxLevel,
       calculatedSettings,
       cookingSettings,
       level,
+      subSkill,
+      nature,
       ingredients,
       pokemonList: pokemonToAnalyze,
       snorlaxFavorite,

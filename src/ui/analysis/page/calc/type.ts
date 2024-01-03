@@ -8,6 +8,7 @@ import {
   PokemonTypeId,
 } from '@/types/game/pokemon';
 import {IngredientLevel, IngredientProduction} from '@/types/game/pokemon/ingredient';
+import {PokemonIndividualParams} from '@/types/game/pokemon/params';
 import {SnorlaxRank} from '@/types/game/rank';
 import {SleepMapId} from '@/types/game/sleepStyle';
 import {SnorlaxFavorite} from '@/types/game/snorlax';
@@ -85,8 +86,8 @@ export type GetAnalysisStatsCommonOpts<TSample> = {
 
 export type GetAnalysisStatsOpts =
   Omit<AnalysisPageCommonProps, 'mapMeta' | 'preloaded'> &
-  TranslatedUserSettings & {
-    level: number,
+  TranslatedUserSettings &
+  PokemonIndividualParams & {
     ingredients: IngredientProduction[],
     snorlaxFavorite: SnorlaxFavorite,
   };

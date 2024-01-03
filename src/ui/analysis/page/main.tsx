@@ -6,7 +6,7 @@ import {AnalysisPageParams} from '@/app/[locale]/analysis/[id]/page';
 import {I18nProvider} from '@/components/i18n/provider';
 import {Failed} from '@/components/icons/failed';
 import {authOptions} from '@/const/auth';
-import {getBerryDataMap} from '@/controller/berry';
+import {getBerryDataMap, getPokemonMaxLevelByBerry} from '@/controller/berry';
 import {getIngredientMap} from '@/controller/ingredient';
 import {getIngredientChainMap} from '@/controller/ingredientChain';
 import {getMainSkillMap} from '@/controller/mainSkill';
@@ -15,6 +15,7 @@ import {getMealMap} from '@/controller/meal';
 import {getAllPokemon} from '@/controller/pokemon/info';
 import {getPokemonProducingParamsMap} from '@/controller/pokemon/producing';
 import {getSleepStyleNormalMap} from '@/controller/sleepStyle';
+import {getSubSkillMap} from '@/controller/subSkill';
 import {AnalysisPageClient} from '@/ui/analysis/page/client';
 import {AnalysisPageCommonProps} from '@/ui/analysis/page/type';
 import {PublicPageLayout} from '@/ui/base/layout/public';
@@ -35,9 +36,11 @@ export const AnalysisPage = async ({params}: Props) => {
     ingredientChainMap,
     ingredientMap,
     mainSkillMap,
+    subSkillMap,
     sleepStyleMap,
     mealMap,
     mapMeta,
+    pokemonMaxLevel,
   ] = await Promise.all([
     getServerSession(authOptions),
     getAllPokemon(),
@@ -46,9 +49,11 @@ export const AnalysisPage = async ({params}: Props) => {
     getIngredientChainMap(),
     getIngredientMap(),
     getMainSkillMap(),
+    getSubSkillMap(),
     getSleepStyleNormalMap(),
     getMealMap(),
     getFieldMetaMap(),
+    getPokemonMaxLevelByBerry(),
   ]);
 
   const pokemon = pokemonList.find((pokemon) => pokemon.id === Number(id));
@@ -57,21 +62,19 @@ export const AnalysisPage = async ({params}: Props) => {
     return <Failed text="Pokemon"/>;
   }
 
-  if (!berryDataMap) {
-    return <Failed text="Berry"/>;
-  }
-
   const props: AnalysisPageCommonProps = {
     pokemonList,
     pokemon,
     pokemonProducingParamsMap,
     mainSkillMap,
+    subSkillMap,
     ingredientMap,
     ingredientChainMap,
     berryDataMap,
     sleepStyleMap,
     mapMeta,
     mealMap,
+    pokemonMaxLevel,
     preloaded: createUserSettingsBundle(session),
   };
 

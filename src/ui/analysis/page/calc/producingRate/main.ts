@@ -6,7 +6,7 @@ import {PokemonAnalysisRateInfo} from '@/ui/analysis/page/calc/producingRate/typ
 import {AnalysisStats, GetAnalysisStatsOpts} from '@/ui/analysis/page/calc/type';
 import {generatePossibleIngredientProductions} from '@/utils/game/producing/ingredient/chain';
 import {getPokemonProducingRateSingle} from '@/utils/game/producing/main/single';
-import {getPokemonProducingParams, getProducingRateNeutralParams} from '@/utils/game/producing/params';
+import {getPokemonProducingParams, getProducingRateIndividualParams} from '@/utils/game/producing/params';
 
 
 export const getAnalysisStatsOfProducingRate = (opts: GetAnalysisStatsOpts): AnalysisStats['producingRate'] => {
@@ -15,10 +15,13 @@ export const getAnalysisStatsOfProducingRate = (opts: GetAnalysisStatsOpts): Ana
     pokemon,
     pokemonProducingParamsMap,
     level,
+    subSkill,
+    nature,
     ingredients,
     berryDataMap,
     ingredientChainMap,
     mainSkillMap,
+    subSkillMap,
   } = opts;
 
   const currentPokemonProducingParams = getPokemonProducingParams({
@@ -30,7 +33,15 @@ export const getAnalysisStatsOfProducingRate = (opts: GetAnalysisStatsOpts): Ana
     pokemonProducingParams: currentPokemonProducingParams,
     berryData: berryDataMap[pokemon.berry.id],
     skillData: mainSkillMap[pokemon.skill],
-    ...getProducingRateNeutralParams({pokemon}),
+    ...getProducingRateIndividualParams({
+      input: {
+        level,
+        subSkill,
+        nature,
+      },
+      pokemon,
+      subSkillMap,
+    }),
   }).atStage.final;
 
   const rateOfAllPokemon = pokemonList.flatMap((otherPokemon) => [...generatePossibleIngredientProductions({
@@ -50,7 +61,15 @@ export const getAnalysisStatsOfProducingRate = (opts: GetAnalysisStatsOpts): Ana
       berryData: berryDataMap[otherPokemon.berry.id],
       skillData: mainSkillMap[otherPokemon.skill],
       ingredients: otherIngredients,
-      ...getProducingRateNeutralParams({pokemon: otherPokemon}),
+      ...getProducingRateIndividualParams({
+        input: {
+          level,
+          subSkill,
+          nature,
+        },
+        pokemon: otherPokemon,
+        subSkillMap,
+      }),
     }).atStage.final,
   })));
 

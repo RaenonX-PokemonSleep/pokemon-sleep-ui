@@ -7,6 +7,7 @@ import {PokemonInfo} from '@/types/game/pokemon';
 import {IngredientProductionAtLevels} from '@/types/game/pokemon/ingredient';
 import {MainSkillMap} from '@/types/game/pokemon/mainSkill';
 import {PokemonProducingParamsMap} from '@/types/game/pokemon/producing';
+import {SubSkillMap} from '@/types/game/pokemon/subSkill';
 import {SleepStyleNormalMap} from '@/types/game/sleepStyle';
 import {CookingUserSettingsRequiredData, UserSettingsBundle} from '@/types/userData/settings';
 
@@ -22,8 +23,10 @@ export type AnalysisPageCommonProps = UsePokemonFilterCommonData & CookingUserSe
   ingredientMap: IngredientMap,
   berryDataMap: BerryDataMap,
   mainSkillMap: MainSkillMap,
+  subSkillMap: SubSkillMap,
   sleepStyleMap: SleepStyleNormalMap,
   mealMap: MealMap,
   mapMeta: FieldMetaMap,
+  pokemonMaxLevel: number,
   preloaded: UserSettingsBundle,
 };

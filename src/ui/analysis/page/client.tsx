@@ -5,8 +5,6 @@ import {useSession} from 'next-auth/react';
 
 import {AdsUnit} from '@/components/ads/main';
 import {Flex} from '@/components/layout/flex/common';
-import {HorizontalSplitter} from '@/components/shared/common/splitter';
-import {PokemonIngredientPicker} from '@/components/shared/pokemon/ingredients/picker';
 import {useTranslatedUserSettings} from '@/hooks/userData/translated';
 import {useCalculationWorker} from '@/ui/analysis/page/calc/hook';
 import {AnalysisStats} from '@/ui/analysis/page/calc/type';
@@ -14,7 +12,7 @@ import {useAnalysisFilter} from '@/ui/analysis/page/hook';
 import {AnalysisPageInput} from '@/ui/analysis/page/input/main';
 import {AnalysisMeta} from '@/ui/analysis/page/meta';
 import {AnalysisStatsUI} from '@/ui/analysis/page/stats/main';
-import {AnalysisComparisonFilter, AnalysisPageCommonProps} from '@/ui/analysis/page/type';
+import {AnalysisPageCommonProps} from '@/ui/analysis/page/type';
 import {getPokedexWithField} from '@/utils/game/pokemon';
 import {getEffectiveIngredientLevels} from '@/utils/game/producing/ingredient/level';
 
@@ -23,9 +21,7 @@ export const AnalysisPageClient = (props: AnalysisPageCommonProps) => {
   const {
     pokemonList,
     pokemon,
-    berryDataMap,
     sleepStyleMap,
-    ingredientChainMap,
     mealMap,
     preloaded,
   } = props;
@@ -50,40 +46,27 @@ export const AnalysisPageClient = (props: AnalysisPageCommonProps) => {
   });
 
   useCalculationWorker({
-    ...props,
-    level: filter.level,
-    ingredients,
     pokemonToAnalyze: pokemonList.filter(({id}) => isIncluded[id]),
-    snorlaxFavorite: filter.snorlaxFavorite,
-    ...translatedSettings,
     setStats,
     setLoading,
     calculateDeps: [filter, translatedSettings],
+    ...translatedSettings,
+    ...props,
+    ...filter,
+    ingredients,
   });
 
   return (
-    <Flex className="gap-1">
-      <AnalysisMeta {...props}/>
-      <PokemonIngredientPicker
-        chain={ingredientChainMap[pokemon.ingredientChain]}
-        ingredients={filter.ingredients}
-        onSelect={(updated, ingredientLevel) => setFilter((filter) => ({
-          ...filter,
-          ingredients: {
-            ...filter.ingredients,
-            [ingredientLevel]: updated,
-          },
-        } satisfies AnalysisComparisonFilter))}
-      />
+    <Flex className="gap-1.5">
       <AdsUnit/>
-      <HorizontalSplitter/>
+      <AnalysisMeta {...props}/>
+      <AdsUnit/>
       <AnalysisPageInput
         filter={filter}
         setFilter={setFilter}
-        maxLevel={berryDataMap[pokemon.berry.id].energy.length}
+        session={session}
         {...props}
       />
-      <AdsUnit/>
       <AnalysisStatsUI stats={stats} loading={loading} level={filter.level} {...props}/>
       <AdsUnit/>
     </Flex>

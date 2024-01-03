@@ -4,6 +4,6 @@ export type PokemonIndividualSelectorButtonProps = {
   isPremium?: never,
   requirePremium?: never,
 } | {
-  isPremium?: boolean,
-  requirePremium?: true,
+  isPremium: boolean,
+  requirePremium: true,
 });
