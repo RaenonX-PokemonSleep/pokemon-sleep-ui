@@ -2,7 +2,7 @@ import React from 'react';
 
 import {clsx} from 'clsx';
 
-import {FilterInputProps} from '@/components/input/filter/type';
+import {FilterWithUpdaterProps} from '@/components/input/filter/type';
 import {Flex} from '@/components/layout/flex/common';
 import {PokemonLevelSlider} from '@/components/shared/pokemon/level/slider';
 import {PokemonNatureSelector} from '@/components/shared/pokemon/nature/selector/main';
@@ -12,21 +12,21 @@ import {PokemonIndividualParams} from '@/types/game/pokemon/params';
 import {SubSkillMap} from '@/types/game/pokemon/subSkill';
 
 
-type Props = FilterInputProps<PokemonIndividualParams> & {
-  maxLevel: number,
+type Props<TFilter extends PokemonIndividualParams> = FilterWithUpdaterProps<TFilter> & {
   isPremium: boolean,
   subSkillMap: SubSkillMap,
+  maxLevel: number,
   className?: string,
 };
 
-export const PokemonIndividualParamsPicker = ({
+export const PokemonIndividualParamsPicker = <TFilter extends PokemonIndividualParams>({
   filter,
   setFilter,
-  maxLevel,
   isPremium,
   subSkillMap,
+  maxLevel,
   className,
-}: Props) => {
+}: Props<TFilter>) => {
   const selectorProps: PokemonIndividualSelectorButtonProps = {
     classNameForHeight: 'h-8',
     isPremium,
@@ -37,7 +37,7 @@ export const PokemonIndividualParamsPicker = ({
     <Flex className={clsx('gap-1.5', className)}>
       <PokemonLevelSlider
         value={filter.level}
-        setValue={(level) => setFilter((original): PokemonIndividualParams => ({
+        setValue={(level) => setFilter((original): TFilter => ({
           ...original,
           level,
         }))}
@@ -47,7 +47,7 @@ export const PokemonIndividualParamsPicker = ({
       <Flex className="gap-1.5 sm:flex-row">
         <PokemonSubSkillSelector
           subSkill={filter.subSkill}
-          setSubSkill={(subSkill) => setFilter((original): PokemonIndividualParams => ({
+          setSubSkill={(subSkill) => setFilter((original): TFilter => ({
             ...original,
             subSkill,
           }))}
@@ -56,7 +56,7 @@ export const PokemonIndividualParamsPicker = ({
         />
         <PokemonNatureSelector
           nature={filter.nature}
-          setNature={(nature) => setFilter((original): PokemonIndividualParams => ({
+          setNature={(nature) => setFilter((original): TFilter => ({
             ...original,
             nature,
           }))}
