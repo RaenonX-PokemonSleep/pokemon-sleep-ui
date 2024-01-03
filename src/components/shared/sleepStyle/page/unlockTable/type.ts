@@ -24,13 +24,17 @@ export type MapUnlockAccumulator = {
   },
 };
 
+export type MapUnlockTableData = SleepStyleNormalFlattened & {
+  show: boolean,
+};
+
 export type MapUnlockTableRowProps = Pick<
   MapCommonProps,
   'mapId' | 'pokedexMap' | 'isLoggedIn'
 > & {
   filter: MapPageFilter,
   rank: SnorlaxRank,
-  matchingStyles: SleepStyleNormalFlattened[],
+  sleepStyleData: MapUnlockTableData[],
   accumulator: MapUnlockAccumulator,
   sleepdex: SleepdexMap,
   setSleepdex: React.Dispatch<React.SetStateAction<SleepdexMap>>,

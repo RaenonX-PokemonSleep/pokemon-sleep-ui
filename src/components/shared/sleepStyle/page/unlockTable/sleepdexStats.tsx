@@ -16,7 +16,7 @@ export const MapUnlockTableSleepdexStats = ({filter, accumulator}: MapUnlockTabl
 
   return (
     <AnimatedCollapseQuick show={showSleepdexStats}>
-      <Flex direction="row" wrap className="items-center justify-end gap-x-2 gap-y-1 p-1">
+      <Flex direction="row" wrap className="items-center justify-end gap-x-2 gap-y-1">
         {sleepTypes.map(Number).map((sleepType) => (
           <MapUnlockTableStylesUnlocked
             key={sleepType}

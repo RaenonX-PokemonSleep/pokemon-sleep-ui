@@ -7,31 +7,24 @@ import {PokemonIconList} from '@/components/shared/pokemon/icon/list';
 import {MapTableInfoIcon} from '@/components/shared/sleepStyle/page/unlockTable/infoIcon';
 import {MapUnlockTableRowProps} from '@/components/shared/sleepStyle/page/unlockTable/type';
 import {useUpdateSleepdex} from '@/hooks/sleepdex/update';
-import {isInSleepdex, toSleepdexStyleId} from '@/utils/game/sleepdex';
+import {toSleepdexStyleId} from '@/utils/game/sleepdex';
 
 
 export const MapUnlockTablePokemonIcons = ({
   pokedexMap,
   filter,
-  matchingStyles,
+  sleepStyleData,
   sleepdex,
   setSleepdex,
 }: MapUnlockTableRowProps) => {
-  const {displayType, markingSleepdex, showLockedOnly} = filter;
+  const {displayType, markingSleepdex} = filter;
 
   const updateSleepdex = useUpdateSleepdex({sleepdex, setSleepdex});
 
   return (
     <Flex center>
       <PokemonIconList
-        dataWithPokemon={matchingStyles.map((data) => ({
-          ...data,
-          show: showLockedOnly || !isInSleepdex({
-            pokemonId: data.pokemonId,
-            styleId: data.style.style,
-            sleepdex,
-          }),
-        }))}
+        dataWithPokemon={sleepStyleData}
         getPokemon={({pokemonId}) => pokedexMap[pokemonId]}
         getPokemonId={({pokemonId}) => pokemonId}
         getInfo={(data) => (

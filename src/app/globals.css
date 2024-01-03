@@ -238,10 +238,6 @@
     }
   }
   
-  div.unlock-table-row {
-    @apply border-b border-b-gray-700 text-center last:border-b-0;
-  }
-  
   .scrollbar-hide {
     scrollbar-width: none;
     

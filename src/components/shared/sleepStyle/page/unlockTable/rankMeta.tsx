@@ -17,7 +17,7 @@ export const MapUnlockTableRankMeta = (props: MapUnlockTableRowProps) => {
   const {
     rank,
     accumulator,
-    matchingStyles,
+    sleepStyleData,
     snorlaxDataAtRank,
   } = props;
   const {energy} = accumulator;
@@ -49,7 +49,7 @@ export const MapUnlockTableRankMeta = (props: MapUnlockTableRowProps) => {
             {toSum(Object.values(accumulator.unlockable).filter(isNotNullish))}
           </div>
           <div>
-            {matchingStyles.length ? ` (+${matchingStyles.length})` : ''}
+            {sleepStyleData.length ? ` (+${sleepStyleData.length})` : ''}
           </div>
         </Flex>
         <Flex direction="row" center>

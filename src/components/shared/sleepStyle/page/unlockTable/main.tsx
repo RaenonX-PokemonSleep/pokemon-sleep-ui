@@ -4,10 +4,11 @@ import {FilterInclusionMap} from '@/components/input/filter/type';
 import {Flex} from '@/components/layout/flex/common';
 import {MapCommonProps, MapInputInclusionKey, MapPageFilter} from '@/components/shared/sleepStyle/page/type';
 import {MapUnlockTableRow} from '@/components/shared/sleepStyle/page/unlockTable/row';
-import {MapUnlockAccumulator} from '@/components/shared/sleepStyle/page/unlockTable/type';
+import {MapUnlockAccumulator, MapUnlockTableData} from '@/components/shared/sleepStyle/page/unlockTable/type';
 import {getUpdatedAccumulator} from '@/components/shared/sleepStyle/page/unlockTable/utils';
 import {getPossibleRanks} from '@/components/shared/sleepStyle/page/utils';
 import {SleepdexMap} from '@/types/game/sleepdex';
+import {isInSleepdex} from '@/utils/game/sleepdex';
 import {getSnorlaxDataAtRank, isSameRank} from '@/utils/game/snorlax';
 
 
@@ -30,7 +31,7 @@ export const MapUnlockTable = (props: Props) => {
     isIncluded,
     sleepdex,
   } = props;
-  const {showEmptyRank} = filter;
+  const {showEmptyRank, showLockedOnly} = filter;
 
   let accumulator: MapUnlockAccumulator = {
     unlocked: {},
@@ -42,7 +43,7 @@ export const MapUnlockTable = (props: Props) => {
   };
 
   return (
-    <Flex>
+    <Flex className="gap-1">
       {getPossibleRanks().map((rank) => {
         const matchingStyles = sleepStyles
           .filter(({pokemonId, style}) => (
@@ -88,16 +89,25 @@ export const MapUnlockTable = (props: Props) => {
           });
         }
 
-        // Have to be after `getUpdatedAccumulator()` or the accumulation will be wrong
-        if (toHide || !currentSnorlaxDataAtRank) {
+        const sleepStyleData: MapUnlockTableData[] = matchingStyles.map((data) => ({
+          ...data,
+          show: showLockedOnly || !isInSleepdex({
+            pokemonId: data.pokemonId,
+            styleId: data.style.style,
+            sleepdex,
+          }),
+        }));
+
+        if (!currentSnorlaxDataAtRank) {
           return null;
         }
 
         return (
           <MapUnlockTableRow
             key={key}
+            show={!toHide}
             rank={rank}
-            matchingStyles={matchingStyles}
+            sleepStyleData={sleepStyleData}
             accumulator={accumulator}
             snorlaxDataAtRank={currentSnorlaxDataAtRank}
             {...props}
