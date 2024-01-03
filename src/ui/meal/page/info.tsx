@@ -25,7 +25,7 @@ export const MealInfo = (props: MealCommonProps) => {
           {meal.ingredients.map(({id, quantity}) => (
             <FlexLink
               href={`/ingredient/${id}`}
-              direction='col'
+              direction="col"
               key={id}
               center
               className="button-clickable-bg p-1.5"

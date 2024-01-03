@@ -40,7 +40,7 @@ export const IngredientCookableMeals = ({mealMap, ingredientMap, ingredientId}: 
         .map((meal) => (
           <FlexLink
             href={`/meal/${meal.id}`}
-            direction='col'
+            direction="col"
             key={meal.id}
             center
             className="button-clickable-bg gap-1 p-1.5"

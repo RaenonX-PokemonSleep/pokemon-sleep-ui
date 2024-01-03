@@ -27,7 +27,7 @@ export const BerryLink = ({berryData}: Props) => {
   return (
     <FlexLink
       href={`/berry/${id}`}
-      direction='col'
+      direction="col"
       center
       className="button-clickable-bg w-full gap-0.5 p-1"
     >

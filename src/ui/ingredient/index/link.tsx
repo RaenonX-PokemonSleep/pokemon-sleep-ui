@@ -23,7 +23,7 @@ export const IngredientLink = ({ingredient}: Props) => {
   return (
     <FlexLink
       href={`/ingredient/${id}`}
-      direction='col'
+      direction="col"
       center
       className="button-clickable-bg w-full gap-0.5 p-1"
     >

@@ -22,7 +22,7 @@ export const PokemonProductionIngredientLink = ({production}: Props) => {
   return (
     <FlexLink
       href={`/ingredient/${id}`}
-      direction='col'
+      direction="col"
       center
       className="button-clickable-bg gap-0.5 p-1.5"
     >
