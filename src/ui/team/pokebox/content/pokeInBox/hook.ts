@@ -4,7 +4,7 @@ import {initialRatingResult} from '@/const/game/rating';
 import {RatingResultOfLevel} from '@/types/game/pokemon/rating/result';
 import {UseCalculatePokeInBoxRatingReturn} from '@/ui/team/pokebox/content/pokeInBox/type';
 import {toRatingWorkerOpts} from '@/ui/team/pokebox/content/pokeInBox/utils';
-import {workerPool} from '@/ui/team/pokebox/content/pokeInBox/workerPool';
+import {pokeboxWorkerPool} from '@/ui/team/pokebox/content/pokeInBox/workerPool';
 import {PokeInBoxCommonProps} from '@/ui/team/pokebox/content/type';
 
 
@@ -20,7 +20,7 @@ export const useCalculatePokeInBoxRating = (opts: PokeInBoxCommonProps): UseCalc
   React.useEffect(() => {
     setLoading(true);
 
-    workerPool.queue(async (rate) => {
+    pokeboxWorkerPool.queue(async (rate) => {
       const calculatedResult = await rate(toRatingWorkerOpts(opts));
 
       if (calculatedResult) {
