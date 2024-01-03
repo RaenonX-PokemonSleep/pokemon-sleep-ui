@@ -14,7 +14,7 @@ type Props = {
 
 export const DocsControlDeleteButton = ({status, onClick}: Props) => {
   return (
-    <button className="button-alert-bg h-8 w-14 rounded-lg" onClick={onClick}>
+    <button className="button-clickable-alert h-8 w-14" onClick={onClick}>
       <Flex center className="h-6 w-6">
         <UserActionStatusIcon status={status} onWaitingOverride={<TrashIcon/>}/>
       </Flex>

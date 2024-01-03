@@ -50,7 +50,7 @@ export const DocsControl = ({locale, path, isCmsMod}: Props) => {
               }
             }}/>
           </PopupCommon>
-          <button className="button-alert-bg h-8 w-14 rounded-lg" onClick={() => setShow(true)}>
+          <button className="button-clickable-alert h-8 w-14" onClick={() => setShow(true)}>
             <Flex center className="h-6 w-6">
               <UserActionStatusIcon status={status} onWaitingOverride={<TrashIcon/>}/>
             </Flex>

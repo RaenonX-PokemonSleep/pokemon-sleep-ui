@@ -39,7 +39,7 @@ export const ActivationDelete = ({data, onDelete}: Props) => {
               <ActivationReadonlyField key={channel} title={channel} data={contact}/>
             ))}
           </Flex>
-          <button className="button-alert-bg rounded-lg p-1" onClick={() => {
+          <button className="button-clickable-alert p-1" onClick={() => {
             onDelete();
             setDeleteConfirmation(false);
           }}>

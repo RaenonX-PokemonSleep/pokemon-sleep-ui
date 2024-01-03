@@ -20,7 +20,7 @@ type Props = {
 export const DeleteButton = ({dimension, iconDimension, onClick, className}: Props) => {
   return (
     <button onClick={onClick} className={clsx(
-      'transform-smooth button-alert-bg shrink-0 rounded-lg p-1',
+      'button-clickable-alert shrink-0 p-1',
       dimension,
       className,
     )}>

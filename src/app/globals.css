@@ -402,6 +402,10 @@
     @apply button-clickable shadow-border shadow-slate-500;
   }
   
+  .button-clickable-alert {
+    @apply button-base button-alert-bg;
+  }
+  
   .button-disabled {
     @apply button-base bg-slate-400/50 dark:bg-slate-800/30 text-slate-500/70 dark:text-slate-500;
   }
