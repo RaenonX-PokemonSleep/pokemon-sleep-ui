@@ -20,7 +20,7 @@
     "Map": "Karte",
     "MainSkill": "Haupttalent",
     "MaxCarry": "Tragelimit",
-    "MealCoverage": "Meal Coverage",
+    "MealCoverage": "Gericht-Abdeckung",
     "Pokebox": "Pokémon Box",
     "Rank": "Rang",
     "ResearchExp": "Forschungspunkte",
@@ -77,10 +77,10 @@
           "Title": "Schlafdex"
         },
         "Record": {
-          "Title": "Schlafdex (Record)"
+          "Title": "Schlafdex (Logbuch)"
         },
         "Lookup": {
-          "Title": "Schlafdex (Search)"
+          "Title": "Schlafdex (Suche)"
         }
       },
       "Map": {
@@ -183,12 +183,12 @@
         "Title": "Nebentalent"
       },
       "ProducingParams": {
-        "Title": "Production Rates"
+        "Title": "Produktionsrate"
       }
     },
     "Item": {
       "Index": {
-        "Title": "Items"
+        "Title": "Gegenstände"
       },
       "Evolution": {
         "Title": "Evolutionsgegenstand"
@@ -254,26 +254,26 @@
         "FrequencyEquivalent": "verhältnismäßige Frequenz",
         "Friendship": "Max. Freundespunkte",
         "Recruit": "Befreundet",
-        "TransferReward": "Reward of sending the Pokemon to professor",
+        "TransferReward": "Belohnung für den Transfer des Pokemon an den Professor",
         "TimeToFullPack": "Zeit bis Inventar voll ist",
         "MainSkillValue": "Talentwert",
         "MainSkillTriggerValue": "Talent-Auslösefrequenzwert",
-        "MainSkillTriggerRate": "Skill Trigger Rate",
-        "EventOnly": "Event Only"
+        "MainSkillTriggerRate": "Talent-Auslöserate",
+        "EventOnly": "Nur Event"
       },
       "Sort": {
         "Id": "ID",
         "DateRegistered": "Registrierungsdatum",
         "IngredientEnergy": "Zutatenstärke",
-        "IngredientCount": "Zutatensuche",
+        "IngredientCount": "Zutatenanzahl",
         "IngredientRate": "Zutatenwahrscheinlichkeit",
         "BerryEnergy": "Beerenstärke",
-        "BerryCount": "Beerensuche",
-        "MainSkillLevel": "Main Skill Level",
+        "BerryCount": "Beerenanzahl",
+        "MainSkillLevel": "Haupttalent Level",
         "FrequencyOfBerry": "Frequenz (Beeren)",
         "FrequencyOfIngredient": "Frequenz (Zutaten)",
         "FriendshipPoint": "Freundespunkte",
-        "SkillCount": "Haupttalentsuche",
+        "SkillCount": "Haupttalentanzahl",
         "SkillStrength": "Haupttalentstärke",
         "TotalEnergy": "Gesamtstärke"
       },
@@ -288,9 +288,9 @@
     },
     "Rating": {
       "FriendshipLevel": "Freundeslevel",
-      "AdvancedOptions": "Advanced Options",
+      "AdvancedOptions": "Erweiterte Optionen",
       "Message": {
-        "RatingBasisIsIngredientRelated": "Ingredient-related rating basis is picked. Make sure the cooking schedule in user settings is set up.\n\nCheck the documentation available at the top right side of the page for details."
+        "RatingBasisIsIngredientRelated": "Zutatenbezogener Wert wird gewählt. Stelle sicher, dass der Koch-Plan in den Benutzereinstellungen eingerichtet ist.\n\nPrüfe die Dokumentation oben Rechts auf der Webseite für mehr Details."
       }
     },
     "Cooking": {
@@ -316,12 +316,12 @@
       "Pokemon": "Pokémon",
       "SleepStyle": "Schlafpose",
       "SleepStylesUnlocked": "Freigeschaltete Schlafstile",
-      "UnlockConditions": "Unlock Requirements",
+      "UnlockConditions": "Freischalt-Bedingungen",
       "Toggle": {
-        "SleepdexRegisterMode": "Sleepdex Register Mode",
-        "CompletionStatus": "Completion Status",
-        "Registered": "Registered",
-        "NoNewSleepStyle": "Rank without Sleep Style Unlock"
+        "SleepdexRegisterMode": "Schlafdex Registrierungsmodus",
+        "CompletionStatus": "Vollständigkeits-Status",
+        "Registered": "Registriert",
+        "NoNewSleepStyle": "Rang ohne Schlafstil-Freischaltung"
       }
     },
     "Team": {
@@ -349,11 +349,11 @@
       "Maker": {
         "Basis": "Basis",
         "Behavior": {
-          "ToggleInsufficientIngredients": "Show/Hide the team comps unable to satisfy the ingredient requirements"
+          "ToggleInsufficientIngredients": "Zeige/Verstecke Teamzusammenstellungen, welche die Zutatenbedingungen nicht erfüllen"
         },
-        "CompCountWarning": "High amount of team comp will take longer time to calculate, or even worse, crashing the browser. Increasing the production difference in between Pokemon helps reducing the possible count of team comp. This can be done by disabling level previewing, setting Snorlax's favorite berries, reducing team member count, or reducing the count of Pokemon to include in the calculation.",
+        "CompCountWarning": "Eine hohe Anzahl von Teamzusammenstellungen benötigt länger um berechnet zu werden. Im schlimmsten Fall führt das sogar zum Abstürzen des Browsers. Das Erhöhen der Produktionsdifferenz zwischen Pokemon hilft die mögliche Anzahl der Teamzusammenstellungen zu verringern. Dies ist durch das deaktivieren der Levelvorschau, das setzen der Lieblingsbeeren von Relaxo, das Verringern der Anzahl von Teammitgliedern oder das Veringern der Anzahl der Pokemon, die für die Berechnung in Betracht gezogen werden, möglich.",
         "Control": {
-          "ExportToTeamAnalysis": "Export to Team Analysis",
+          "ExportToTeamAnalysis": "Zur Team-Analyse exportieren",
           "ExportTeamName": "Team Name"
         },
         "Source": {
@@ -362,17 +362,17 @@
         },
         "State": {
           "IngredientRequirements": {
-            "Pass": "Satisfies ingredient requirements",
-            "Fail": "Does not satisfy ingredient requirements"
+            "Pass": "Zutatenbedingungen werden erfüllt",
+            "Fail": "Zutatenbedingungen werden nicht erfüllt"
           },
           "Status": {
-            "Standby": "Ready",
-            "Initializing": "Initializing",
-            "GeneratingTeams": "Generating Teams",
-            "Calculating": "Calculating",
-            "Completed": "Completed",
-            "Error": "Error",
-            "Canceled": "Canceled"
+            "Standby": "Bereit",
+            "Initializing": "Initialisierung",
+            "GeneratingTeams": "Teams werden erstellt",
+            "Calculating": "Berechne",
+            "Completed": "Beendet",
+            "Error": "Fehler",
+            "Canceled": "Abgebrochen"
           }
         }
       }
@@ -390,16 +390,16 @@
       "NormalCandy": "Pokemon Bonbon",
       "HandyCandy": "Universalbonbon",
       "Multiplier": {
-        "DreamShardDepletion": "Dream Shard Depletion Rate",
-        "ExpBoost": "EXP Boost Rate"
+        "DreamShardDepletion": "Traumsplitter Erschöpfungsrate",
+        "ExpBoost": "EP Boost-Rate"
       },
-      "KeyLevel": "Key Level"
+      "KeyLevel": "Schlüssel-Level"
     },
     "Docs": {
       "Title": "Titel"
     },
     "ProducingParams": {
-      "Notice": "- This page updates daily.\n- Skill value does not affect by level. Check [Pokedex](https://pks.raenonx.cc/pokedex) or [Main Skill Trigger Analysis](https://pks.raenonx.cc/team/mainskill) for skill trigger value.\n- Skill trigger rate without value means that it's not yet verified.\n- Credit to @jc, @goobliss, @harold_grant in Mathcord for providing the model and related information; @calpistori for testing and data verification."
+      "Notice": "- Diese Seite wird täglich aktualisiert.\n- Talent-Wert wird nicht vom Level beeinflusst. Prüfe [Pokedex](https://pks.raenonx.cc/pokedex) oder [Talent Auslösefrequenzanalyse](https://pks.raenonx.cc/team/mainskill) für Talentauslöse-Werte.\n- Talentauslöse-Rate ohne Wert bedeutet, dass diese noch nicht verifiziert ist.\n- Danksagung an @jc, @goobliss, @harold_grant in Mathcord für das Bereitstellen des Modells und der damit verwandten Informationen; @calpistori für das Testen und der Datenverifizierung."
     }
   },
   "Ocr": {
@@ -427,24 +427,24 @@
     },
     "Total": "Gesamt",
     "Probability": {
-      "NoSkillAfterWakeup": "Probability of no skill after wakeup"
+      "NoSkillAfterWakeup": "Wahrscheinlichkeit keiner Talentauslösung nach dem Aufwachen"
     }
   },
   "Rating": {
     "WeightedStatsBasis": {
-      "Percentile": "Percentile",
-      "Percentage": "Percentage",
-      "RelativeStrength": "Relative Strength"
+      "Percentile": "Perzentil",
+      "Percentage": "Prozentwert",
+      "RelativeStrength": "Relative Stärke"
     }
   },
   "SleepStyle": {
-    "DrowsyPowerRequirement": "Drowsy Power Requirement",
+    "DrowsyPowerRequirement": "Schlafkraft Erfordert",
     "DrowsyPowerMultiplier": "Stärke × Resultat",
     "IncenseOnly": "Nur Rauch",
     "Unreleased": "Unveröffentlicht",
     "Message": {
-      "UnlockRankDiffers": "The sleep style unlocking Snorlax rank includes minimum Drowsy Power Requirement. Therefore, what is shown here might differ from Serebii or the other sources. Check the docs accessible at the top right side of the page for details.",
-      "ChooseMapFirst": "Please choose a map first."
+      "UnlockRankDiffers": "Der Relaxo-Rang, der den Schlaf-Stil freischaltet beinhaltet die Mindestanforderung der Schlafkraft. Darum könnten die Angaben, die hier zu sehen sind von anderen Quellen, wie z.B. Serebii unterschiedlich sein. Prüfe die Dokumentations oben Rechts auf der Webseite für mehr Details.",
+      "ChooseMapFirst": "Wähle bitte zuerst eine Karte."
     }
   },
   "Stamina": {
@@ -464,7 +464,7 @@
     },
     "EventType": {
       "SkillRecovery": "Fähigkeitswiederherstellung",
-      "EfficiencyBlock": "Effizienz-Breakpoint",
+      "EfficiencyBlock": "Effizienz-Schwellenwert",
       "Sleep": "Schlafen",
       "Wakeup": "Aufwachen"
     },
@@ -478,16 +478,16 @@
     "AlwaysFullPack": "Immer volles Inventar",
     "BerryPokemonFullPack": "Immer volles Inventar für Beeren-Spezialisten",
     "GoodCampTicket": "Profi-Camping-Ticket",
-    "IncludeMainSkill": "Include Main Skill",
+    "IncludeMainSkill": "Einschließlich Haupttalent",
     "Cooking": {
       "Title": "Kochen bezogen"
     },
     "Message": {
-      "SettingsNotStored": "Showing default user settings. Login required to save the user settings, or let the settings takes effect."
+      "SettingsNotStored": "Zeige Standard Benutzereinstellungen. Login erforderlich um Benutzereinstellungen zu speichern oder um wirksam zu werden."
     }
   },
   "UserControl": {
-    "Login": "Login",
-    "Logout": "Logout"
+    "Login": "Einloggen",
+    "Logout": "Ausloggen"
   }
 }
