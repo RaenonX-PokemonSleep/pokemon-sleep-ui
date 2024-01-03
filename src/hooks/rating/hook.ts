@@ -1,6 +1,6 @@
 
 import {RatingWorkerHookReturn} from '@/hooks/rating/type';
-import {useWorker} from '@/hooks/worker';
+import {useWorker} from '@/hooks/worker/main';
 import {RatingOpts, RatingSetupData, RatingWorkerOpts} from '@/types/game/pokemon/rating/request';
 import {RatingResultOfLevel} from '@/types/game/pokemon/rating/result';
 

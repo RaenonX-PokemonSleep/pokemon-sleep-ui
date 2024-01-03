@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {useWorker} from '@/hooks/worker';
+import {useWorker} from '@/hooks/worker/main';
 import {PokemonInfo} from '@/types/game/pokemon';
 import {AnalysisStats, GetAnalysisStatsOpts} from '@/ui/analysis/page/calc/type';
 

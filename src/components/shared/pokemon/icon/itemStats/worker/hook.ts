@@ -2,7 +2,7 @@ import React from 'react';
 
 import {PokemonItemStatsCalcResult} from '@/components/shared/pokemon/icon/itemStats/type';
 import {PokemonItemStatsWorkerOpts} from '@/components/shared/pokemon/icon/itemStats/worker/type';
-import {useWorker} from '@/hooks/worker';
+import {useWorker} from '@/hooks/worker/main';
 
 
 type UsePokemonProducingStatsWorkerOpts = PokemonItemStatsWorkerOpts & {

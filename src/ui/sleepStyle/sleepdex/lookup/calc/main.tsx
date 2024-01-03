@@ -3,7 +3,7 @@ import React from 'react';
 import isEqual from 'lodash/isEqual';
 import {useCustomCompareEffect} from 'use-custom-compare';
 
-import {useWorker} from '@/hooks/worker';
+import {useWorker} from '@/hooks/worker/main';
 import {SleepdexLookupDataCalcWorkerOpts} from '@/ui/sleepStyle/sleepdex/lookup/calc/type';
 import {SleepdexLookupDataEntry} from '@/ui/sleepStyle/sleepdex/lookup/filter/type';
 

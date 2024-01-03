@@ -5,7 +5,7 @@ import {useCustomCompareEffect} from 'use-custom-compare';
 
 import {PokemonInfoWithSortingPayload, SortedPokemonInfo} from '@/components/shared/pokemon/sorter/type';
 import {SortingWorkerOpts} from '@/components/shared/pokemon/sorter/worker/type';
-import {useWorker} from '@/hooks/worker';
+import {useWorker} from '@/hooks/worker/main';
 
 
 type UseSortingWorkerOpts<
