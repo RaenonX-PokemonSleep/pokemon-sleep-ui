@@ -371,7 +371,8 @@
             "GeneratingTeams": "Generating Teams",
             "Calculating": "Calculating",
             "Completed": "Completed",
-            "Error": "Error"
+            "Error": "Error",
+            "Canceled": "Canceled"
           }
         }
       }

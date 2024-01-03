@@ -1,6 +1,7 @@
 import React from 'react';
 
 import UserGroupIcon from '@heroicons/react/24/outline/UserGroupIcon';
+import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
 import {clsx} from 'clsx';
 import {useSession} from 'next-auth/react';
 import {useTranslations} from 'next-intl';
@@ -58,6 +59,7 @@ export const TeamMakerLoadedClient = (props: TeamMakerDataProps) => {
   const {
     state,
     calculateTeam,
+    cancelCalculation,
     resultsRef,
   } = useTeamMaker();
 
@@ -66,6 +68,7 @@ export const TeamMakerLoadedClient = (props: TeamMakerDataProps) => {
     result,
     teamCompsCalculated,
     teamCompsTotal,
+    cancel,
   } = state;
   const isLoading = isTeamMakerStatusLoading(status);
 
@@ -76,11 +79,19 @@ export const TeamMakerLoadedClient = (props: TeamMakerDataProps) => {
         setInput={setInput}
         {...props}
       />
-      <ButtonToStartTheSorcery
-        ref={resultsRef}
-        onClick={() => calculateTeam({...props, input, settings})}
-        disabled={isLoading}
-      />
+      <Flex direction="row" className="gap-1.5">
+        <ButtonToStartTheSorcery
+          ref={resultsRef}
+          onClick={() => calculateTeam({...props, input, settings})}
+          disabled={isLoading}
+        />
+        {
+          isLoading &&
+          <button className="button-clickable-alert p-1" disabled={cancel} onClick={cancelCalculation}>
+            <XMarkIcon className="h-9 w-9"/>
+          </button>
+        }
+      </Flex>
       <AdsUnit/>
       <Flex center className={clsx(
         'transform-smooth rounded-lg p-1 text-lg shadow-border',

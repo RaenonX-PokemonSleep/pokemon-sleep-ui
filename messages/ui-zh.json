@@ -371,7 +371,8 @@
             "GeneratingTeams": "產生隊伍中",
             "Calculating": "計算產量中",
             "Completed": "完成",
-            "Error": "發生錯誤"
+            "Error": "發生錯誤",
+            "Canceled": "已取消"
           }
         }
       }

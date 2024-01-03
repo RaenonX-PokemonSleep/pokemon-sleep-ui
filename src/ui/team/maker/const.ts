@@ -16,6 +16,7 @@ export const teamMakerStatusStyle: {[status in TeamMakerStatus]: string} = {
   calculating: 'shadow-amber-600 text-amber-600 dark:shadow-amber-500 dark:text-amber-500',
   completed: 'shadow-green-700 text-green-700 dark:shadow-green-500 dark:text-green-500',
   error: 'shadow-red-700 text-red-700 dark:shadow-red-500 dark:text-red-500',
+  canceled: 'shadow-slate-600 text-slate-600 dark:shadow-slate-400 dark:text-slate-400',
 };
 
 export const teamMakerStatusI18nId: {
@@ -27,6 +28,7 @@ export const teamMakerStatusI18nId: {
   calculating: 'State.Status.Calculating',
   completed: 'State.Status.Completed',
   error: 'State.Status.Error',
+  canceled: 'State.Status.Canceled',
 };
 
 export const teamMakerSourceI18nId: {

@@ -270,6 +270,7 @@ declare interface IntlMessages extends UiMessages, GameMessages {
               Calculating: string,
               Completed: string,
               Error: string,
+              Canceled: string,
             },
           },
         },
