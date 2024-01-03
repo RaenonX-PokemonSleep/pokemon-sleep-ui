@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ArrowPathIcon from '@heroicons/react/24/outline/ArrowPathIcon';
 import {useTranslations} from 'next-intl';
 
 import {Flex} from '@/components/layout/flex/common';
@@ -17,6 +18,7 @@ type Props = {
   minCount?: IngredientCounter,
   showIngredient: (ingredient: Ingredient) => boolean,
   onValueChanged: (ingredient: Ingredient, count: Nullable<number>) => void,
+  onReset: () => void,
 };
 
 export const IngredientInventoryInput = ({
@@ -25,6 +27,7 @@ export const IngredientInventoryInput = ({
   minCount,
   showIngredient,
   onValueChanged,
+  onReset,
 }: Props) => {
   const t = useTranslations('UI.InPage.Cooking');
 
@@ -51,9 +54,14 @@ export const IngredientInventoryInput = ({
           );
         })}
       </Flex>
-      <Flex direction="row" noFullWidth className="gap-1 self-end">
-        <GenericIconLarger src="/images/generic/ingredient.png" alt={t('Total')}/>
-        <div>{toSum(Object.values(counter).filter(isNotNullish))}</div>
+      <Flex direction="row" noFullWidth className="items-center gap-1.5 self-end">
+        <Flex direction="row" noFullWidth className="items-center gap-0.5">
+          <GenericIconLarger src="/images/generic/ingredient.png" alt={t('Total')}/>
+          <div>{toSum(Object.values(counter).filter(isNotNullish))}</div>
+        </Flex>
+        <button className="button-clickable-bg h-6 w-6 p-1" onClick={onReset}>
+          <ArrowPathIcon/>
+        </button>
       </Flex>
     </Flex>
   );

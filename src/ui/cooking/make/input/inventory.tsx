@@ -21,6 +21,10 @@ export const MealMakerInputInventory = ({filter, setFilter, ingredientMap}: Meal
           [id]: count,
         },
       } satisfies MealMakerFilter))}
+      onReset={() => setFilter(({inventory, ...original}) => ({
+        ...original,
+        inventory: {},
+      } satisfies MealMakerFilter))}
     />
   );
 };

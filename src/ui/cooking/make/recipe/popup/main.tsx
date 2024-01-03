@@ -61,6 +61,7 @@ export const MealMakerPopup = ({filter, calculatedSettings, status, onCook, ...p
                 ...original,
                 [id]: count,
               }))}
+              onReset={() => setUsages({})}
             />
             <HorizontalSplitter className="w-full"/>
             <Flex direction="row" className="justify-between text-xl">

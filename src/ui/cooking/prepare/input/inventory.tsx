@@ -10,12 +10,16 @@ export const MealPreparerInventory = ({filter, setFilter, ingredientMap}: MealPr
       ingredientMap={ingredientMap}
       counter={filter.inventory}
       showIngredient={() => true}
-      onValueChanged={({id}, count) => setFilter((original) => ({
+      onValueChanged={({id}, count) => setFilter(({inventory, ...original}) => ({
         ...original,
         inventory: {
-          ...original.inventory,
+          ...inventory,
           [id]: count,
         },
+      } satisfies MealPreparerFilter))}
+      onReset={() => setFilter(({inventory, ...original}) => ({
+        ...original,
+        inventory: {},
       } satisfies MealPreparerFilter))}
     />
   );
