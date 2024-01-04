@@ -30,10 +30,7 @@ export const useTeamProducingStats = (opts: UseTeamProducingStatsOpts): TeamProd
 
   const deps: React.DependencyList = [snorlaxFavorite, analysisPeriod, members, setup, bundle];
 
-  const {
-    bySlot,
-    grouped,
-  } = useTeamProducingStatsComp({
+  const compsStats = useTeamProducingStatsComp({
     period: analysisPeriod,
     state: stateOfRateToShow,
     deps,
@@ -41,6 +38,10 @@ export const useTeamProducingStats = (opts: UseTeamProducingStatsOpts): TeamProd
     snorlaxFavorite,
     ...opts,
   });
+  const {
+    bySlot,
+    grouped,
+  } = compsStats;
 
   const total = useTeamProducingStatsTotal({
     period: analysisPeriod,
@@ -62,10 +63,9 @@ export const useTeamProducingStats = (opts: UseTeamProducingStatsOpts): TeamProd
   }), deps);
 
   return {
-    bySlot,
     total,
-    grouped,
     overall,
     mealCoverage,
+    ...compsStats,
   };
 };

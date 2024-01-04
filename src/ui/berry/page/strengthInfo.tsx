@@ -10,6 +10,7 @@ import {ColoredEnergyIcon} from '@/components/shared/icon/energyColored';
 import {LevelIcon} from '@/components/shared/icon/lv';
 import {BerryData} from '@/types/game/berry';
 import {Dimension} from '@/types/style';
+import {formatInt} from '@/utils/number/format';
 
 
 type Props = {
@@ -38,6 +39,8 @@ export const BerryStrengthInfo = ({berryData}: Props) => {
             level: lv,
             strength: energy,
           }))}
+          formatTicks={formatInt}
+          leftMargin={-10}
         />
       </Flex>
     </CollapsibleFull>

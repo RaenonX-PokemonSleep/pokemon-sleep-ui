@@ -5,6 +5,7 @@ import {TeamAnalysisComp, TeamAnalysisMember, TeamAnalysisSlotName} from '@/type
 import {UserSettingsBundle} from '@/types/userData/settings';
 import {TeamProducingStatsSingle} from '@/ui/team/analysis/setup/type';
 import {TeamAnalysisSetupModifyingProps} from '@/ui/team/analysis/type';
+import {GetPokemonProducingRateSingleOpts} from '@/utils/game/producing/main/single';
 
 
 export type TeamAnalysisFilledProps = TeamAnalysisSetupModifyingProps & {
@@ -20,6 +21,7 @@ export type TeamAnalysisFilledSlotProps = TeamAnalysisFilledProps & {
   pokemon: PokemonInfo,
   pokemonProducingParams: PokemonProducingParams,
   stats: TeamProducingStatsSingle,
+  singleOpts: GetPokemonProducingRateSingleOpts,
 };
 
 export type TeamAnalysisEmptySlotPopupType = 'vanilla' | 'pokebox' | 'cloudPull';

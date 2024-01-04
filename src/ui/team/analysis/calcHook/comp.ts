@@ -10,8 +10,13 @@ import {
   UseTeamProducingStatsCommonOpts,
   UseTeamProducingStatsOpts,
 } from '@/ui/team/analysis/calcHook/type';
-import {TeamProducingStatsBySlot, TeamProducingStatsSingle} from '@/ui/team/analysis/setup/type';
+import {
+  TeamProducingStatsBySlot,
+  TeamProducingStatsOptsBySlot,
+  TeamProducingStatsSingle,
+} from '@/ui/team/analysis/setup/type';
 import {getPokemonProducingRateMulti} from '@/utils/game/producing/main/multi';
+import {GetPokemonProducingRateSingleOpts} from '@/utils/game/producing/main/single';
 import {getTotalOfPokemonProducingRate} from '@/utils/game/producing/rateReducer';
 import {isNotNullish} from '@/utils/type';
 
@@ -28,55 +33,61 @@ export const useTeamProducingStatsComp = ({
   cookingSettings,
   snorlaxFavorite,
   ...opts
-}: UseTeamProducingStatsCompOpts): UseTeamCompStatsReturn => {
-  return React.useMemo(() => {
-    const {rates, grouped} = getPokemonProducingRateMulti({
-      cookingSettings,
-      groupingState: state,
-      sharedOpts: {
+}: UseTeamProducingStatsCompOpts): UseTeamCompStatsReturn => React.useMemo(() => {
+  const rateOpts = teamAnalysisSlotName
+    .map((slotName) => {
+      const producingStatsOpts = getTeamProducingStatsSlot({
+        slotName,
+        ...opts,
+      });
+
+      if (!producingStatsOpts) {
+        return null;
+      }
+
+      const {
+        rateOpts,
+        calculatedSettings,
+      } = producingStatsOpts;
+
+      return {
+        opts: rateOpts,
+        payload: {slotName, calculatedSettings},
+      };
+    })
+    .filter(isNotNullish);
+
+  const {rates, grouped} = getPokemonProducingRateMulti({
+    cookingSettings,
+    groupingState: state,
+    sharedOpts: {
+      snorlaxFavorite,
+      period,
+    },
+    rateOpts,
+  });
+
+  return {
+    bySlot: Object.fromEntries(rates.map(({
+      payload,
+      atStage,
+    }): [TeamAnalysisSlotName, TeamProducingStatsSingle] => {
+      const {slotName, calculatedSettings} = payload;
+      const total: ProducingRate = getTotalOfPokemonProducingRate({rate: atStage.final, state});
+
+      return [
+        slotName,
+        {...atStage.final, calculatedSettings, total},
+      ];
+    })) as TeamProducingStatsBySlot,
+    singleOpts: Object.fromEntries(rateOpts.map(({payload, opts}) => [
+      payload.slotName,
+      {
         snorlaxFavorite,
-        period,
-      },
-      rateOpts: (
-        teamAnalysisSlotName
-          .map((slotName) => {
-            const producingStatsOpts = getTeamProducingStatsSlot({
-              slotName,
-              ...opts,
-            });
-
-            if (!producingStatsOpts) {
-              return null;
-            }
-
-            const {
-              rateOpts,
-              calculatedSettings,
-            } = producingStatsOpts;
-
-            return {
-              opts: rateOpts,
-              payload: {slotName, calculatedSettings},
-            };
-          })
-          .filter(isNotNullish)
-      ),
-    });
-
-    return {
-      bySlot: Object.fromEntries(rates.map(({
-        payload,
-        atStage,
-      }): [TeamAnalysisSlotName, TeamProducingStatsSingle] => {
-        const {slotName, calculatedSettings} = payload;
-        const total: ProducingRate = getTotalOfPokemonProducingRate({rate: atStage.final, state});
-
-        return [
-          slotName,
-          {...atStage.final, calculatedSettings, total},
-        ];
-      })) as TeamProducingStatsBySlot,
-      grouped,
-    };
-  }, deps);
-};
+        cookingSettings,
+        ...opts,
+      } satisfies GetPokemonProducingRateSingleOpts,
+    ])) as TeamProducingStatsOptsBySlot,
+    grouped,
+  };
+}, deps);

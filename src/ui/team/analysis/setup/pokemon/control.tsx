@@ -4,6 +4,7 @@ import ArrowTopRightOnSquareIcon from '@heroicons/react/24/outline/ArrowTopRight
 import ChartBarIcon from '@heroicons/react/24/outline/ChartBarIcon';
 import MagnifyingGlassIcon from '@heroicons/react/24/outline/MagnifyingGlassIcon';
 import PencilIcon from '@heroicons/react/24/outline/PencilIcon';
+import PresentationChartLineIcon from '@heroicons/react/24/outline/PresentationChartLineIcon';
 import ShareIcon from '@heroicons/react/24/outline/ShareIcon';
 
 import {Copyable} from '@/components/layout/copyable/main';
@@ -20,6 +21,7 @@ import {getTeamMemberId} from '@/utils/user/teamAnalysis';
 type Props = TeamAnalysisPokemonProps & {
   ratingControl: RatingPopupControl,
   onEditClick: () => void,
+  onChartClick: () => void,
   onDetailsClick: () => void,
 };
 
@@ -33,6 +35,7 @@ export const TeamAnalysisPokemonControl = (props: Props) => {
     ratingControl,
     bundle,
     onEditClick,
+    onChartClick,
     onDetailsClick,
   } = props;
 
@@ -42,7 +45,7 @@ export const TeamAnalysisPokemonControl = (props: Props) => {
   const commonButtonStyle = 'button-clickable-bg h-7 w-7 p-1';
 
   return (
-    <Flex direction="row" className="items-center justify-between">
+    <Flex direction="row" wrap className="items-center justify-between gap-1">
       <PopupCommon show={showId} setShow={setShowId}>
         <Copyable content={getTeamMemberId({uuid: currentTeam.uuid, slotName})}/>
       </PopupCommon>
@@ -78,6 +81,9 @@ export const TeamAnalysisPokemonControl = (props: Props) => {
         </button>
         <button className={commonButtonStyle} onClick={onDetailsClick}>
           <ChartBarIcon/>
+        </button>
+        <button className={commonButtonStyle} onClick={onChartClick}>
+          <PresentationChartLineIcon/>
         </button>
         <button className={commonButtonStyle} onClick={onEditClick}>
           <PencilIcon/>

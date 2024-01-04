@@ -9,7 +9,11 @@ import {LevelIcon} from '@/components/shared/icon/lv';
 import {Dimension} from '@/types/style';
 
 
-export const StrengthGrowthChartTooltip = ({active, payload, label}: TooltipProps<number, number>) => {
+type Props = TooltipProps<number, number> & {
+  formatStrength?: (strength: number) => string,
+};
+
+export const StrengthGrowthChartTooltip = ({active, payload, label, formatStrength}: Props) => {
   const t = useTranslations('UI.Common');
 
   if (!active || !payload || !payload.length) {
@@ -31,7 +35,7 @@ export const StrengthGrowthChartTooltip = ({active, payload, label}: TooltipProp
       <LevelIcon dimension={dimension}/>
       <div>{level}</div>
       <ColoredEnergyIcon alt={t('Strength')} dimension={dimension}/>
-      <div>{strength}</div>
+      <div>{formatStrength ? formatStrength(strength) : strength}</div>
     </Flex>
   );
 };

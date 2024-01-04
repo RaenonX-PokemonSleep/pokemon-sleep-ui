@@ -10,14 +10,18 @@ import {generateNumberTicks} from '@/utils/number/generator';
 
 type Props = {
   data: StrengthGrowthData,
+  formatTicks: (value: number) => string,
+  leftMargin?: number,
 };
 
-export const StrengthGrowthChart = ({data}: Props) => {
+export const StrengthGrowthChart = ({data, formatTicks, leftMargin}: Props) => {
   const {isLandscape} = useLayout();
+
+  const dataMax = Math.max(...data.map(({strength}) => strength));
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={data} margin={{top: 30, bottom: 15, right: 40, left: -10}}>
+      <LineChart data={data} margin={{top: 10, bottom: 0, right: 20, left: leftMargin ?? 0}}>
         <CartesianGrid strokeDasharray="1 1" stroke="#777777"/>
         <XAxis
           type="number"
@@ -30,14 +34,22 @@ export const StrengthGrowthChart = ({data}: Props) => {
           domain={[1, 'dataMax']}
           dy={10}
           interval={0}
+          className="text-sm"
         />
         <YAxis
           type="number"
           dataKey={({strength}: StrengthGrowthDataEntry) => strength}
           interval={0}
           domain={[0, 'dataMax']}
+          ticks={[...generateNumberTicks({
+            max: dataMax,
+            interval: dataMax / 5,
+            start: 0,
+          })]}
+          tickFormatter={formatTicks}
+          className="text-sm"
         />
-        <Tooltip content={<StrengthGrowthChartTooltip/>}/>
+        <Tooltip content={<StrengthGrowthChartTooltip formatStrength={formatTicks}/>}/>
         <Line
           type="linear"
           dataKey={({strength}: StrengthGrowthDataEntry) => strength}

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {clsx} from 'clsx';
+import {useSession} from 'next-auth/react';
 import {useTranslations} from 'next-intl';
 
 import {InfoIcon} from '@/components/icons/info';
@@ -14,6 +15,8 @@ import {PokemonNatureIndicator} from '@/components/shared/pokemon/nature/indicat
 import {useRatingPopup} from '@/components/shared/pokemon/rating/hook';
 import {PokemonSubSkillIndicator} from '@/components/shared/pokemon/subSkill/indicator';
 import {specialtyIdMap} from '@/const/game/pokemon';
+import {usePremiumRequiredToast} from '@/hooks/toast/main';
+import {useUserActivation} from '@/hooks/userData/activation';
 import {TeamAnalysisPokemonControl} from '@/ui/team/analysis/setup/pokemon/control';
 import {useTeamAnalysisPokemonPopup} from '@/ui/team/analysis/setup/pokemon/popup/hook';
 import {TeamAnalysisPokemonPopup} from '@/ui/team/analysis/setup/pokemon/popup/main';
@@ -31,6 +34,9 @@ export const TeamAnalysisPokemon = (props: TeamAnalysisPokemonProps) => {
   const t = useTranslations('Game');
   const pokemonPopup = useTeamAnalysisPokemonPopup();
   const ratingControl = useRatingPopup();
+  const {data: session} = useSession();
+  const {isPremium} = useUserActivation(session);
+  const {showPremiumRequiredToast} = usePremiumRequiredToast();
 
   const {skill} = pokemon;
   const {level, nature, subSkill} = member;
@@ -55,6 +61,14 @@ export const TeamAnalysisPokemon = (props: TeamAnalysisPokemonProps) => {
         <TeamAnalysisPokemonControl
           ratingControl={ratingControl}
           onEditClick={() => pokemonPopup.show('memberConfig')}
+          onChartClick={() => {
+            if (!isPremium) {
+              showPremiumRequiredToast();
+              return;
+            }
+
+            pokemonPopup.show('growthChart');
+          }}
           onDetailsClick={() => pokemonPopup.show('detailedStats')}
           {...props}
         />

@@ -7,4 +7,4 @@ export type TeamAnalysisPokemonProps = TeamAnalysisDataProps & TeamAnalysisFille
   setMember: (slotName: TeamAnalysisSlotName, update: Partial<TeamAnalysisMember>) => void,
 };
 
-export type TeamAnalysisPokemonPopupType = 'memberConfig' | 'detailedStats';
+export type TeamAnalysisPokemonPopupType = 'memberConfig' | 'detailedStats' | 'growthChart';

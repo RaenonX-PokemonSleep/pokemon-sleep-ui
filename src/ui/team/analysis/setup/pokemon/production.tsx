@@ -27,19 +27,30 @@ export const TeamAnalysisPokemonProduction = (props: TeamAnalysisPokemonProps) =
     berryDataMap,
   } = props;
 
-  const {specialty, berry, skill} = pokemon;
+  const {
+    specialty,
+    berry,
+    skill,
+  } = pokemon;
+  const {
+    fullPackStats,
+    ingredient,
+    carryLimitInfo,
+    total,
+  } = stats;
+
   const berryData = berryDataMap[berry.id];
-  const ingredientRates = Object.values(stats.ingredient);
+  const ingredientRates = Object.values(ingredient);
 
   return (
     <>
       <PokemonFrequencyFromProducingRate pokemonRate={stats}/>
       <Flex direction="row" className="justify-center gap-1.5">
-        <PokemonTimeToFullPack timeToFullPack={stats.fullPackStats.secondsToFull}/>
-        <PokemonCarryLimit carryLimit={stats.carryLimitInfo.final}/>
+        <PokemonTimeToFullPack timeToFullPack={fullPackStats.secondsToFull}/>
+        <PokemonCarryLimit carryLimit={carryLimitInfo.final}/>
       </Flex>
       <HorizontalSplitter className="w-full"/>
-      <ProducingRateUI rate={stats.total} hideQuantity/>
+      <ProducingRateUI rate={total} hideQuantity/>
       <PokemonProductionSplitFromPokemonRate
         rate={stats}
         state={stateOfRateToShow}

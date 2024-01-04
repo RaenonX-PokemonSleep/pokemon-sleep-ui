@@ -82,8 +82,9 @@ export const TeamAnalysisTeamView = (props: Props) => {
         const member = members[slotName];
         const pokemon = member ? pokedexMap[member.pokemonId] : undefined;
         const stats = statsOfTeam.bySlot[slotName];
+        const singleOpts = statsOfTeam.singleOpts[slotName];
 
-        const isAvailable = member && pokemon && stats;
+        const isAvailable = member && pokemon && stats && singleOpts;
 
         return (
           <Flex key={slotName} center className={clsx(
@@ -121,6 +122,7 @@ export const TeamAnalysisTeamView = (props: Props) => {
                   pokemonId: pokemon.id,
                   pokemonProducingParamsMap,
                 })}
+                singleOpts={singleOpts}
               /> :
               <TeamAnalysisEmptySlot
                 {...props}

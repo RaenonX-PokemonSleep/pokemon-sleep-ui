@@ -5,7 +5,10 @@ import {PokemonProducingRateByType} from '@/types/game/producing/rate';
 import {ProducingStateOfRate} from '@/types/game/producing/state';
 import {TeamAnalysisSetup} from '@/types/teamAnalysis';
 import {UserSettingsBundle} from '@/types/userData/settings';
-import {TeamProducingStatsBySlot} from '@/ui/team/analysis/setup/type';
+import {
+  TeamProducingStatsBySlot,
+  TeamProducingStatsOptsBySlot,
+} from '@/ui/team/analysis/setup/type';
 import {TeamAnalysisDataProps} from '@/ui/team/analysis/type';
 
 
@@ -22,5 +25,6 @@ export type UseTeamProducingStatsCommonOpts = {
 
 export type UseTeamCompStatsReturn = {
   bySlot: TeamProducingStatsBySlot,
+  singleOpts: TeamProducingStatsOptsBySlot,
   grouped: PokemonProducingRateByType,
 };

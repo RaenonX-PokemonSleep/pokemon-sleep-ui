@@ -5,7 +5,7 @@ import {GetPokemonProducingRateOpts} from '@/utils/game/producing/main/type';
 import {GetProducingRateBehavior, GetProducingRateSharedOpts} from '@/utils/game/producing/type';
 
 
-type GetPokemonProducingRateSingleOpts =
+export type GetPokemonProducingRateSingleOpts =
   GetPokemonProducingRateOpts &
   GetProducingRateSharedOpts & {
     cookingSettings: CookingUserSettings,
