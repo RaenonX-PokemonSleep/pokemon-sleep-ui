@@ -13,7 +13,7 @@ export const addActivationKeyIndex = async <TActivation extends ActivationKey>(
     collection.createIndex({expiry: 1}, {expireAfterSeconds: 0}),
     collection.createIndex({source: 1}),
     ...activationContact.map((channel) => (
-      collection.createIndex({[`contact.${channel}`]: 1}, {unique: true, sparse: true})
+      collection.createIndex({[`contact.${channel}`]: 1}, {sparse: true})
     )),
   ]);
 };

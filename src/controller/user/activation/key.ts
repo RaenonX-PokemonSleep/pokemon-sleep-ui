@@ -28,11 +28,6 @@ export const generateActivationKey = async ({
   throwIfNotAdmin(executorUserId);
 
   const collection = await getCollection();
-  const {contact} = opts;
-
-  if (await collection.findOne({contact})) {
-    return null;
-  }
 
   const key = crypto.randomBytes(24).toString('hex');
   await collection.insertOne({
