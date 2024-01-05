@@ -325,7 +325,9 @@
       }
     },
     "Team": {
-      "AnalysisPeriod": "分析週期",
+      "Analysis": {
+        "Period": "分析週期"
+      },
       "CurrentEnergy": "能量",
       "SubSkill": "副技能",
       "NatureEffect": "性格效果",

@@ -223,7 +223,9 @@ declare interface IntlMessages extends UiMessages, GameMessages {
         },
       },
       Team: {
-        AnalysisPeriod: string,
+        Analysis: {
+          Period: string,
+        },
         CurrentEnergy: string,
         SubSkill: string,
         NatureEffect: string,

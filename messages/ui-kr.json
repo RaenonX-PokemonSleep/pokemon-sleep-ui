@@ -325,7 +325,9 @@
       }
     },
     "Team": {
-      "AnalysisPeriod": "분석 주기",
+      "Analysis": {
+        "Period":  "분석 주기"
+      },
       "CurrentEnergy": "에너지",
       "SubSkill": "서브 스킬",
       "NatureEffect": "성격 효과",

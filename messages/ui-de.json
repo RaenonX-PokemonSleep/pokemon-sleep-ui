@@ -325,7 +325,9 @@
       }
     },
     "Team": {
-      "AnalysisPeriod": "Analysezeitraum",
+      "Analysis": {
+        "Period": "Analysezeitraum"
+      },
       "CurrentEnergy": "Stärke",
       "SubSkill": "Nebentalent",
       "NatureEffect": "Effekt des Wesens",

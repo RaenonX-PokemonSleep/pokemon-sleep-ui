@@ -325,7 +325,9 @@
       }
     },
     "Team": {
-      "AnalysisPeriod": "分析周期",
+      "Analysis": {
+        "Period":  "分析周期"
+      },
       "CurrentEnergy": "エナジー",
       "SubSkill": "サブスキル",
       "NatureEffect": "せいかく効果",

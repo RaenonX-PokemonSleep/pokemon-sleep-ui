@@ -325,7 +325,9 @@
       }
     },
     "Team": {
-      "AnalysisPeriod": "Analysis Period",
+      "Analysis": {
+        "Period": "Analysis Period"
+      },
       "CurrentEnergy": "Strength",
       "SubSkill": "Sub Skill",
       "NatureEffect": "Nature Effect",
