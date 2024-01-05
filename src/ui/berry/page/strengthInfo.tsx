@@ -37,8 +37,14 @@ export const BerryStrengthInfo = ({berryData}: Props) => {
         <StrengthGrowthChart
           data={energy.map(({lv, energy}) => ({
             level: lv,
-            strength: energy,
+            strength: {
+              berry: energy,
+            },
           }))}
+          dataKeys={['berry']}
+          dataNames={() => ({
+            berry: null,
+          })}
           formatTicks={formatInt}
           leftMargin={-10}
         />

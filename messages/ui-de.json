@@ -428,6 +428,11 @@
     "Total": "Gesamt",
     "Probability": {
       "NoSkillAfterWakeup": "Wahrscheinlichkeit keiner Talentauslösung nach dem Aufwachen"
+    },
+    "ProduceType": {
+      "Berry": "Beere",
+      "Ingredient": "Zutat",
+      "MainSkill": "Haupttalent"
     }
   },
   "Rating": {

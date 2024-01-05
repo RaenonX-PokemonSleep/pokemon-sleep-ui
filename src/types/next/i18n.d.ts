@@ -327,6 +327,11 @@ declare interface IntlMessages extends UiMessages, GameMessages {
       Probability: {
         NoSkillAfterWakeup: string,
       },
+      ProduceType: {
+        Berry: string,
+        Ingredient: string,
+        MainSkill: string,
+      },
     },
     Rating: {
       WeightedStatsBasis: {

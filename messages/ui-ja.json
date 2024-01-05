@@ -428,6 +428,11 @@
     "Total": "計",
     "Probability": {
       "NoSkillAfterWakeup": "起床時スキル不発率"
+    },
+    "ProduceType": {
+      "Berry": "きのみ",
+      "Ingredient": "食材",
+      "MainSkill": "メインスキル"
     }
   },
   "Rating": {

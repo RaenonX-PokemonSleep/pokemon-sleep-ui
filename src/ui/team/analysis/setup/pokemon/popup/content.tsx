@@ -1,12 +1,24 @@
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {Flex} from '@/components/layout/flex/common';
 import {StrengthGrowthChart} from '@/components/shared/chart/strength/main';
+import {StrengthGrowthDataEntry} from '@/components/shared/chart/strength/type';
 import {PokemonDetailedProducingStats} from '@/components/shared/pokemon/production/stats/main';
+import {PokemonSpecialtyIcon} from '@/components/shared/pokemon/specialty/icon';
+import {specialtyIdMap} from '@/const/game/pokemon';
 import {TeamAnalysisPokemonMemberConfig} from '@/ui/team/analysis/setup/pokemon/popup/config';
-import {TeamAnalysisPokemonPopupCommonProps} from '@/ui/team/analysis/setup/pokemon/popup/type';
+import {
+  TeamAnalysisPokemonPopupCommonProps,
+  TeamAnalysisStrengthGrowthDataType,
+  teamAnalysisStrengthGrowthDataTypes,
+} from '@/ui/team/analysis/setup/pokemon/popup/type';
 import {getPokemonProducingRateSingle} from '@/utils/game/producing/main/single';
-import {getTotalEnergyOfPokemonProducingRate} from '@/utils/game/producing/rateReducer';
+import {
+  getTotalEnergyOfPokemonProducingRate,
+  getTotalIngredientRateOfPokemon,
+} from '@/utils/game/producing/rateReducer';
 import {formatFloat} from '@/utils/number/format';
 import {generateNumberTicks} from '@/utils/number/generator';
 
@@ -22,6 +34,8 @@ export const TeamAnalysisPokemonPopupContent = ({
     pokemonMaxLevel,
   } = props;
   const {type} = state.control;
+
+  const t = useTranslations('UI.Producing');
 
   if (type === 'memberConfig') {
     return <TeamAnalysisPokemonMemberConfig {...props}/>;
@@ -41,19 +55,47 @@ export const TeamAnalysisPokemonPopupContent = ({
     return (
       <Flex className="info-section h-80 sm:w-[80vw]">
         <StrengthGrowthChart
+          dataKeys={[...teamAnalysisStrengthGrowthDataTypes]}
+          dataNames={({show}) => ({
+            berry: <PokemonSpecialtyIcon specialty={specialtyIdMap.berry} active={show.berry}/>,
+            ingredient: <PokemonSpecialtyIcon specialty={specialtyIdMap.ingredient} active={show.ingredient}/>,
+            skill: <PokemonSpecialtyIcon specialty={specialtyIdMap.skill} active={show.skill}/>,
+            total: t('Total'),
+          })}
           data={[...generateNumberTicks({
             max: pokemonMaxLevel,
             interval: 1,
             start: 1,
-          })].map((level) => ({
-            level,
-            strength: getTotalEnergyOfPokemonProducingRate(getPokemonProducingRateSingle({
+          })].map((level): StrengthGrowthDataEntry<TeamAnalysisStrengthGrowthDataType> => {
+            const rate = getPokemonProducingRateSingle({
               ...singleOpts,
+              // `level` has to go after `singleOpts` to overwrite `singleOpts.level`
               level,
-            }).atStage.final),
-          }))}
+            }).atStage.final;
+
+            return {
+              level,
+              strength: {
+                berry: rate.berry.energy.equivalent,
+                ingredient: getTotalIngredientRateOfPokemon({
+                  rate,
+                  target: 'energy',
+                  state: 'equivalent',
+                }),
+                skill: rate.skill.energy.equivalent,
+                total: getTotalEnergyOfPokemonProducingRate(rate),
+              },
+            };
+          })}
+          classNameOfData={{
+            berry: '[&>path]:stroke-green-700 [&>path]:dark:stroke-green-500',
+            ingredient: '[&>path]:stroke-amber-600 [&>path]:dark:stroke-yellow-400',
+            skill: '[&>path]:stroke-blue-600 [&>path]:dark:stroke-blue-400',
+            total: '[&>path]:stroke-neutral-800 [&>path]:dark:stroke-slate-200',
+          }}
           formatTicks={formatFloat}
-          leftMargin={10}
+          leftMargin={15}
+          currentLevel={singleOpts.level}
         />
       </Flex>
     );

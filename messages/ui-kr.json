@@ -428,6 +428,11 @@
     "Total": "총합",
     "Probability": {
       "NoSkillAfterWakeup": "Probability of no skill after wakeup"
+    },
+    "ProduceType": {
+      "Berry": "나무열매",
+      "Ingredient": "식재료",
+      "MainSkill": "메인 스킬"
     }
   },
   "Rating": {
