@@ -47,7 +47,7 @@ export const RatingResultSummary = (props: Props) => {
     <Flex className="gap-1.5 md:flex-row">
       <RatingResultTarget request={request} subSkillMap={subSkillMap}/>
       <Flex className="info-highlight-inner justify-evenly self-stretch p-3">
-        <RatingBasisTitle basis={request?.setup.basis} larger/>
+        <RatingBasisTitle basis={request.setup.basis} larger/>
         <RatingWeightedStatsUI {...props}/>
       </Flex>
     </Flex>

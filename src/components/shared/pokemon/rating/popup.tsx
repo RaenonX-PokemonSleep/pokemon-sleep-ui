@@ -16,16 +16,13 @@ export const RatingResultPopup = ({ratingControl, pokemon, pokemonProducingParam
   return (
     <PopupCommon show={state.show} setShow={(show) => setState((original) => ({...original, show}))}>
       <Flex noFullWidth className="sm:w-[90vw]">
-        {
-          pokemon && pokemonProducingParams &&
-          <RatingResult
-            request={state.request}
-            setRequest={(request) => setState((original) => ({...original, request}))}
-            pokemon={pokemon}
-            pokemonProducingParams={pokemonProducingParams}
-            {...props}
-          />
-        }
+        <RatingResult
+          request={state.request}
+          setRequest={(request) => setState((original) => ({...original, request}))}
+          pokemon={pokemon}
+          pokemonProducingParams={pokemonProducingParams}
+          {...props}
+        />
       </Flex>
     </PopupCommon>
   );

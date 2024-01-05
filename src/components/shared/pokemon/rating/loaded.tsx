@@ -40,7 +40,7 @@ const RatingResultLoadedInternal = ({
   } = useRatingResult({pokemonMaxLevel, request});
 
   const {weight, basis} = config;
-  const weightedStats = getRatingWeightedStats({
+  const weightedRating = getRatingWeightedStats({
     activeKeyLevels,
     resultMap,
     weight,
@@ -83,7 +83,7 @@ const RatingResultLoadedInternal = ({
         idToText={(basis) => t(ratingWeightedStatsBasisI18nId[basis])}
       />
       <RatingResultSummary
-        stats={weightedStats}
+        rating={weightedRating}
         basis={basis}
         pokemonMaxLevel={pokemonMaxLevel}
         {...props}
