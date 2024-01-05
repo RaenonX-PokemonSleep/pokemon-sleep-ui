@@ -1,25 +1,30 @@
-import {mergeWith} from 'lodash';
+import {specialtyIdToType} from '@/const/game/pokemon';
+import {PokemonSpecialtyId} from '@/types/game/pokemon';
+import {PokemonIndividualParams, PokemonVanillaPreset} from '@/types/game/pokemon/params';
 
-import {PokemonIndividualParams} from '@/types/game/pokemon/params';
 
-
-export type MergeIndividualParamsOpts = {
-  base: PokemonIndividualParams,
-  override: PokemonIndividualParams,
+type GetEffectivePokemonIndividualParamsFromVanillaPresetOpts = {
+  vanillaPreset: PokemonVanillaPreset,
+  specialty: PokemonSpecialtyId,
 };
 
-export const mergeIndividualParams = ({
-  base,
-  override,
-}: MergeIndividualParamsOpts): PokemonIndividualParams => {
-  return {
-    level: override.level,
-    subSkill: mergeWith(
-      {}, base.subSkill, override.subSkill,
-      // Omit `null`
-      // https://stackoverflow.com/a/44034059
-      (a, b) => b === null ? a : undefined,
-    ),
-    nature: override.nature ?? base.nature,
-  };
+export const getEffectivePokemonIndividualParamsFromVanillaPreset = ({
+  vanillaPreset,
+  specialty,
+}: GetEffectivePokemonIndividualParamsFromVanillaPresetOpts): PokemonIndividualParams => {
+  const {
+    shared,
+    bySpecialty,
+    mode,
+  } = vanillaPreset;
+
+  if (mode === 'shared') {
+    return shared;
+  }
+
+  if (mode === 'bySpecialty') {
+    return bySpecialty[specialtyIdToType[specialty]];
+  }
+
+  throw new Error(`Unhandled team maker input vanilla preset priority [${mode satisfies never}]`);
 };

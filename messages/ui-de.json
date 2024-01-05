@@ -447,6 +447,11 @@
       "Berry": "Beere",
       "Ingredient": "Zutat",
       "MainSkill": "Haupttalent"
+    },
+    "VanillaPreset": {
+      "Mode": "Mode",
+      "Shared": "Shared",
+      "BySpecialty": "By Specialty"
     }
   },
   "Rating": {

@@ -447,6 +447,11 @@
       "Berry": "きのみ",
       "Ingredient": "食材",
       "MainSkill": "メインスキル"
+    },
+    "VanillaPreset": {
+      "Mode": "モード",
+      "Shared": "共有",
+      "BySpecialty": "とくいなもの別"
     }
   },
   "Rating": {

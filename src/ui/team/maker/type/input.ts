@@ -1,6 +1,6 @@
 import {PokemonInputFilter} from '@/components/shared/pokemon/filter/type';
 import {PokemonKeyLevel} from '@/types/game/pokemon/level';
-import {PokemonIndividualParams} from '@/types/game/pokemon/params';
+import {PokemonVanillaPreset} from '@/types/game/pokemon/params';
 import {SnorlaxFavorite} from '@/types/game/snorlax';
 import {UserCookingPreset} from '@/types/userData/cooking';
 import {TeamMakerMemberCount} from '@/ui/team/maker/type/common';
@@ -27,7 +27,7 @@ export type TeamMakerInput = Pick<UserCookingPreset, 'mealType' | 'target' | 're
   memberCount: TeamMakerMemberCount,
   basis: TeamMakerBasis,
   previewLevel: PokemonKeyLevel | null,
-  vanillaPresets: PokemonIndividualParams,
+  vanillaPresets: PokemonVanillaPreset,
   previewFinalEvolution: boolean,
   showInsufficientIngredients: boolean,
 };

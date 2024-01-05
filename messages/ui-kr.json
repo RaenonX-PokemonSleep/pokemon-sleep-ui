@@ -447,6 +447,11 @@
       "Berry": "나무열매",
       "Ingredient": "식재료",
       "MainSkill": "메인 스킬"
+    },
+    "VanillaPreset": {
+      "Mode": "Mode",
+      "Shared": "Shared",
+      "BySpecialty": "By Specialty"
     }
   },
   "Rating": {

@@ -447,6 +447,11 @@
       "Berry": "Berry",
       "Ingredient": "Ingredient",
       "MainSkill": "Main Skill"
+    },
+    "VanillaPreset": {
+      "Mode": "Mode",
+      "Shared": "Shared",
+      "BySpecialty": "By Specialty"
     }
   },
   "Rating": {

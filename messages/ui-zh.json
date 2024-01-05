@@ -447,6 +447,11 @@
       "Berry": "樹果",
       "Ingredient": "食材",
       "MainSkill": "主技能"
+    },
+    "VanillaPreset": {
+      "Mode": "模式",
+      "Shared": "共用",
+      "BySpecialty": "根據專長"
     }
   },
   "Rating": {

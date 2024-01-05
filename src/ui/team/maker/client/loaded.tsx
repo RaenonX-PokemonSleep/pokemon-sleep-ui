@@ -51,7 +51,15 @@ export const TeamMakerLoadedClient = (props: TeamMakerDataProps) => {
     memberCount: 5,
     basis: 'strength',
     previewLevel: null,
-    vanillaPresets: defaultPokemonIndividualParams,
+    vanillaPresets: {
+      bySpecialty: {
+        berry: defaultPokemonIndividualParams,
+        ingredient: defaultPokemonIndividualParams,
+        skill: defaultPokemonIndividualParams,
+      },
+      shared: defaultPokemonIndividualParams,
+      mode: 'shared',
+    },
     previewFinalEvolution: false,
     target: preloaded.cooking.target,
     showInsufficientIngredients: true,

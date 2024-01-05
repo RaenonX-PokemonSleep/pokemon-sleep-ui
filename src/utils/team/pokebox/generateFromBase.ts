@@ -9,23 +9,24 @@ import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon/evolution';
 import {generatePossibleIngredientProductionAtLevels} from '@/utils/game/producing/ingredient/chain';
 
 
-export type GeneratePokeboxFromBaseOpts = PokemonIndividualParams & {
+export type GeneratePokeboxFromBaseOpts = {
   ingredientChainMap: IngredientChainMap,
   pokemonList: PokemonInfo[],
+  generateIndividualParams: (pokemon: PokemonInfo) => PokemonIndividualParams,
 };
 
 export const generatePokeboxFromBase = ({
   ingredientChainMap,
   pokemonList,
-  level,
-  subSkill,
-  nature,
+  generateIndividualParams,
 }: GeneratePokeboxFromBaseOpts): PokeInBox[] => {
   const pokeboxList: PokeInBox[] = [];
 
   for (const pokemonInfo of pokemonList) {
+    const individualParams = generateIndividualParams(pokemonInfo);
+
     for (const ingredients of generatePossibleIngredientProductionAtLevels({
-      level,
+      level: individualParams.level,
       chain: ingredientChainMap[pokemonInfo.ingredientChain],
     })) {
       pokeboxList.push({
@@ -33,11 +34,9 @@ export const generatePokeboxFromBase = ({
         dateAdded: Date.now(),
         pokemon: pokemonInfo.id,
         name: null,
-        level,
         ingredients,
         evolutionCount: getEvolutionCountFromPokemonInfo({pokemon: pokemonInfo}),
-        subSkill,
-        nature,
+        ...individualParams,
         ...defaultCommonConstPokeInBox,
       });
     }

@@ -346,6 +346,11 @@ declare interface IntlMessages extends UiMessages, GameMessages {
         Ingredient: string,
         MainSkill: string,
       },
+      VanillaPreset: {
+        Mode: string,
+        Shared: string,
+        BySpecialty: string,
+      },
     },
     Rating: {
       WeightedStatsBasis: {
