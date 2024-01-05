@@ -25,6 +25,10 @@ export const generatePageMeta = ({key, values}: GeneratePageMetaOpts): GenerateM
         url: 'https://github.com/johnmgrant',
       },
     ],
+    creator: 'RaenonX',
+    appleWebApp: {
+      capable: true,
+    },
     generator: 'Next.js',
     manifest: '/manifest.json',
     keywords: [
@@ -42,8 +46,14 @@ export const generatePageMeta = ({key, values}: GeneratePageMetaOpts): GenerateM
       '攻略',
     ],
     icons: [
-      {rel: 'apple-touch-icon', url: 'images/icon.png'},
-      {rel: 'icon', url: 'images/icon.png'},
+      {rel: 'apple-touch-icon', url: '/icons/icon-180x180.png'},
+      {rel: 'icon', url: '/icon.svg', sizes: 'any', type: 'image/svg+xml'},
+      {
+        rel: 'icon',
+        url: '/favicon.ico',
+        sizes: '72x72 76x76 80x80 87x87 96x96 100x100 114x114 120x120 128x128 144x144 152x152 167x167 180x180',
+        type: 'image/x-icon',
+      },
     ],
   };
 };
