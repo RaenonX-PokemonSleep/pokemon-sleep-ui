@@ -21,6 +21,7 @@ import {getCommonEnergyMultiplier} from '@/utils/game/producing/multiplier';
 import {getProducingRateOfStates} from '@/utils/game/producing/rateReducer';
 import {getProduceSplit, getProducingSleepStateSplit} from '@/utils/game/producing/split';
 import {GetProducingRateSharedOpts} from '@/utils/game/producing/type';
+import {isFullPackEffective} from '@/utils/user/settings/utils';
 
 
 export type GetPokemonProducingRateBaseOpts =
@@ -68,6 +69,10 @@ export const getPokemonProducingRateBase = ({
   });
 
   const energyMultiplier = getCommonEnergyMultiplier({bonus});
+  const isFullPack = isFullPackEffective({
+    fullPackBehavior: behavior.alwaysFullPack,
+    specialty: pokemon.specialty,
+  });
 
   const berry = getBerryProducingRate({
     frequency,
@@ -81,8 +86,7 @@ export const getPokemonProducingRateBase = ({
   });
 
   const produceSplit = getProduceSplit({
-    specialty: pokemon.specialty,
-    behavior,
+    isFullPack,
     ...opts,
   });
   const fullPackStats = getFullPackStats({
@@ -92,6 +96,7 @@ export const getPokemonProducingRateBase = ({
       produceSplit,
     }),
     sleepDurationInfo,
+    isFullPack,
   });
   const sleepStateSplit = getProducingSleepStateSplit({
     sleepDurationTotal: sleepDurationInfo.total,
@@ -117,36 +122,33 @@ export const getPokemonProducingRateBase = ({
     sleepStateSplit,
     carryLimitInfo,
     berry: getProducingRateOfStates({
-      specialty: pokemon.specialty,
       period,
       rate: berry,
       produceType: 'berry',
       produceSplit,
       sleepStateSplit,
-      behavior,
+      isFullPack,
       ...opts,
     }),
     ingredient: Object.fromEntries(Object.values(ingredient).map((rate) => [
       rate.id,
       getProducingRateOfStates({
-        specialty: pokemon.specialty,
         period,
         rate,
         produceType: 'ingredient',
         produceSplit,
         sleepStateSplit,
-        behavior,
+        isFullPack,
         ...opts,
       }),
     ])),
     skill: getProducingRateOfStates({
-      specialty: pokemon.specialty,
       period,
       rate: skill,
       produceType: 'skill',
       produceSplit,
       sleepStateSplit,
-      behavior,
+      isFullPack,
       ...opts,
     }),
   };

@@ -52,13 +52,22 @@ type GetFullPackRatioInSleepOpts = {
   dailyCount: number,
   carryLimit: number,
   sleepDurationInfo: SleepDurationInfo,
+  isFullPack: boolean,
 };
 
 export const getFullPackStats = ({
   dailyCount,
   carryLimit,
   sleepDurationInfo,
+  isFullPack,
 }: GetFullPackRatioInSleepOpts): FullPackStats => {
+  if (isFullPack) {
+    return {
+      secondsToFull: 0,
+      ratio: 1,
+    };
+  }
+
   const secondsToFull = getSecondsToFullPackInSleep({dailyCount, carryLimit});
   const fullPackDuration = toSum(
     sleepDurationInfo.durations.map((duration) => Math.max(duration - secondsToFull, 0)),

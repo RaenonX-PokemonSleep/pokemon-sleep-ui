@@ -6,25 +6,25 @@ import {UserCalculationFullPackBehavior} from '@/types/userData/settings';
 import {isNotNullish} from '@/utils/type';
 
 
-type IsFullPackOpts = {
-  alwaysFullBack: UserCalculationFullPackBehavior,
+type IsFullPackEffectiveOpts = {
+  fullPackBehavior: UserCalculationFullPackBehavior,
   specialty: PokemonSpecialtyId | null,
 };
 
-export const isFullPack = ({alwaysFullBack, specialty}: IsFullPackOpts): boolean => {
-  if (alwaysFullBack === 'berryOnly') {
+export const isFullPackEffective = ({fullPackBehavior, specialty}: IsFullPackEffectiveOpts): boolean => {
+  if (fullPackBehavior === 'berryOnly') {
     return specialty === specialtyIdMap.berry;
   }
 
-  if (alwaysFullBack === 'always') {
+  if (fullPackBehavior === 'always') {
     return true;
   }
 
-  if (alwaysFullBack === 'disable') {
+  if (fullPackBehavior === 'disable') {
     return false;
   }
 
-  throw new Error(`Unhandled full pack behavior [${alwaysFullBack}]`);
+  throw new Error(`Unhandled full pack behavior [${fullPackBehavior}]`);
 };
 
 export type ToTargetMealsOpts = {

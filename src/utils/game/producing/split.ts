@@ -1,32 +1,27 @@
 import {durationOfDay} from '@/const/common';
-import {PokemonSpecialtyId} from '@/types/game/pokemon';
 import {NatureId} from '@/types/game/pokemon/nature';
 import {PokemonProducingParams} from '@/types/game/pokemon/producing';
 import {GroupedSubSkillBonus} from '@/types/game/pokemon/subSkill';
 import {ProduceSplit, ProducingSleepStateSplit} from '@/types/game/producing/split';
-import {UserCalculationBehavior} from '@/types/userData/settings';
 import {toSum} from '@/utils/array';
 import {getNatureMultiplier} from '@/utils/game/nature';
 import {getSubSkillBonusValue} from '@/utils/game/subSkill/effect';
-import {isFullPack} from '@/utils/user/settings/utils';
 
 
 export type GetProduceSplitOpts = {
-  specialty: PokemonSpecialtyId | null,
   pokemonProducingParams: PokemonProducingParams,
   natureId: NatureId | null,
   subSkillBonus: GroupedSubSkillBonus | null,
-  behavior: UserCalculationBehavior,
+  isFullPack: boolean,
 };
 
 export const getProduceSplit = ({
-  specialty,
   pokemonProducingParams,
   natureId,
   subSkillBonus,
-  behavior,
+  isFullPack,
 }: GetProduceSplitOpts): ProduceSplit => {
-  if (isFullPack({alwaysFullBack: behavior.alwaysFullPack, specialty})) {
+  if (isFullPack) {
     return {
       berry: 1,
       ingredient: 0,
