@@ -246,6 +246,14 @@
     }
   }
   
+  /* region Elements divider (divide-*) */
+  
+  .divide-horizontal {
+    @apply divide-y divide-slate-400 dark:divide-slate-700;
+  }
+  
+  /* endregion */
+  
   /* region Fixed count of element in row (width-with-gap-*) */
   
   .width-with-gap-xs {
