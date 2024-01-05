@@ -1,7 +1,6 @@
 import {TeamAnalysisSlotName} from '@/types/teamAnalysis';
 import {CalculatedUserSettings} from '@/types/userData/settings';
-import {UseTeamProducingStatsOpts} from '@/ui/team/analysis/calcHook/type';
-import {getCurrentTeam} from '@/ui/team/analysis/utils';
+import {UseTeamProducingStatsOpts} from '@/ui/team/analysis/calc/type';
 import {getEffectiveIngredientProductions} from '@/utils/game/producing/ingredient/multi';
 import {GetPokemonProducingRateOpts} from '@/utils/game/producing/main/type';
 import {getPokemonProducingParams, getProducingRateSingleParams} from '@/utils/game/producing/params';
@@ -19,7 +18,7 @@ type GetProducingStatsOptsSlotReturn = {
 };
 
 export const getTeamProducingStatsSlot = ({
-  setup,
+  overrideLevel,
   bundle,
   pokedexMap,
   pokemonProducingParamsMap,
@@ -27,11 +26,10 @@ export const getTeamProducingStatsSlot = ({
   ingredientMap,
   mainSkillMap,
   subSkillMap,
+  currentTeam,
   slotName,
 }: GetTeamProducingStatsSlotOpts): GetProducingStatsOptsSlotReturn | null => {
-  const {
-    members,
-  } = getCurrentTeam({setup});
+  const {members} = currentTeam;
 
   // return React.useMemo(() => {
   const member = members[slotName];
@@ -40,7 +38,6 @@ export const getTeamProducingStatsSlot = ({
   }
 
   const {
-    level,
     pokemonId,
     ingredients,
     evolutionCount,
@@ -55,6 +52,7 @@ export const getTeamProducingStatsSlot = ({
     return null;
   }
 
+  const level = overrideLevel ?? member.level;
   const singleParams = getProducingRateSingleParams({
     level,
     subSkill,

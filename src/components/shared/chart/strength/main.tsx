@@ -17,11 +17,12 @@ import {
 import {useLayout} from '@/hooks/layout/main';
 import {textFilterButtonStyle} from '@/styles/input';
 import {generateNumberTicks} from '@/utils/number/generator';
+import {Nullable} from '@/utils/type';
 
 
 type Props<TKey extends string> = StrengthGrowthChartCommonProps<TKey> & {
   formatTicks: (value: number) => string,
-  currentLevel?: number,
+  currentLevel?: Nullable<number>,
   classNameOfData?: {[key in TKey]?: string},
   leftMargin?: number,
 };

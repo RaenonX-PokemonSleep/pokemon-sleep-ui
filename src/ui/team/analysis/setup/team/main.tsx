@@ -33,7 +33,7 @@ type Props = TeamAnalysisDataProps & TeamAnalysisFilledProps & {
 
 export const TeamAnalysisTeamView = (props: Props) => {
   const {
-    setup,
+    currentTeam,
     setSetup,
     pokedexMap,
     pokemonProducingParamsMap,
@@ -42,7 +42,7 @@ export const TeamAnalysisTeamView = (props: Props) => {
   } = props;
 
   const t = useTranslations('Game');
-  const {members, snorlaxFavorite} = getCurrentTeam({setup});
+  const {members, snorlaxFavorite} = currentTeam;
 
   const setMember = React.useCallback((
     slotName: TeamAnalysisSlotName,
@@ -82,9 +82,8 @@ export const TeamAnalysisTeamView = (props: Props) => {
         const member = members[slotName];
         const pokemon = member ? pokedexMap[member.pokemonId] : undefined;
         const stats = statsOfTeam.bySlot[slotName];
-        const singleOpts = statsOfTeam.singleOpts[slotName];
 
-        const isAvailable = member && pokemon && stats && singleOpts;
+        const isAvailable = member && pokemon && stats;
 
         return (
           <Flex key={slotName} center className={clsx(
@@ -112,7 +111,6 @@ export const TeamAnalysisTeamView = (props: Props) => {
             </button>
             {isAvailable ?
               <TeamAnalysisFilledSlot
-                {...props}
                 snorlaxFavorite={snorlaxFavorite}
                 slotName={slotName}
                 member={member}
@@ -122,7 +120,7 @@ export const TeamAnalysisTeamView = (props: Props) => {
                   pokemonId: pokemon.id,
                   pokemonProducingParamsMap,
                 })}
-                singleOpts={singleOpts}
+                {...props}
               /> :
               <TeamAnalysisEmptySlot
                 {...props}

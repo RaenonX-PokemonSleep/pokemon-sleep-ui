@@ -1,14 +1,12 @@
 import React from 'react';
 
-import {useCookingUserSettings} from '@/hooks/userData/cookingSettings';
 import {MealCoverage} from '@/types/game/cooking';
 import {ProducingRate} from '@/types/game/producing/rate';
-import {useTeamProducingStatsComp} from '@/ui/team/analysis/calcHook/comp';
-import {useTeamProducingStatsTotal} from '@/ui/team/analysis/calcHook/total';
-import {UseTeamProducingStatsOpts} from '@/ui/team/analysis/calcHook/type';
+import {getTeamCompCalcResult} from '@/ui/team/analysis/calc/comp';
+import {useTeamProducingStatsTotal} from '@/ui/team/analysis/calc/hook/total';
+import {UseTeamProducingStatsOpts} from '@/ui/team/analysis/calc/type';
 import {stateOfRateToShow} from '@/ui/team/analysis/setup/const';
 import {TeamProducingStats} from '@/ui/team/analysis/setup/type';
-import {getCurrentTeam} from '@/ui/team/analysis/utils';
 import {getMealCoverage} from '@/utils/game/cooking';
 import {toIngredientProductionCounterFromGroupedRate} from '@/utils/game/producing/ingredient/utils';
 import {getTotalOfGroupedProducingRate} from '@/utils/game/producing/rateReducer';
@@ -17,27 +15,27 @@ import {getTotalOfGroupedProducingRate} from '@/utils/game/producing/rateReducer
 export const useTeamProducingStats = (opts: UseTeamProducingStatsOpts): TeamProducingStats => {
   const {
     setup,
-    mealMap,
     bundle,
+    currentTeam,
+    cookingSettings,
   } = opts;
   const {
     snorlaxFavorite,
     analysisPeriod,
     members,
-  } = getCurrentTeam({setup});
-
-  const cookingSettings = useCookingUserSettings({...bundle, mealMap});
+  } = currentTeam;
 
   const deps: React.DependencyList = [snorlaxFavorite, analysisPeriod, members, setup, bundle];
 
-  const compsStats = useTeamProducingStatsComp({
-    period: analysisPeriod,
-    state: stateOfRateToShow,
+  const compsStats = React.useMemo(
+    () => getTeamCompCalcResult({
+      period: analysisPeriod,
+      state: stateOfRateToShow,
+      snorlaxFavorite,
+      ...opts,
+    }),
     deps,
-    cookingSettings,
-    snorlaxFavorite,
-    ...opts,
-  });
+  );
   const {
     bySlot,
     grouped,

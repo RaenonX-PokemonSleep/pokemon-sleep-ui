@@ -14,7 +14,6 @@ type Props = TeamAnalysisDataProps & TeamAnalysisFilledSlotProps;
 export const TeamAnalysisFilledSlot = (props: Props) => {
   const {
     setSetup,
-    stats,
     pokemon,
     showPokemon,
   } = props;
@@ -50,8 +49,7 @@ export const TeamAnalysisFilledSlot = (props: Props) => {
       >
         <GenericPokeballIcon alt={t('Page.Title', {name: t2(pokemon.id.toString())})} noWrap/>
       </button>
-      {/* `{...props}` has to be the first because some pass-through props has naming conflict */}
-      <TeamAnalysisPokemon {...props} setMember={setTeamMember} stats={stats}/>
+      <TeamAnalysisPokemon setMember={setTeamMember} {...props}/>
     </>
   );
 };

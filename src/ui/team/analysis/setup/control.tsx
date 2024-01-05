@@ -12,18 +12,16 @@ import {UserDataUploadButton} from '@/components/shared/userData/upload';
 import {TeamAnalysisComp} from '@/types/teamAnalysis';
 import {TeamAnalysisCompSelector} from '@/ui/team/analysis/comp/main';
 import {TeamAnalysisSetupModifyingProps} from '@/ui/team/analysis/type';
-import {getCurrentTeam, getDefaultTeamName, getTeamName} from '@/ui/team/analysis/utils';
+import {getDefaultTeamName, getTeamName} from '@/ui/team/analysis/utils';
 import {cloneMerge} from '@/utils/object/cloneMerge';
 
 
-export const TeamAnalysisSetupControl = ({setup, setSetup}: TeamAnalysisSetupModifyingProps) => {
+export const TeamAnalysisSetupControl = ({setup, setSetup, currentTeam}: TeamAnalysisSetupModifyingProps) => {
   const {status} = useSession();
   const [setupSelector, setSetupSelector] = React.useState({
     show: false,
     setup,
   });
-
-  const currentTeam = getCurrentTeam({setup});
 
   const onSelect = (selected?: string) => {
     // Not using `() => value` state updater because data should be taken from `setupSelector` instead

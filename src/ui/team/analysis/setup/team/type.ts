@@ -2,16 +2,16 @@ import {PokemonInfo} from '@/types/game/pokemon';
 import {PokemonProducingParams} from '@/types/game/pokemon/producing';
 import {SnorlaxFavorite} from '@/types/game/snorlax';
 import {TeamAnalysisComp, TeamAnalysisMember, TeamAnalysisSlotName} from '@/types/teamAnalysis';
-import {UserSettingsBundle} from '@/types/userData/settings';
+import {CookingUserSettings, UserSettingsBundle} from '@/types/userData/settings';
 import {TeamProducingStatsSingle} from '@/ui/team/analysis/setup/type';
 import {TeamAnalysisSetupModifyingProps} from '@/ui/team/analysis/type';
-import {GetPokemonProducingRateSingleOpts} from '@/utils/game/producing/main/single';
 
 
 export type TeamAnalysisFilledProps = TeamAnalysisSetupModifyingProps & {
   showPokemon: (pokemon: PokemonInfo) => void,
   currentTeam: TeamAnalysisComp,
   bundle: UserSettingsBundle,
+  cookingSettings: CookingUserSettings,
 };
 
 export type TeamAnalysisFilledSlotProps = TeamAnalysisFilledProps & {
@@ -21,7 +21,6 @@ export type TeamAnalysisFilledSlotProps = TeamAnalysisFilledProps & {
   pokemon: PokemonInfo,
   pokemonProducingParams: PokemonProducingParams,
   stats: TeamProducingStatsSingle,
-  singleOpts: GetPokemonProducingRateSingleOpts,
 };
 
 export type TeamAnalysisEmptySlotPopupType = 'vanilla' | 'pokebox' | 'cloudPull';

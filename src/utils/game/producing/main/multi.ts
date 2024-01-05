@@ -14,7 +14,7 @@ import {GetProducingRateBehavior, GetProducingRateSharedOpts} from '@/utils/game
 import {isNotNullish} from '@/utils/type';
 
 
-type GetPokemonProducingRateMultiOpts<TPayload> = {
+export type GetPokemonProducingRateMultiOpts<TPayload> = {
   rateOpts: GetPokemonProducingRateOptsWithPayload<TPayload>[],
   sharedOpts: GetProducingRateSharedOpts,
   groupingState: ProducingStateOfRate,

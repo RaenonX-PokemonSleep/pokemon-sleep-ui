@@ -9,7 +9,7 @@ import {MainSkillMap} from '@/types/game/pokemon/mainSkill';
 import {PokemonProducingParamsMap} from '@/types/game/pokemon/producing';
 import {SubSkillMap} from '@/types/game/pokemon/subSkill';
 import {SnorlaxDataOfMap} from '@/types/game/snorlax';
-import {TeamAnalysisSetup} from '@/types/teamAnalysis';
+import {TeamAnalysisComp, TeamAnalysisSetup} from '@/types/teamAnalysis';
 import {UserLazyLoadedData} from '@/types/userData/main';
 import {CookingUserSettingsRequiredData, UserSettingsBundle} from '@/types/userData/settings';
 
@@ -35,4 +35,5 @@ export type TeamAnalysisDataProps = TeamAnalysisServerDataProps & {
 export type TeamAnalysisSetupModifyingProps = {
   setup: TeamAnalysisSetup,
   setSetup: React.Dispatch<React.SetStateAction<TeamAnalysisSetup>>,
+  currentTeam: TeamAnalysisComp,
 };
