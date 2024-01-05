@@ -225,6 +225,18 @@ declare interface IntlMessages extends UiMessages, GameMessages {
       Team: {
         Analysis: {
           Period: string,
+          Control: {
+            ExportToPokebox: string,
+            ShareableLink: string,
+            Rating: string,
+            DetailedStats: string,
+            StrengthGrowth: string,
+            Edit: string,
+          },
+          Message: {
+            ShareableLink: string,
+            StrengthGrowth: string,
+          },
         },
         CurrentEnergy: string,
         SubSkill: string,

@@ -326,7 +326,19 @@
     },
     "Team": {
       "Analysis": {
-        "Period": "分析週期"
+        "Period": "分析週期",
+        "Control": {
+          "ExportToPokebox": "輸出至寶可夢盒",
+          "ShareableLink": "獲取分享連結",
+          "Rating": "查閱評級",
+          "DetailedStats": "詳細分析資訊",
+          "StrengthGrowth": "產量成長曲線",
+          "Edit": "編輯"
+        },
+        "Message": {
+          "ShareableLink": "此連結綁定隊伍及成員位置，而非寶可夢本體。",
+          "StrengthGrowth": "圖中的計算結果假設其他隊中的寶可夢沒有任何變化。"
+        }
       },
       "CurrentEnergy": "能量",
       "SubSkill": "副技能",

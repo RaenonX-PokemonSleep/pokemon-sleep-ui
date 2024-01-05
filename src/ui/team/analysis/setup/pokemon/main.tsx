@@ -17,7 +17,7 @@ import {PokemonSubSkillIndicator} from '@/components/shared/pokemon/subSkill/ind
 import {specialtyIdMap} from '@/const/game/pokemon';
 import {usePremiumRequiredToast} from '@/hooks/toast/main';
 import {useUserActivation} from '@/hooks/userData/activation';
-import {TeamAnalysisPokemonControl} from '@/ui/team/analysis/setup/pokemon/control';
+import {TeamAnalysisPokemonControl} from '@/ui/team/analysis/setup/pokemon/control/main';
 import {useTeamAnalysisPokemonPopup} from '@/ui/team/analysis/setup/pokemon/popup/hook';
 import {TeamAnalysisPokemonPopup} from '@/ui/team/analysis/setup/pokemon/popup/main';
 import {TeamAnalysisPokemonProduction} from '@/ui/team/analysis/setup/pokemon/production';
@@ -42,7 +42,7 @@ export const TeamAnalysisPokemon = (props: TeamAnalysisPokemonProps) => {
   const {level, nature, subSkill} = member;
 
   return (
-    <Flex className="gap-2 sm:flex-row lg:flex-col">
+    <Flex className="items-center gap-2 sm:flex-row lg:flex-col">
       <TeamAnalysisPokemonPopup
         state={pokemonPopup}
         ratingControl={ratingControl}
@@ -50,28 +50,29 @@ export const TeamAnalysisPokemon = (props: TeamAnalysisPokemonProps) => {
       />
       <Flex className="gap-2">
         <PokemonNameSimple pokemon={pokemon} override={member.name}/>
-        <Flex direction="row" center>
+        <Flex center className="relative">
           <div className="relative h-28 w-28">
             <PokemonImage pokemonId={pokemon.id} image="portrait" isShiny={false}/>
             <InfoIcon className="absolute bottom-0 right-0">
               {level}
             </InfoIcon>
           </div>
-        </Flex>
-        <TeamAnalysisPokemonControl
-          ratingControl={ratingControl}
-          onEditClick={() => pokemonPopup.show('memberConfig')}
-          onChartClick={() => {
-            if (!isPremium) {
-              showPremiumRequiredToast();
-              return;
-            }
+          <div className="absolute bottom-0 right-0">
+            <TeamAnalysisPokemonControl
+              ratingControl={ratingControl}
+              onPopupButtonClick={(type, requirePremium) => {
+                if (requirePremium && !isPremium) {
+                  showPremiumRequiredToast();
+                  return;
+                }
 
-            pokemonPopup.show('growthChart');
-          }}
-          onDetailsClick={() => pokemonPopup.show('detailedStats')}
-          {...props}
-        />
+                pokemonPopup.show(type);
+              }}
+              isPremium={isPremium}
+              {...props}
+            />
+          </div>
+        </Flex>
         <Flex className="items-center justify-between lg:flex-row">
           <Flex direction="row" className={clsx(
             'items-center gap-1.5 self-start truncate px-2 py-1 text-sm',

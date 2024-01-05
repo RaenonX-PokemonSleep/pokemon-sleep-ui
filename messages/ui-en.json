@@ -326,7 +326,19 @@
     },
     "Team": {
       "Analysis": {
-        "Period": "Analysis Period"
+        "Period": "Analysis Period",
+        "Control": {
+          "ExportToPokebox": "Export to Pokebox",
+          "ShareableLink": "Sharable Link",
+          "Rating": "Rating",
+          "DetailedStats": "Detailed Stats",
+          "StrengthGrowth": "Strength Growth Curve",
+          "Edit": "Edit"
+        },
+        "Message": {
+          "ShareableLink": "This link is bound to the team and the slot, not the Pokemon itself.",
+          "StrengthGrowth": "Results here assume every other Pokemon on the team does not change."
+        }
       },
       "CurrentEnergy": "Strength",
       "SubSkill": "Sub Skill",

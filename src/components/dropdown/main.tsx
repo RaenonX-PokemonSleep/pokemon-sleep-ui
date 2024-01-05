@@ -33,10 +33,10 @@ export const DropDown = ({button, itemList, origin}: Props) => {
           'info-section-opaque divide-horizontal border-common absolute z-50 w-fit rounded-lg border',
           dropdownExpandStyle[origin],
         )}>
-          {itemList.map((group) => (
-            <Flex className="gap-1 p-1">
-              {group.map((item) => (
-                <Menu.Item>
+          {itemList.map((group, idxGroup) => (
+            <Flex key={idxGroup} className="gap-1 p-1">
+              {group.map((item, idxItem) => (
+                <Menu.Item key={idxItem}>
                   {({active}) => item({active})}
                 </Menu.Item>
               ))}

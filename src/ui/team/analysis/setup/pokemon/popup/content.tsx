@@ -3,6 +3,7 @@ import React from 'react';
 import {useTranslations} from 'next-intl';
 
 import {AdsUnit} from '@/components/ads/main';
+import {Copyable} from '@/components/layout/copyable/main';
 import {Flex} from '@/components/layout/flex/common';
 import {StrengthGrowthChart} from '@/components/shared/chart/strength/main';
 import {StrengthGrowthDataEntry} from '@/components/shared/chart/strength/type';
@@ -23,6 +24,7 @@ import {
 import {formatFloat} from '@/utils/number/format';
 import {generateNumberTicks} from '@/utils/number/generator';
 import {isNotNullish} from '@/utils/type';
+import {getTeamMemberId} from '@/utils/user/teamAnalysis';
 
 
 export const TeamAnalysisPokemonPopupContent = ({
@@ -39,6 +41,7 @@ export const TeamAnalysisPokemonPopupContent = ({
   const {type} = state.control;
 
   const t = useTranslations('UI.Producing');
+  const t2 = useTranslations('UI.InPage.Team.Analysis');
 
   if (type === 'memberConfig') {
     return <TeamAnalysisPokemonMemberConfig {...props}/>;
@@ -51,6 +54,17 @@ export const TeamAnalysisPokemonPopupContent = ({
         calculatedSettings={stats.calculatedSettings}
         specialty={pokemon.specialty}
       />
+    );
+  }
+
+  if (type === 'sharableLink') {
+    return (
+      <Flex className="gap-1.5">
+        <Flex className="info-highlight p-1">
+          {t2('Message.ShareableLink')}
+        </Flex>
+        <Copyable content={getTeamMemberId({uuid: currentTeam.uuid, slotName})}/>
+      </Flex>
     );
   }
 
