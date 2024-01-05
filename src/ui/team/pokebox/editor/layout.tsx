@@ -29,7 +29,7 @@ import {Dimension} from '@/types/style';
 import {PokeInBox} from '@/types/userData/pokebox/main';
 import {PokeInBoxEditCommonProps, PokeInBoxEditStateProps} from '@/ui/team/pokebox/editor/type';
 import {toIsoDateString} from '@/utils/date';
-import {getPokemonMaxEvolutionCount} from '@/utils/game/pokemon';
+import {getPokemonMaxEvolutionCount} from '@/utils/game/pokemon/evolution';
 import {getSubSkillBonus} from '@/utils/game/subSkill/effect';
 import {isNotNullish} from '@/utils/type';
 

@@ -4,7 +4,7 @@ import {defaultCommonConstPokeInBox} from '@/const/user/pokebox';
 import {PokemonInfo} from '@/types/game/pokemon';
 import {IngredientChainMap} from '@/types/game/pokemon/ingredient';
 import {PokeInBox} from '@/types/userData/pokebox/main';
-import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon';
+import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon/evolution';
 import {generateDefaultIngredientProductionAtLevels} from '@/utils/game/producing/ingredient/chain';
 
 

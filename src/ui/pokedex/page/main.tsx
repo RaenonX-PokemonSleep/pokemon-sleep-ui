@@ -24,7 +24,7 @@ import {getSubSkillMap} from '@/controller/subSkill';
 import {PublicPageLayout} from '@/ui/base/layout/public';
 import {PokemonClient} from '@/ui/pokedex/page/client';
 import {PokemonDataProps} from '@/ui/pokedex/page/type';
-import {getRelatedPokemonIds} from '@/utils/game/pokemon';
+import {getRelatedPokemonIds} from '@/utils/game/pokemon/branch';
 import {createUserSettingsBundle} from '@/utils/user/settings/create';
 
 

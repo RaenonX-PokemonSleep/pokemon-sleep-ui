@@ -6,7 +6,7 @@ import {useTranslations} from 'next-intl';
 
 import {PokemonInfo} from '@/types/game/pokemon';
 import {Dimension} from '@/types/style';
-import {isPokemonEventOnly} from '@/utils/game/pokemon';
+import {isPokemonEventOnly} from '@/utils/game/pokemon/event';
 
 
 type Props = {

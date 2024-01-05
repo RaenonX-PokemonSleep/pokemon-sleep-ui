@@ -3,7 +3,7 @@ import {useTranslations} from 'next-intl';
 import {PokemonId} from '@/types/game/pokemon';
 import {PokemonBranchData} from '@/types/game/pokemon/branch';
 import {SleepStyleId} from '@/types/game/sleepStyle';
-import {getPokemonIdForSleepStyle} from '@/utils/game/pokemon';
+import {getPokemonIdForSleepStyle} from '@/utils/game/pokemon/sleepStyle';
 import {Nullable} from '@/utils/type';
 
 

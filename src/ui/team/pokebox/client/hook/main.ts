@@ -9,7 +9,7 @@ import {Pokebox} from '@/types/userData/pokebox/main';
 import {useProcessedPokebox} from '@/ui/team/pokebox/client/hook/process';
 import {PokeboxCommonProps} from '@/ui/team/pokebox/type';
 import {usePokeboxViewerFilter} from '@/ui/team/pokebox/viewer/hook';
-import {getPokemonFinalEvolutionIds} from '@/utils/game/pokemon';
+import {getPokemonFinalEvolutionIds} from '@/utils/game/pokemon/evolution';
 import {getLevelToCalcForPokeInBox} from '@/utils/team/previewLevel';
 import {isNotNullish} from '@/utils/type';
 

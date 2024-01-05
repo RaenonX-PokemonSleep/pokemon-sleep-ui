@@ -11,7 +11,7 @@ import {
   TeamAnalysisSlotName,
 } from '@/types/teamAnalysis';
 import {TeamAnalysisDataProps} from '@/ui/team/analysis/type';
-import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon';
+import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon/evolution';
 import {generateDefaultIngredientProductionAtLevels} from '@/utils/game/producing/ingredient/chain';
 
 

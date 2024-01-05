@@ -1,4 +1,4 @@
-import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon';
+import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon/evolution';
 import {getPokemonProducingRateSingle} from '@/utils/game/producing/main/single';
 import {getProducingRateSingleParams} from '@/utils/game/producing/params';
 import {getRatingBasisValue} from '@/utils/game/rating/basis';

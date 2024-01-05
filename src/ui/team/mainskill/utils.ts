@@ -2,7 +2,7 @@ import {defaultSeedUsage} from '@/const/game/seed';
 import {PokemonInfo} from '@/types/game/pokemon';
 import {IngredientChain} from '@/types/game/pokemon/ingredient';
 import {SkillTriggerAnalysisUnit, SkillTriggerOnDeskState} from '@/ui/team/mainskill/type';
-import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon';
+import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon/evolution';
 import {generateDefaultIngredientProductionAtLevels} from '@/utils/game/producing/ingredient/chain';
 
 

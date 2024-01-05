@@ -9,7 +9,7 @@ import {
   IngredientProduction,
 } from '@/types/game/pokemon/ingredient';
 import {PokeInBoxData} from '@/types/mongo/pokebox/main';
-import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon';
+import {getEvolutionCountFromPokemonInfo} from '@/utils/game/pokemon/evolution';
 
 
 type RandomIngredient = {

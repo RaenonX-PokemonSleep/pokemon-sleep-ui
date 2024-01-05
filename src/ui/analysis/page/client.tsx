@@ -13,7 +13,7 @@ import {AnalysisPageInput} from '@/ui/analysis/page/input/main';
 import {AnalysisMeta} from '@/ui/analysis/page/meta';
 import {AnalysisStatsUI} from '@/ui/analysis/page/stats/main';
 import {AnalysisPageCommonProps} from '@/ui/analysis/page/type';
-import {getPokedexWithField} from '@/utils/game/pokemon';
+import {getPokedexWithField} from '@/utils/game/pokemon/sleepStyle';
 import {getEffectiveIngredientLevels} from '@/utils/game/producing/ingredient/level';
 
 

@@ -14,7 +14,7 @@ import {
   SkillTriggerOnDeskState,
 } from '@/ui/team/mainskill/type';
 import {toSkillTriggerAnalysisUnit} from '@/ui/team/mainskill/utils';
-import {getPokemonMaxEvolutionCount} from '@/utils/game/pokemon';
+import {getPokemonMaxEvolutionCount} from '@/utils/game/pokemon/evolution';
 import {isNotNullish} from '@/utils/type';
 
 

@@ -19,7 +19,7 @@ import {PokemonMetaSection} from '@/ui/pokedex/page/meta/section';
 import {PokemonStats} from '@/ui/pokedex/page/meta/stats';
 import {metaTitleClass} from '@/ui/pokedex/page/style';
 import {PokemonDataProps} from '@/ui/pokedex/page/type';
-import {isPokemonEventOnly} from '@/utils/game/pokemon';
+import {isPokemonEventOnly} from '@/utils/game/pokemon/event';
 
 
 export const PokemonMeta = (props: PokemonDataProps) => {

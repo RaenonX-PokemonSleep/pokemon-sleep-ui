@@ -6,7 +6,7 @@ import {teamMakerProductionPeriod} from '@/ui/team/maker/calc/const';
 import {getTeamMakerBasisValue} from '@/ui/team/maker/calc/getBasisValue';
 import {TeamMakerCalcInitOpts} from '@/ui/team/maker/type/calc';
 import {TeamMakerBasisValueAtStage, TeamMakerIntermediateRate} from '@/ui/team/maker/type/common';
-import {getPokemonFinalEvolutionIds} from '@/utils/game/pokemon';
+import {getPokemonFinalEvolutionIds} from '@/utils/game/pokemon/evolution';
 import {getEffectiveIngredientProductions} from '@/utils/game/producing/ingredient/multi';
 import {getPokemonProducingRateSingle} from '@/utils/game/producing/main/single';
 import {GetPokemonProducingRateOpts} from '@/utils/game/producing/main/type';
