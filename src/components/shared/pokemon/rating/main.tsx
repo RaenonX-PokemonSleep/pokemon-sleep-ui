@@ -15,7 +15,7 @@ const RatingResultInternal = (props: RatingResultProps, ref: React.ForwardedRef<
       <AdsUnit/>
       <UserDataLazyLoad
         options={{type: 'ratingConfig'}}
-        loadingText={null}
+        loadingText="Rating"
         content={({data}) => {
           const config = data === null ? null : data.ratingConfig;
 
