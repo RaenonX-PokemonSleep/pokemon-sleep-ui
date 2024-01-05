@@ -28,7 +28,7 @@ export const BerryFavoriteInfoUi = ({favoriteInfo}: Props) => {
               <div className="text-xl">
                 {t(mapId)}
               </div>
-              <div className="h-10 w-10">
+              <div className="h-10 w-10 self-center">
                 <BerryFavoriteInMapType type={type}/>
               </div>
             </MapLink>
