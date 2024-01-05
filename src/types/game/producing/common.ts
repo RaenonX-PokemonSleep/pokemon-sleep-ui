@@ -1,1 +1,7 @@
-export type ProduceType = 'berry' | 'ingredient' | 'skill';
+export const produceTypes = [
+  'berry',
+  'ingredient',
+  'skill',
+] as const;
+
+export type ProduceType = typeof produceTypes[number];
