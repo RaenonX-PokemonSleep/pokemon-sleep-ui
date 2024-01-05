@@ -17,6 +17,7 @@ type Props<TFilter extends PokemonIndividualParams> = FilterWithUpdaterProps<TFi
   subSkillMap: SubSkillMap,
   maxLevel: number,
   className?: string,
+  noSameLine?: boolean,
 };
 
 export const PokemonIndividualParamsPicker = <TFilter extends PokemonIndividualParams>({
@@ -26,6 +27,7 @@ export const PokemonIndividualParamsPicker = <TFilter extends PokemonIndividualP
   subSkillMap,
   maxLevel,
   className,
+  noSameLine,
 }: Props<TFilter>) => {
   const selectorProps: PokemonIndividualSelectorButtonProps = {
     classNameForHeight: 'h-8',
@@ -42,7 +44,8 @@ export const PokemonIndividualParamsPicker = <TFilter extends PokemonIndividualP
           level,
         }))}
         max={maxLevel}
-        noSameLine
+        noSameLine={
+          noSameLine}
       />
       <Flex className="gap-1.5 sm:flex-row">
         <PokemonSubSkillSelector

@@ -20,6 +20,7 @@ export type TeamMakerServerDataProps = UsePokemonFilterCommonData & {
   mealMap: MealMap,
   mapMeta: FieldMetaMap,
   snorlaxData: SnorlaxDataOfMap[],
+  pokemonMaxLevel: number,
   preloaded: UserSettingsBundle,
 };
 

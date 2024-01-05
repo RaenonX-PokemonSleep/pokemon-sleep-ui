@@ -5,7 +5,7 @@ import {getServerSession} from 'next-auth';
 import {AdsUnit} from '@/components/ads/main';
 import {I18nProvider} from '@/components/i18n/provider';
 import {authOptions} from '@/const/auth';
-import {getBerryDataMap} from '@/controller/berry';
+import {getBerryDataMap, getPokemonMaxLevelByBerry} from '@/controller/berry';
 import {getIngredientMap} from '@/controller/ingredient';
 import {getIngredientChainMap} from '@/controller/ingredientChain';
 import {getMainSkillMap} from '@/controller/mainSkill';
@@ -41,6 +41,7 @@ const TeamMaker = async ({locale}: TeamMakerProps) => {
     mealMap,
     mapMeta,
     snorlaxData,
+    pokemonMaxLevel,
   ] = await Promise.all([
     getPokedexMap(),
     getPokemonProducingParamsMap(),
@@ -52,6 +53,7 @@ const TeamMaker = async ({locale}: TeamMakerProps) => {
     getMealMap(),
     getFieldMetaMap(),
     getSnorlaxData(),
+    getPokemonMaxLevelByBerry(),
   ]);
 
   const props: TeamMakerServerDataProps = {
@@ -65,6 +67,7 @@ const TeamMaker = async ({locale}: TeamMakerProps) => {
     mealMap,
     mapMeta,
     snorlaxData,
+    pokemonMaxLevel,
     preloaded: createUserSettingsBundle(session),
   };
 
