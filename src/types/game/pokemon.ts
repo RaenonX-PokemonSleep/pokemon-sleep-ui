@@ -39,7 +39,7 @@ export type PokemonBerry = {
 export type PokemonInfo = {
   id: PokemonId,
   type: PokemonTypeId,
-  specialty: PokemonSpecialtyId | null,
+  specialty: PokemonSpecialtyId,
   sleepType: PokemonSleepTypeId,
   stats: PokemonStats,
   berry: PokemonBerry,

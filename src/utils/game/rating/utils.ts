@@ -5,8 +5,8 @@ import {RatingBasis} from '@/types/game/pokemon/rating/config';
 import {GetProducingRateBehavior} from '@/utils/game/producing/type';
 
 
-export const getDefaultRatingBasis = (specialtyId: PokemonSpecialtyId | null): RatingBasis => (
-  specialtyId ? defaultRatingBasisOfSpecialty[specialtyIdToType[specialtyId]] : 'totalProduction'
+export const getDefaultRatingBasis = (specialtyId: PokemonSpecialtyId): RatingBasis => (
+  defaultRatingBasisOfSpecialty[specialtyIdToType[specialtyId]]
 );
 
 export const getRatingProducingRateCalcBehavior = (basis: RatingBasis): GetProducingRateBehavior => ({

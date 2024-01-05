@@ -61,7 +61,7 @@ export type AnalysisIngredientStatsLinkedData = {
 export type AnalysisStats = {
   pokemon: {
     type: AnalysisStatsGrouped<PokemonTypeId>,
-    specialty: AnalysisStatsGrouped<PokemonSpecialtyId | null>,
+    specialty: AnalysisStatsGrouped<PokemonSpecialtyId>,
     sleepType: AnalysisStatsGrouped<PokemonSleepTypeId>,
     ingredient: {[level in IngredientLevel]: AnalysisStatsGrouped<IngredientProduction>[]},
     berry: AnalysisStatsGrouped<BerryId>,

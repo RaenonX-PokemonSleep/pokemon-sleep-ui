@@ -14,7 +14,7 @@ type ToRatingRequestOpts = {
   member: TeamAnalysisMember,
   pokemon: PokemonInfo,
   snorlaxFavorite: SnorlaxFavorite,
-  specialtyId: PokemonSpecialtyId | null,
+  specialtyId: PokemonSpecialtyId,
   bundle: UserSettingsBundle,
 };
 

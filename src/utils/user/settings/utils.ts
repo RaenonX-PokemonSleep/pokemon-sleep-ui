@@ -8,7 +8,7 @@ import {isNotNullish} from '@/utils/type';
 
 type IsFullPackEffectiveOpts = {
   fullPackBehavior: UserCalculationFullPackBehavior,
-  specialty: PokemonSpecialtyId | null,
+  specialty: PokemonSpecialtyId,
 };
 
 export const isFullPackEffective = ({fullPackBehavior, specialty}: IsFullPackEffectiveOpts): boolean => {

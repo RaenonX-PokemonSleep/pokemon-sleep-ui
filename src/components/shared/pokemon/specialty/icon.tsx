@@ -1,6 +1,5 @@
 import React from 'react';
 
-import XCircleIcon from '@heroicons/react/24/outline/XCircleIcon';
 import {clsx} from 'clsx';
 import {useTranslations} from 'next-intl';
 
@@ -20,14 +19,12 @@ export const PokemonSpecialtyIcon = ({specialty, dimension, active, className}: 
 
   return (
     <div className={clsx('rounded-full p-0.5', specialty && getSpecialtyBgClass(specialty, active ?? false))}>
-      {specialty ?
-        <div className={clsx('relative', dimension ?? 'h-5 w-5')}>
-          <NextImage
-            src={specialtyImageSrcMap[specialty]} alt={t(`Specialty.${specialty}`)}
-            sizes={imageSmallIconSizes} className={clsx(className, active ? 'invert-on-light' : 'invert-on-dark')}
-          />
-        </div> :
-        <XCircleIcon className={dimension ?? 'h-5 w-5'}/>}
+      <div className={clsx('relative', dimension ?? 'h-5 w-5')}>
+        <NextImage
+          src={specialtyImageSrcMap[specialty]} alt={t(`Specialty.${specialty}`)}
+          sizes={imageSmallIconSizes} className={clsx(className, active ? 'invert-on-light' : 'invert-on-dark')}
+        />
+      </div>
     </div>
   );
 };
