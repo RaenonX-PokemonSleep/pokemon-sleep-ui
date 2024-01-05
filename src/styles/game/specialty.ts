@@ -38,8 +38,6 @@ export const getSpecialtyBgClass = (specialty: PokemonSpecialtyId, isActive: boo
   isActive ? specialtyBgClassActive[specialty] : specialtyBgClassInactive[specialty]
 );
 
-export const specialtyBgClassDefault = specialtyBgClassInactive;
-
 const specialtyTextClassInactive: SpecialtyClassMap = {
   1: clsx(
     'transform-smooth text-green-700 dark:text-green-500',
