@@ -12,8 +12,10 @@ export const generatePageMeta = ({key, values}: GeneratePageMetaOpts): GenerateM
   const {locale} = params;
   const t = await getI18nTranslator({locale, namespace: 'UI.Metadata'});
 
+  const siteName = `${t(key, values)} | ${t('Site.Name')}`;
   return {
-    title: `${t(key, values)} | ${t('Site.Name')}`,
+    applicationName: siteName,
+    title: siteName,
     description: t('Site.Description'),
     authors: [
       {
@@ -28,6 +30,8 @@ export const generatePageMeta = ({key, values}: GeneratePageMetaOpts): GenerateM
     creator: 'RaenonX',
     appleWebApp: {
       capable: true,
+      title: siteName,
+      statusBarStyle: 'default',
     },
     generator: 'Next.js',
     manifest: '/manifest.json',
@@ -47,14 +51,21 @@ export const generatePageMeta = ({key, values}: GeneratePageMetaOpts): GenerateM
     ],
     icons: [
       {rel: 'apple-touch-icon', url: '/icons/icon-180x180.png'},
-      {rel: 'icon', url: '/icon.svg', sizes: 'any', type: 'image/svg+xml'},
-      {
-        rel: 'icon',
-        url: '/favicon.ico',
-        sizes: '72x72 76x76 80x80 87x87 96x96 100x100 114x114 120x120 128x128 144x144 152x152 167x167 180x180',
-        type: 'image/x-icon',
-      },
+      {rel: 'icon', url: '/favicon.ico', type: 'image/x-icon'},
     ],
+    formatDetection: {
+      url: true,
+      date: true,
+      email: true,
+      address: false,
+      telephone: false,
+    },
+    other: {
+      'mobile-web-app-capable': 'yes',
+      'msapplication-TileColor': '#ffffff',
+      'msapplication-tap-highlight': 'no',
+      'msapplication-TileImage': '/icons/icon-150x150.png',
+    },
   };
 };
 
