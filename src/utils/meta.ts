@@ -13,10 +13,12 @@ export const generatePageMeta = ({key, values}: GeneratePageMetaOpts): GenerateM
   const t = await getI18nTranslator({locale, namespace: 'UI.Metadata'});
 
   const siteName = `${t(key, values)} | ${t('Site.Name')}`;
+  const siteNameTemplate = '%s - PWA';
+  const siteDescription = t('Site.Description');
   return {
     applicationName: siteName,
     title: siteName,
-    description: t('Site.Description'),
+    description: siteDescription,
     authors: [
       {
         name: 'RaenonX',
@@ -32,6 +34,23 @@ export const generatePageMeta = ({key, values}: GeneratePageMetaOpts): GenerateM
       capable: true,
       title: siteName,
       statusBarStyle: 'default',
+    },
+    openGraph: {
+      type: 'website',
+      siteName: siteName,
+      title: {
+        default: siteName,
+        template: siteNameTemplate,
+      },
+      description: siteDescription,
+    },
+    twitter: {
+      card: 'summary',
+      title: {
+        default: siteName,
+        template: siteNameTemplate,
+      },
+      description: siteDescription,
     },
     generator: 'Next.js',
     manifest: '/manifest.json',
@@ -51,7 +70,7 @@ export const generatePageMeta = ({key, values}: GeneratePageMetaOpts): GenerateM
     ],
     icons: [
       {rel: 'apple-touch-icon', url: '/icons/icon-180x180.png'},
-      {rel: 'icon', url: '/favicon.ico', type: 'image/x-icon'},
+      {rel: 'icon', url: '/favicon.ico'},
     ],
     formatDetection: {
       url: true,
@@ -62,7 +81,7 @@ export const generatePageMeta = ({key, values}: GeneratePageMetaOpts): GenerateM
     },
     other: {
       'mobile-web-app-capable': 'yes',
-      'msapplication-TileColor': '#ffffff',
+      'msapplication-TileColor': '#aa97d7',
       'msapplication-tap-highlight': 'no',
       'msapplication-TileImage': '/icons/icon-150x150.png',
     },

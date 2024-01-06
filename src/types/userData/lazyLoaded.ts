@@ -23,5 +23,6 @@ export type UserLazyLoadedContent = {
 };
 
 // For checking if `UserLazyLoadedContent` implements every possible `UserDataLoadingOpts['type']` only
+// @ts-ignore
 // noinspection JSUnusedLocalSymbols
 type _ = UserLazyLoadedContent[UserDataLoadingOpts['type']];

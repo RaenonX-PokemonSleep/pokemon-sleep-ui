@@ -17,11 +17,21 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
     /* Strict Type-Checking Options */
     "strict": true,
     /* Module Resolution Options */
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     /* Advanced Options */
     "skipLibCheck": true,
@@ -46,6 +56,7 @@
     ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    ".next"
   ]
 }

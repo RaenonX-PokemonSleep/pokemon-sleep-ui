@@ -9,15 +9,22 @@
   "display": "standalone",
   "orientation": "portrait",
   "start_url": "/",
-  "categories": ["productivity", "utilities"],
-  "keywords": ["寶可夢睡覺", "Pokemon Sleep", "ポケスリ", "포슬립", "寶可夢", "Pokemon", "ポケスリ", "포켓몬", "攻略"],
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
+  "keywords": [
+    "寶可夢睡覺",
+    "Pokemon Sleep",
+    "ポケスリ",
+    "포슬립",
+    "寶可夢",
+    "Pokemon",
+    "ポケスリ",
+    "포켓몬",
+    "攻略"
+  ],
   "icons": [
-    {
-      "src": "/icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
     {
       "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
