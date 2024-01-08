@@ -43,6 +43,7 @@ logs/
 
 # Auto Generated PWA files
 **/public/sw.js
+**/public/swe-worker-*.js
 **/public/workbox-*.js
 **/public/worker-*.js
 **/public/sw.js.map

@@ -1,7 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "id": "pks.raenonx.cc",
-  "dir": "auto",
   "name": "Pokemon Sleep Info Wiki",
   "short_name": "PKS by RaenonX",
   "description": "Pokémon Sleep Info Wiki provides various info including Pokédex, recipes, ingredients, berries, as well as other tools such as Team Analysis and Pokebox analysis.",
@@ -9,9 +8,11 @@
   "background_color": "#2a97d7",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "/",
   "start_url": "/",
-  "categories": ["productivity", "utilities"],
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
   "keywords": [
     "寶可夢睡覺",
     "Pokemon Sleep",
@@ -25,93 +26,22 @@
   ],
   "icons": [
     {
-      "src": "icons/icon-16x16.png",
-      "sizes": "16x16",
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-20x20.png",
-      "sizes": "20x20",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-29x29.png",
-      "sizes": "29x29",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-32x32.png",
-      "sizes": "32x32",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-40x40.png",
-      "sizes": "40x40",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-50x50.png",
-      "sizes": "50x50",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-57x57.png",
-      "sizes": "57x57",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-58x58.png",
-      "sizes": "58x58",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-60x60.png",
-      "sizes": "60x60",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-64x64.png",
-      "sizes": "64x64",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "favicon.ico",
-      "sizes": "72x72 76x76 80x80 87x87 96x96 100x100 114x114 120x120 128x128 144x144 152x152 167x167 180x180",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "icons/icon-384x384.png",
-      "sizes": "384x384",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-512x512.png",
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-512x512.png",
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
-    },
-    {
-      "src": "icons/icon-1024x1024.png",
-      "sizes": "1024x1024",
-      "type": "image/png",
-      "purpose": "any"
     }
   ]
 }
